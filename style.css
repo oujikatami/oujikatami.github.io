@@ -17,7 +17,7 @@ body {
   color: var(--text);
   min-height: 100vh;
   line-height: 1.6;
-  /* FIX RAPIH #1: Menaikkan padding-top agar konten tidak tertutup sticky header */
+  /* FIX 1: Increased padding-top to prevent content overlap with sticky header */
   padding-top: 75px; 
 }
 .container {
@@ -26,7 +26,7 @@ body {
   padding: 0 20px;
 }
 
-/* --- STICKY HEADER NAVIGASI (Fix Mirip Hub.xyz) --- */
+/* --- STICKY HEADER NAVIGATION --- */
 .main-nav-bar {
   position: fixed; 
   top: 0;
@@ -39,7 +39,7 @@ body {
   display: flex;
   justify-content: space-between; 
   align-items: center;
-  /* FIX RAPIH #3: Menaikkan z-index agar selalu di lapisan paling atas */
+  /* FIX 2: Increased z-index to ensure it is on top of everything */
   z-index: 9999; 
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); 
 }
@@ -69,15 +69,17 @@ body {
 }
 
 
-/* --- HERO SECTION (Fix Padding Agar Rapi) --- */
+/* --- HERO SECTION --- */
 .hero {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   
-  /* --- START BANNER/BACKGROUND STYLING --- */
-  /* FIX RAPIH #2: Atur ulang padding hero */
+  /* FIX 3: Set minimum height so banner remains visible when content is empty (e.g., 200px) */
+  min-height: 200px; 
+  
+  /* --- BANNER/BACKGROUND STYLING --- */
   padding: 20px; 
   padding-top: 50px; 
   background-image: url('banner.jpg'); 
@@ -154,4 +156,4 @@ footer { text-align: center; color: var(--muted); font-size: 14px; margin-top: 4
   .card { padding: 20px; }
   .contact-links a { margin: 8px 6px; padding: 10px 20px; }
   .main-nav-bar { padding: 8px 15px; }
-    }
+}
