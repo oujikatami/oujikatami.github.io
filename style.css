@@ -13,12 +13,23 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  background: var(--bg);
+  
+  /* FALLBACK COLOR (Used if image fails) */
+  background-color: var(--bg); 
+  
   color: var(--text);
   min-height: 100vh;
   line-height: 1.6;
-  /* FIX 1: Increased padding-top to prevent content overlap with sticky header */
+  /* Adjust padding-top to account for sticky header */
   padding-top: 75px; 
+  
+  /* --- START NEW GLOBAL BACKGROUND IMAGE --- */
+  background-image: url('background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; 
+  background-attachment: fixed; /* Ensures background stays put when scrolling */
+  /* --- END NEW GLOBAL BACKGROUND IMAGE --- */  
 }
 .container {
   max-width: 800px;
