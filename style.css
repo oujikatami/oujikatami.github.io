@@ -68,7 +68,6 @@ body {
   text-shadow: 0 0 5px var(--shadow-color);
 }
 
-
 /* --- HERO SECTION --- */
 .hero {
   display: flex;
@@ -79,9 +78,12 @@ body {
   /* FIX 3: Set minimum height so banner remains visible when content is empty (e.g., 200px) */
   min-height: 200px; 
   
+  /* ADD THIS LINE: Adds space between the banner and the first card */
+  margin-bottom: 30px; 
+  
   /* --- BANNER/BACKGROUND STYLING --- */
   padding: 20px; 
-  padding-top: 50px; 
+  padding-top: 50px;
   background-image: url('banner.jpg'); 
   background-size: cover; 
   background-position: center center;
