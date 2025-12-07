@@ -1,69 +1,228 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ouji Katami — Professional Moderator</title>
+  <meta name="description" content="Professional Profile of Ouji Katami, Active Moderator and Community Management Expert.">
+  <style>
+    /* ---------------------------------------------------------------------------------------------------------------------- */
+    /* --- VARIABLE & RESET (Kode Lo) --- */
+    /* ---------------------------------------------------------------------------------------------------------------------- */
+    :root {
+      --bg: #03080f; /* Very Dark Background */
+      --card-bg: #0d1621; /* Card Color */
+      --card-border: #1a3a4d; /* Border Darker */
+      --accent: #00e0ff; /* Neon Cyan Color */
+      --secondary-accent: #ffb700; /* Secondary Color (Yellow/Orange) */
+      --shadow-color: rgba(0, 224, 255, 0.4); /* Intense Neon Shadow */
+      --muted: #aebecd;
+      --text: #e6eef6;
+    }
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      /* Disesuaikan untuk memberi ruang pada sticky header */
+      padding-top: 60px; 
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ---------------------------------------------------------------------------------------------------------------------- */
+    /* --- STICKY HEADER NAVIGASI (Koreksi Header Sticky) --- */
+    /* ---------------------------------------------------------------------------------------------------------------------- */
+    .main-nav-bar {
+      /* Membuat nempel di atas halaman (seperti di hub.xyz) */
+      position: fixed; 
+      top: 0;
+      left: 0;
+      width: 100%;
+      /* Styling */
+      background: var(--card-bg); 
+      border-bottom: 1px solid var(--accent);
+      padding: 10px 20px;
+      
+      display: flex;
+      justify-content: space-between; 
+      align-items: center;
+      z-index: 1000; /* Pastikan dia paling atas */
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+    }
+
+    .small-avatar {
+      width: 35px; /* Ukuran Avatar di Navbar */
+      height: 35px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      /* Menggunakan file uvnb3o.jpg */
+      background-image: url('uvnb3o.jpg');
+      border: 2px solid var(--accent);
+      margin-right: 10px;
+      box-shadow: 0 0 5px var(--shadow-color);
+    }
+
+    .nav-name {
+      font-size: 1.2em;
+      font-weight: 700;
+      color: var(--accent);
+      text-shadow: 0 0 5px var(--shadow-color);
+    }
+    /* ---------------------------------------------------------------------------------------------------------------------- */
+
+
+    /* ---------------------------------------------------------------------------------------------------------------------- */
+    /* --- HERO SECTION (Kode Lo yang Disempurnakan) --- */
+    /* ---------------------------------------------------------------------------------------------------------------------- */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      
+      /* --- START BANNER/BACKGROUND STYLING --- */
+      padding: 40px 20px 30px 20px; 
+      background-image: url('banner.jpg'); /* Link ke banner lo */
+      background-size: cover; 
+      background-position: center center;
+      background-repeat: no-repeat;
+      position: relative;
+      box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4); 
+      border-radius: 8px;
+    }
+    
+    h1 { margin: 0; font-size: 34px; font-weight: 800; }
+    h2 { margin: 5px 0 25px; font-weight: 400; color: var(--muted); font-size: 18px; }
+
+    /* Card Styling */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px var(--shadow-color);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px var(--shadow-color);
+    }
+    .card h3 { 
+      color: var(--accent); 
+      margin-top: 0; 
+      font-size: 22px; 
+      border-bottom: 2px solid var(--accent); 
+      padding-bottom: 8px; 
+      margin-bottom: 15px;
+      text-shadow: 0 0 5px var(--shadow-color);
+    }
+    .card ul { padding-left: 20px; list-style-type: '⚡ '; color: var(--secondary-accent); }
+    .card li { margin-bottom: 10px; color: var(--text); }
+    .chip-container { margin-top: 15px; }
+    .chip {
+      display: inline-block;
+      background: var(--card-border);
+      color: var(--muted);
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      margin: 4px 6px 0 0;
+      font-weight: 500;
+      border: 1px solid var(--muted);
+    }
+    .contact-links { margin-top: 20px; text-align: center; }
+    .contact-links a {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--card-bg);
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      margin: 8px 10px;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 0 10px var(--shadow-color);
+    }
+    .contact-links a:hover {
+      background: #00ffff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px var(--shadow-color);
+    }
+    footer { text-align: center; color: var(--muted); font-size: 14px; margin-top: 40px; padding-bottom: 20px; }
+    @media (max-width: 500px) { 
+      .small-avatar { width: 30px; height: 30px; } 
+      h1 { font-size: 28px; }
+      .card { padding: 20px; }
+      .contact-links a { margin: 8px 6px; padding: 10px 20px; }
+      .main-nav-bar { padding: 8px 15px; }
+    }
+  </style>
+</head>
 <body>
+  
   <header class="main-nav-bar">
     <div class="logo-area">
-      <div class="small-avatar" style="background-image: url('uvnb3o.jpg');"></div>
+      <div class="small-avatar"></div> 
       <span class="nav-name">Ouji Katami</span>
     </div>
-    <nav class="nav-links">
-      </nav>
   </header>
+
   <div class="container">
     <section class="hero">
-      <h2>Professional Moderator & Community Management Expert.</h2> </section>
+      <h1>Active Community Management Expert</h1>
+      <h2>I’ve been deeply involved in the Web3 space for over four years, ready to collaborate on your project!</h2>
+    </section>
 
-    ```
+    <div class="card">
+      <h3>About Me</h3>
+      <p>Hello, I'm Ouji. I’ve been deeply involved in the Web3 space for over four years, transitioning from a dedicated airdrop enthusiast to a professional community Moderator. I am a self-driven experimenter, proven by my initiatives in setting up and managing dedicated Discord servers, Telegram channels, and driving strategic engagement on X. Most importantly, I have a strong track record of spearheading effective community events that demonstrably boost project engagement.</p>
+    </div>
 
-#### 2. 🎨 Tambahkan Styling CSS Baru
+    <div class="card">
+      <h3>Moderator Experience</h3>
+      <ul>
+        <li>Moderator Satsume Labs - Active</li>
+        <li>Ex Moderator Mento Labs</li>
+      </ul>
+    </div>
 
-Lo perlu menambahkan CSS untuk membuat `<header class="main-nav-bar">` ini terlihat seperti *navbar* dan *sticky* (nempel di atas). Masukkan kode di bawah ini ke dalam tag `<style>` lo.
+    <div class="card">
+      <h3>Skills & Information</h3>
+      <div class="chip-container">
+        <span class="chip">Conflict Management</span>
+        <span class="chip">Content Monitoring</span>
+        <span class="chip">Reporting & Analysis</span>
+        <span class="chip">Languages: Indonesian & English</span>
+        <span class="chip">Location: Indonesia</span>
+      </div>
+    </div>
+    
+    <div class="contact-links">
+      <a href="https://x.com/Oujikatami?t=9lGvjdoHr0XU5IYS7Kw1WQ&s=09" target="_blank">X (Twitter)</a>
+      <a href="https://discord.com/users/oujikatami" target="_blank">Discord</a>
+      <a href="mailto:doninovriandi07@gmail.com">Email</a>
+    </div>
 
-```css
-/* --- CSS BARU UNTUK HEADER STICKY (Ganti Mirip Hub.xyz) --- */
+    <footer>
+      © <span id="year"></span> Build The Future — <a href="https://oujikatami.xyz" style="color:inherit;text-decoration:underline">oujikatami.xyz</a>
+    </footer>
+  </div>
 
-.main-nav-bar {
-  /* Bikin nempel di atas */
-  position: fixed; 
-  top: 0;
-  left: 0;
-  width: 100%;
-  /* Styling mirip card/bg */
-  background: var(--card-bg); 
-  border-bottom: 1px solid var(--accent);
-  padding: 10px 20px;
-  
-  /* Flexbox untuk penempatan logo/nama di kiri */
-  display: flex;
-  justify-content: space-between; /* Untuk memisahkan logo dengan link nav */
-  align-items: center;
-  z-index: 1000; /* Pastikan dia paling atas */
-}
-
-.logo-area {
-  display: flex;
-  align-items: center;
-}
-
-.small-avatar {
-  width: 35px; /* Ukuran Avatar di Navbar */
-  height: 35px;
-  border-radius: 50%;
-  background-size: cover;
-  background-position: center;
-  border: 2px solid var(--accent);
-  margin-right: 10px;
-}
-
-.nav-name {
-  font-size: 1.2em;
-  font-weight: 700;
-  color: var(--accent);
-  text-shadow: 0 0 5px var(--shadow-color);
-}
-
-/* KOREKSI PADDING BODY LAMA */
-/* Karena navbar nempel di atas, konten body harus turun agar tidak tertutup */
-body {
-    /* Padding-top ini harus lebih besar dari tinggi header lo (35px avatar + 10px padding atas/bawah = sekitar 55px total) */
-    padding-top: 60px; 
-}
-/* --- END CSS BARU --- */
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
