@@ -7,7 +7,12 @@
   
   <link rel="stylesheet" href="style.css"> 
 </head>
-<body>
+<body> 
+  <audio id="background-music" loop>
+    <source src="sound.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  ```
   
   <header class="main-nav-bar">
     <div class="logo-area">
@@ -60,6 +65,17 @@ I am ready to collaborate with your project.</p>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    // START MUSIC JAVASCRIPT
+  const audio = document.getElementById('background-music');
+
+  function playAudioOnInteraction() {
+    audio.play().catch(error => {});
+    document.removeEventListener('click', playAudioOnInteraction);
+  }
+  document.addEventListener('click', playAudioOnInteraction);
+  // END MUSIC JAVASCRIPT
+
+</script>
   </script>
 </body>
 </html>
