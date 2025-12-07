@@ -159,3 +159,7 @@ footer { text-align: center; color: var(--muted); font-size: 14px; margin-top: 4
   .contact-links a { margin: 8px 6px; padding: 10px 20px; }
   .main-nav-bar { padding: 8px 15px; }
 }
+/* --- KOREKSI UKURAN IKON X (Karena Bawaannya Kecil) --- */
+.fa-x-twitter {
+  font-size: 1.2em; /* Besarkan ikon X sebesar 1.2 kali dari ukuran default teks */
+}
