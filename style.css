@@ -169,4 +169,10 @@ footer { text-align: center; color: var(--muted); font-size: 14px; margin-top: 4
   .card { padding: 20px; }
   .contact-links a { margin: 8px 6px; padding: 10px 20px; }
   .main-nav-bar { padding: 8px 15px; }
+  margin-top: 50px; 
+  /* rest of the footer code... */
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9em;
+  color: var(--text-muted);
 } 
