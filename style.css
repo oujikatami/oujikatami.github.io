@@ -169,8 +169,4 @@ footer { text-align: center; color: var(--muted); font-size: 14px; margin-top: 4
   .card { padding: 20px; }
   .contact-links a { margin: 8px 6px; padding: 10px 20px; }
   .main-nav-bar { padding: 8px 15px; }
-}
-/* --- FIX: ADJUST X ICON SIZE (Default Font Awesome is smaller than others) --- */
-.fa-x-twitter {
-  font-size: 1.2em; /* Increase the size of the X icon to match Discord and Email */
 } 
