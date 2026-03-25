@@ -8,43 +8,53 @@ body { overflow-x: hidden; }
     background: #000; z-index: 9999; display: flex; flex-direction: column;
     justify-content: center; align-items: center; color: #fff;
 }
-.matrix-text { width: 80%; text-align: center; font-size: 0.8rem; word-break: break-all; opacity: 0.7; }
-.main-logo { max-width: 200px; border: 4px solid #fff; animation: zoomIn 0.5s; }
+.matrix-text { width: 85%; text-align: center; font-size: 0.8rem; word-break: break-all; opacity: 0.7; line-height: 1; }
+.main-logo { max-width: 200px; border: 4px solid #fff; animation: zoomIn 0.5s ease-out; }
 @keyframes zoomIn { from { transform: scale(0); } to { transform: scale(1); } }
 
-/* SLIDE LOGIC */
+/* SLIDE SETUP */
 .container { height: 100vh; }
 .slide { 
     height: 100vh; width: 100%; display: flex; justify-content: center; 
     align-items: center; scroll-snap-align: start; padding: 20px;
 }
-.white-bg { background: #fff; color: #000; }
-.black-bg { background: #000; color: #fff; }
+.white-bg { background: #ffffff; color: #000000; }
+.black-bg { background: #000000; color: #ffffff; }
 
-/* CONTENT BOX */
-.content-box { max-width: 600px; width: 100%; padding: 30px; text-align: center; }
+/* BOX STYLES */
+.content-box { max-width: 650px; width: 100%; padding: 40px 30px; text-align: center; }
 .dark-border { border: 3px solid #000; }
 .white-border { border: 3px solid #fff; }
-h2 { margin-bottom: 25px; font-size: 1rem; letter-spacing: 3px; }
+h2 { margin-bottom: 25px; font-size: 1.1rem; letter-spacing: 3px; font-weight: bold; }
 
-/* EXPERIENCE & SOCIAL */
-.exp-item { padding: 12px 0; border-bottom: 1px solid #444; text-align: left; }
-.exp-item small { display: block; color: #888; font-size: 0.7rem; }
-.social-wrapper { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
-.social-row { display: flex; align-items: center; padding: 12px; text-decoration: none; font-size: 0.8rem; transition: 0.3s; }
-.social-row i { margin-right: 15px; width: 20px; }
+/* EXPERIENCE LIST */
+.exp-list { text-align: left; width: 100%; }
+.exp-item { padding: 15px 0; border-bottom: 1px solid #444; font-size: 0.9rem; }
+.exp-item small { display: block; color: #888; margin-top: 5px; font-size: 0.75rem; }
+
+/* SOCIAL BARS */
+.social-wrapper { display: flex; flex-direction: column; gap: 8px; width: 100%; margin-bottom: 30px; }
+.social-row { display: flex; align-items: center; padding: 14px; text-decoration: none; font-size: 0.8rem; transition: 0.3s; }
+.social-row i { margin-right: 20px; width: 20px; text-align: center; }
 .dark-btn { border: 1px solid #000; color: #000; }
 .dark-btn:hover { background: #000; color: #fff; }
 
 /* FOOTER */
-.footer-tag { font-size: 0.6rem; color: #999; border-top: 1px dashed #ccc; padding-top: 15px; margin-top: 10px; }
+.site-footer { font-size: 0.65rem; color: #999; border-top: 1px dashed #ccc; padding-top: 20px; margin-top: 10px; width: 100%; }
 
-/* NAV */
-nav { position: fixed; top: 20px; right: 20px; z-index: 1000; }
-.menu-btn { cursor: pointer; display: flex; flex-direction: column; gap: 5px; }
-.menu-btn span { width: 25px; height: 2px; background: #888; }
-.side-bar { position: fixed; top: 0; right: -300px; width: 280px; height: 100%; background: #0a0a0a; padding: 40px; transition: 0.4s; z-index: 1001; }
+/* NAV & SIDEBAR (FIXED WHITE TEXT) */
+nav { position: fixed; top: 25px; right: 25px; z-index: 1000; }
+.menu-btn { cursor: pointer; display: flex; flex-direction: column; gap: 6px; }
+.menu-btn span { width: 30px; height: 2px; background: #888; }
+.side-bar { 
+    position: fixed; top: 0; right: -320px; width: 300px; height: 100%; 
+    background: #0a0a0a; border-left: 1px solid #333; padding: 60px 30px; 
+    transition: 0.4s; z-index: 1001; 
+}
 .side-bar.active { right: 0; }
-.side-links a { display: block; color: #888; text-decoration: none; margin: 15px 0; font-size: 0.8rem; }
-.close-btn { position: absolute; top: 10px; right: 20px; cursor: pointer; font-size: 1.5rem; }
+.side-title { color: #ffffff !important; font-size: 0.9rem; margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 15px; letter-spacing: 1px; }
+.side-links a { display: block; color: #ffffff !important; text-decoration: none; margin: 20px 0; font-size: 0.85rem; transition: 0.3s; }
+.side-links a:hover { text-decoration: underline; opacity: 0.7; }
+.close-btn { position: absolute; top: 20px; right: 25px; cursor: pointer; font-size: 1.8rem; color: #ffffff; }
+
 .hidden { display: none; }
