@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OUJI KATAMI | WEB3 PORTOFOLIO</title> 
+    <title>OUJI KATAMI | WEB3</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <div id="loader-wrapper">
-        <div id="matrix-bg"></div>
-        <div id="logo-container" class="hidden">
-            <img src="ouji.jpg" alt="Ouji Katami" class="main-logo">
+    <div id="initial-loader" class="loader-overlay">
+        <div class="matrix-text"></div>
+        <div id="logo-reveal" class="hidden">
+            <img src="ouji.jpg" alt="Ouji" class="main-logo">
         </div>
+    </div>
+
+    <div id="transition-loader" class="loader-overlay hidden">
+        <div class="matrix-text"></div>
     </div>
 
     <nav>
@@ -26,61 +30,49 @@
         <div class="close-btn" onclick="toggleMenu()">×</div>
         <h3 class="side-title">AIRDROP SCOUT COMMUNITY</h3>
         <div class="side-links">
-            <a href="#">EMAIL</a>
-            <a href="#">DISCORD</a>
-            <a href="#">X</a>
-            <a href="#">TIKTOK</a>
-            <a href="#">FACEBOOK</a>
-            <a href="#">INSTAGRAM</a>
-            <a href="#">MEDIUM</a>
+            <a href="#">EMAIL</a><a href="#">DISCORD</a><a href="#">X</a><a href="#">TIKTOK</a>
+            <a href="#">FACEBOOK</a><a href="#">INSTAGRAM</a><a href="#">MEDIUM</a>
         </div>
     </div>
 
     <main class="container">
-        
-        <section class="slide white-bg">
+        <section class="slide white-bg" id="slide-1">
             <div class="content-box dark-border">
-                <h2>[ 01. THE JOURNEY ]</h2>
+                <h2>[ THE JOURNEY ]</h2>
                 <p>Hello, I'm <strong>Ouji Katami</strong>, a dedicated Web3 enthusiast. I entered the crypto space in 2022 and began my professional career in 2024. My journey started with a fascination for Airdrops. Currently, I am building my own community, <strong>Airdrop Scout</strong>. In 2025, I successfully contributed to two major crypto projects. I am fully committed to projects that I believe will have a lasting impact on the Web3 ecosystem.</p>
             </div>
         </section>
 
-        <section class="slide black-bg">
+        <section class="slide black-bg" id="slide-2">
             <div class="content-box white-border">
-                <h2>[ 02. EXPERIENCE ]</h2>
+                <h2>[ EXPERIENCE ]</h2>
                 <div class="exp-list">
-                    <div class="exp-item">
-                        <strong>Prev Junior Moderator @ Confidential Layer</strong>
-                        <small>Feb 2025 - July 2025 | Crypto Privacy Project</small>
-                    </div>
+                    <div class="exp-item"><strong>Prev Junior Moderator @ Confidential Layer</strong><small>Feb 2025 - July 2025 | Crypto Privacy</small></div>
                     <div class="exp-item"><strong>Top Contributor @ Enso Network</strong></div>
                     <div class="exp-item"><strong>Top Contributor @ Public AI</strong></div>
-                    <div class="exp-item)<strong>Top Contributor @ Hana Network</strong></div>
-                    <div class="exp-item">
-                        <strong>Prev Moderator @ Satsume Labs</strong>
-                        <small>Nov 2025 - Feb 2026 | Crypto CommerceFi (Testnet)</small>
-                    </div>
+                    <div class="exp-item"><strong>Top Contributor @ Hana Network</strong></div>
+                    <div class="exp-item"><strong>Prev Moderator @ Satsume Labs</strong><small>Nov 2025 - Feb 2026 | CommerceFi</small></div>
                 </div>
             </div>
         </section>
 
-        <section class="slide black-bg">
-            <div class="content-box white-border">
-                <h2>[ 03. CONNECT ]</h2>
+        <section class="slide white-bg" id="slide-3">
+            <div class="content-box dark-border">
+                <h2>[ CONNECT ]</h2>
                 <div class="social-wrapper">
-                    <a href="#" class="social-row"><i class="fa-solid fa-envelope"></i> EMAIL</a>
-                    <a href="#" class="social-row"><i class="fa-brands fa-x-twitter"></i> X</a>
-                    <a href="#" class="social-row"><i class="fa-brands fa-discord"></i> DISCORD</a>
-                    <a href="#" class="social-row"><i class="fa-brands fa-instagram"></i> INSTAGRAM</a>
-                    <a href="#" class="social-row"><i class="fa-brands fa-telegram"></i> TELEGRAM</a>
-                    <a href="#" class="social-row"><i class="fa-brands fa-tiktok"></i> TIKTOK</a>
-                    <a href="#" class="social-row"><i class="fa-brands fa-facebook"></i> FACEBOOK</a>
-                    <a href="#" class="social-row"><i class="fa-brands fa-linkedin"></i> LINKEDIN</a>
-                    <a href="#" class="social-row"><i class="fa-brands fa-medium"></i> MEDIUM</a>
+                    <a href="#" class="social-row dark-btn"><i class="fa-solid fa-envelope"></i> EMAIL</a>
+                    <a href="#" class="social-row dark-btn"><i class="fa-brands fa-x-twitter"></i> X</a>
+                    <a href="#" class="social-row dark-btn"><i class="fa-brands fa-discord"></i> DISCORD</a>
+                    <a href="#" class="social-row dark-btn"><i class="fa-brands fa-instagram"></i> INSTAGRAM</a>
+                    <a href="#" class="social-row dark-btn"><i class="fa-brands fa-telegram"></i> TELEGRAM</a>
+                    <a href="#" class="social-row dark-btn"><i class="fa-brands fa-tiktok"></i> TIKTOK</a>
+                    <a href="#" class="social-row dark-btn"><i class="fa-brands fa-facebook"></i> FACEBOOK</a>
+                    <a href="#" class="social-row dark-btn"><i class="fa-brands fa-linkedin"></i> LINKEDIN</a>
+                    <a href="#" class="social-row dark-btn"><i class="fa-brands fa-medium"></i> MEDIUM</a>
                 </div>
+                <footer class="footer-tag">Ouji Katami Portfolio // 2026 // BUILD THE FUTURE</footer>
             </div>
         </section>
-
     </main>
 
     <script src="script.js"></script>
