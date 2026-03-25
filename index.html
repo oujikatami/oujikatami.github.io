@@ -1,155 +1,88 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Ouji Katami — Professional Moderator</title>
-  <meta name="description" content="Professional Profile of Ouji Katami, Active Moderator and Community Management Expert.">
-  <head> 
- 
-    <link rel="stylesheet" href="style.css"> 
- 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">  
- 
-    <link rel="icon" type="image/png" href="favicon.png"> 
-  </head>
-<body> 
-  <audio id="background-music" loop>
-    <source src="sound.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio> 
-  
-  <header class="main-nav-bar">
-    <div class="logo-area">
-      <div class="small-avatar"></div> 
-      <span class="nav-name">OUJI KATAMI</span>
-    </div>
-  </header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OUJI KATAMI | WEB3 PORTOFOLIO</title> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
 
-  <div class="container">
-    <section class="hero"> 
-    </section>
-
-    <div class="card">
-      <h3>ABOUT ME</h3> 
-      <p>Hello, I'm Ouji, a dedicated Web3 enthusiast.
-I bring four years of experience in the crypto space, having evolved from an airdrop hunter to a genuine project contributor.
-I also possess proven skills as a moderator, successfully building positive communities and driving high engagement.
-I am ready to collaborate with your project.</p>
+    <div id="loader-wrapper">
+        <div id="matrix-bg"></div>
+        <div id="logo-container" class="hidden">
+            <img src="ouji.jpg" alt="Ouji Katami" class="main-logo">
+        </div>
     </div>
 
-    <div class="card">
-      <h3>MODERATOR EXPERIENCE</h3> 
-      <ul>
-        <li>Ex Moderator Satsume Labs</li>
-        <li>Ex Moderator Mento Labs</li>
-      </ul>
+    <nav>
+        <div class="menu-btn" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <div id="side-bar" class="side-bar">
+        <div class="close-btn" onclick="toggleMenu()">×</div>
+        <h3 class="side-title">AIRDROP SCOUT COMMUNITY</h3>
+        <div class="side-links">
+            <a href="#">EMAIL</a>
+            <a href="#">DISCORD</a>
+            <a href="#">X</a>
+            <a href="#">TIKTOK</a>
+            <a href="#">FACEBOOK</a>
+            <a href="#">INSTAGRAM</a>
+            <a href="#">MEDIUM</a>
+        </div>
     </div>
 
-    <div class="card">
-      <h3>SKILLS & INFORMATION</h3> 
-      <div class="chip-container">
-        <span class="chip">Conflict Management</span>
-        <span class="chip">Content Monitoring</span>
-        <span class="chip">Reporting & Analysis</span>
-        <span class="chip">Languages: Indonesian & English</span>
-        <span class="chip">Location: Indonesia</span>
-      </div>
-    </div>
-    
-    <div class="contact-links">
-      <a href="https://x.com/Oujikatami?t=9lGvjdoHr0XU5IYS7Kw1WQ&s=09" target="_blank"><i class="fa-brands fa-x-twitter"></i></a> 
-      <a href="https://discord.com/users/oujikatami" target="_blank"><i class="fa-brands fa-discord"></i></a>
-      <a href="mailto:doninovriandi07@gmail.com"><i class="fa-solid fa-envelope"></i></a> 
-      <a href="https://www.instagram.com/oujikatami?igsh=bnpoYW0xcHJ2cXN0" target="_blank"><i class="fa-brands fa-instagram"></i></a> 
-      <a href="https://www.tiktok.com/@oujikatami?_r=1&_t=ZS-921O0h3Qzjw" target="_blank"><i class="fa-brands fa-tiktok"></i></a> 
-      <a href="https://id.linkedin.com/in/ouji-katami-41286a33b" target="_blank"><i class="fa-brands fa-linkedin"></i></a> 
-      <a href="https://www.facebook.com/share/17Z5DM7Z7e/" target="_blank"><i class="fa-brands fa-facebook"></i></a> 
-      <a href="https://t.me/Oujikatami" target="_blank"><i class="fa-brands fa-telegram"></i></a> 
-    </div> 
-    </div> <div class="card" style="padding: 15px 20px; text-align: center;">
-        <h3 style="color: var(--accent); margin-bottom: 10px;">CRYPTO MARKET NOW</h3> 
-        <div id="crypto-ticker-widget"> 
-          <!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener nofollow" target="_blank"><span class="blue-text">Ticker tape</span></a><span class="trademark"> by TradingView</span></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-  {
-  "symbols": [
-    {
-      "proName": "BINANCE:BTCUSDT",
-      "title": ""
-    },
-    {
-      "proName": "BINANCE:ETHUSDT",
-      "title": ""
-    },
-    {
-      "proName": "BINANCE:SOLUSDT",
-      "title": ""
-    },
-    {
-      "proName": "BINANCE:XRPUSDT",
-      "title": ""
-    },
-    {
-      "proName": "BINANCE:BNBUSDT",
-      "title": ""
-    },
-    {
-      "proName": "BINANCE:DOGEUSDT",
-      "title": ""
-    },
-    {
-      "proName": "BINANCE:ADAUSDT",
-      "title": ""
-    },
-    {
-      "proName": "BINANCE:SUIUSDT",
-      "title": ""
-    },
-    {
-      "proName": "BINANCE:PEPEUSDT",
-      "title": ""
-    },
-    {
-      "proName": "KUCOIN:HYPEUSDT",
-      "title": ""
-    }
-  ],
-  "colorTheme": "dark",
-  "locale": "en",
-  "largeChartUrl": "",
-  "isTransparent": false,
-  "showSymbolLogo": true,
-  "displayMode": "adaptive"
-}
-  </script>
-</div>
-<!-- TradingView Widget END -->
-           </div>
-    </div>
-    <footer>
-      </footer>
+    <main class="container">
+        
+        <section class="slide white-bg">
+            <div class="content-box dark-border">
+                <h2>[ 01. THE JOURNEY ]</h2>
+                <p>Hello, I'm <strong>Ouji Katami</strong>, a dedicated Web3 enthusiast. I entered the crypto space in 2022 and began my professional career in 2024. My journey started with a fascination for Airdrops. Currently, I am building my own community, <strong>Airdrop Scout</strong>. In 2025, I successfully contributed to two major crypto projects. I am fully committed to projects that I believe will have a lasting impact on the Web3 ecosystem.</p>
+            </div>
+        </section>
 
-    <footer>
-      © <span id="year"></span> Build The Future — <a href="https://oujikatami.xyz" style="color:inherit;text-decoration:underline">oujikatami.xyz</a>
-    </footer>
-  </div>
+        <section class="slide black-bg">
+            <div class="content-box white-border">
+                <h2>[ 02. EXPERIENCE ]</h2>
+                <div class="exp-list">
+                    <div class="exp-item">
+                        <strong>Prev Junior Moderator @ Confidential Layer</strong>
+                        <small>Feb 2025 - July 2025 | Crypto Privacy Project</small>
+                    </div>
+                    <div class="exp-item"><strong>Top Contributor @ Enso Network</strong></div>
+                    <div class="exp-item"><strong>Top Contributor @ Public AI</strong></div>
+                    <div class="exp-item)<strong>Top Contributor @ Hana Network</strong></div>
+                    <div class="exp-item">
+                        <strong>Prev Moderator @ Satsume Labs</strong>
+                        <small>Nov 2025 - Feb 2026 | Crypto CommerceFi (Testnet)</small>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    // START MUSIC JAVASCRIPT
-  const audio = document.getElementById('background-music');
+        <section class="slide black-bg">
+            <div class="content-box white-border">
+                <h2>[ 03. CONNECT ]</h2>
+                <div class="social-wrapper">
+                    <a href="#" class="social-row"><i class="fa-solid fa-envelope"></i> EMAIL</a>
+                    <a href="#" class="social-row"><i class="fa-brands fa-x-twitter"></i> X</a>
+                    <a href="#" class="social-row"><i class="fa-brands fa-discord"></i> DISCORD</a>
+                    <a href="#" class="social-row"><i class="fa-brands fa-instagram"></i> INSTAGRAM</a>
+                    <a href="#" class="social-row"><i class="fa-brands fa-telegram"></i> TELEGRAM</a>
+                    <a href="#" class="social-row"><i class="fa-brands fa-tiktok"></i> TIKTOK</a>
+                    <a href="#" class="social-row"><i class="fa-brands fa-facebook"></i> FACEBOOK</a>
+                    <a href="#" class="social-row"><i class="fa-brands fa-linkedin"></i> LINKEDIN</a>
+                    <a href="#" class="social-row"><i class="fa-brands fa-medium"></i> MEDIUM</a>
+                </div>
+            </div>
+        </section>
 
-  function playAudioOnInteraction() {
-    audio.play().catch(error => {});
-    document.removeEventListener('click', playAudioOnInteraction);
-  }
-  document.addEventListener('click', playAudioOnInteraction);
-  // END MUSIC JAVASCRIPT
+    </main>
 
-</script>
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
