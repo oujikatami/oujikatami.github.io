@@ -6,169 +6,148 @@
     <title>PAYMENT | OUJI KATAMI</title>
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
     <style>
-        :root { --green: #00ff00; --white: #ffffff; --dark: #000; }
-        body { background: var(--dark); color: var(--white); font-family: 'Courier New', monospace; margin: 0; padding: 20px; box-sizing: border-box; }
-        
-        .header-title { font-weight: bold; border-bottom: 2px solid #fff; display: inline-block; margin-bottom: 30px; letter-spacing: 2px; font-size: 12px; }
-
-        /* Sidebar Jasa */
-        .sidebar { position: fixed; right: -280px; top: 0; width: 250px; height: 100%; background: #0a0a0a; border-left: 1px solid #333; padding: 60px 20px 20px; transition: 0.3s; z-index: 100; box-shadow: -10px 0 30px rgba(0,0,0,0.8); }
-        .sidebar.active { right: 0; }
-        .toggle-menu { position: fixed; top: 20px; right: 20px; background: #fff; color: #000; padding: 6px 12px; font-size: 10px; font-weight: bold; cursor: pointer; z-index: 101; border: none; }
-
-        .sidebar h3 { font-size: 14px; border-bottom: 1px solid var(--green); padding-bottom: 10px; color: var(--green); margin-bottom: 20px; }
-        .svc-item { margin-bottom: 15px; font-size: 11px; line-height: 1.4; border-bottom: 1px solid #1a1a1a; padding-bottom: 8px; }
-        .svc-item span { color: #666; display: block; margin-top: 4px; }
-
-        /* Payment Card */
-        .card { border: 1px solid #333; padding: 25px; background: #050505; max-width: 400px; margin: 60px auto 0; position: relative; z-index: 10; }
+        :root { --green: #00ff00; --white: #fff; --dark: #000; }
+        body { background: var(--dark); color: var(--white); font-family: 'Courier New', monospace; margin: 0; padding: 20px; }
+        .header { font-weight: bold; border-bottom: 2px solid #fff; display: inline-block; margin-bottom: 30px; font-size: 12px; }
+        .card { border: 1px solid #333; padding: 25px; background: #050505; max-width: 380px; margin: 0 auto; }
         .group { margin-bottom: 20px; }
-        label { display: block; font-size: 9px; color: #555; margin-bottom: 8px; letter-spacing: 1px; }
-        
-        .input-box { display: flex; align-items: center; background: #000; border: 1px solid #333; padding: 12px; position: relative; }
-        .input-box img { width: 18px; margin-right: 12px; border-radius: 50%; }
-        
-        /* Select & Input fixes for Mobile */
-        select, input { 
-            flex: 1; background: transparent; color: #fff; border: none; outline: none; 
-            font-family: 'Courier New', monospace; font-size: 14px; -webkit-appearance: none;
-            position: relative; z-index: 2;
-        }
-
-        .btn { width: 100%; padding: 18px; font-weight: bold; cursor: pointer; border: none; font-family: 'Courier New', monospace; font-size: 13px; margin-top: 10px; transition: 0.2s; }
+        label { display: block; font-size: 9px; color: #555; margin-bottom: 8px; }
+        .input-box { display: flex; align-items: center; background: #000; border: 1px solid #333; padding: 12px; }
+        .input-box img { width: 18px; margin-right: 12px; }
+        select, input { flex: 1; background: transparent; color: #fff; border: none; outline: none; font-family: monospace; font-size: 14px; -webkit-appearance: none; }
+        .btn { width: 100%; padding: 18px; font-weight: bold; cursor: pointer; border: none; font-family: monospace; margin-top: 10px; }
         #connectBtn { background: #fff; color: #000; }
         #payBtn { background: var(--green); color: #000; display: none; }
-        #discBtn { background: transparent; color: #ff4444; border: 1px solid #ff4444; margin-top: 15px; padding: 8px; font-size: 10px; display: none; }
-        
-        #status { font-size: 10px; text-align: center; margin-top: 20px; color: var(--green); letter-spacing: 1px; }
+        #discBtn { background: transparent; color: #ff4444; border: 1px solid #ff4444; margin-top: 15px; font-size: 10px; display: none; padding: 10px; }
+        #status { font-size: 10px; text-align: center; margin-top: 20px; color: var(--green); }
+        .sidebar { position: fixed; right: -280px; top: 0; width: 250px; height: 100%; background: #0a0a0a; border-left: 1px solid #333; padding: 60px 20px; transition: 0.3s; z-index: 100; }
+        .sidebar.active { right: 0; }
+        .toggle { position: fixed; top: 20px; right: 20px; background: #fff; color: #000; padding: 6px 12px; font-size: 10px; z-index: 101; cursor: pointer; }
     </style>
 </head>
 <body>
 
-<div class="header-title">PAYMENT SERVICE</div>
-<button class="toggle-menu" id="menuTgl">MENU SERVICES</button>
+<div class="header">PAYMENT_SERVICE_V1.0</div>
+<div class="toggle" id="tgl">SERVICES [X]</div>
 
-<div class="sidebar" id="sidebar">
-    <h3>OUJI KATAMI SEVICE</h3>
-    <div class="svc-item"><strong>COMMUNITY MODERATION</strong><span>$120 / WEEK</span></div>
-    <div class="svc-item"><strong>CONTENT VIDEO VISUAL</strong><span>$50 / VIDEO</span></div>
-    <div class="svc-item"><strong>CRYPTO WRITER MEDIUM</strong><span>$20 / ARTICLE</span></div>
-    <div class="svc-item"><strong>CONTEN IDEA X</strong><span>$15 / BUNDLE</span></div>
+<div class="sidebar" id="sb">
+    <p style="color:var(--green)">[ JASA LAYANAN ]</p>
+    <small>MODERATION: $120/WK<br>VIDEO: $50/VID<br>WRITER: $20<br>IDE X: $15</small>
 </div>
 
 <div class="card">
     <div class="group">
-        <label>[ 01. SELECT_ASSET ]</label>
+        <label>SELECT ASSET</label>
         <div class="input-box">
-            <img id="assetImg" src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/white/usdc.png">
-            <select id="assetS">
+            <img id="aI" src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/white/usdc.png">
+            <select id="aS">
                 <option value="USDC">USDC (USD COIN)</option>
                 <option value="USDT">USDT (TETHER)</option>
             </select>
         </div>
     </div>
-
     <div class="group">
-        <label>[ 02. SELECT_NETWORK ]</label>
+        <label>SELECT NETWORK</label>
         <div class="input-box">
-            <img id="netImg" src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/white/eth.png">
-            <select id="netS">
+            <img id="nI" src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/white/eth.png">
+            <select id="nS">
                 <option value="BASE">BASE NETWORK</option>
-                <option value="L1">ETHEREUM</option>
+                <option value="L1">ETHEREUM L1</option>
             </select>
         </div>
     </div>
-
     <div class="group">
-        <label>[ 03. TOTAL_AMOUNT ]</label>
-        <div class="input-box">
-            <span style="margin-right:10px; font-size:14px;">$</span>
-            <input type="number" id="amtI" placeholder="0.00">
-        </div>
+        <label>AMOUNT ($)</label>
+        <div class="input-box"><input type="number" id="amI" placeholder="0.00"></div>
     </div>
 
     <button id="connectBtn" class="btn">CONNECT_DAPP_WALLET</button>
     <button id="payBtn" class="btn">EXECUTE_PAYMENT</button>
-    <div id="status">SYSTEM_READY</div>
+    <div id="status">READY_FOR_HANDSHAKE</div>
     <center><button id="discBtn" class="btn">DISCONNECT_WALLET</button></center>
 </div>
 
 <script>
-    // WALLET TUJUAN (FIXED)
     const RECIPIENT = "0xec274f9b3084a7aab2fa4cc077b1abcac4eae2af"; 
-
     const CONTRACTS = {
         BASE: { USDC: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913", USDT: "0xfde4C9625610ad40273059403dAc834333298972" },
         L1: { USDC: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48", USDT: "0xdAC17F958D2ee523a2206206994597C13D831ec7" }
     };
 
-    let provider, signer;
+    let prov, sign, userAddr;
 
-    // Toggle Sidebar
-    document.getElementById('menuTgl').onclick = () => document.getElementById('sidebar').classList.toggle('active');
+    document.getElementById('tgl').onclick = () => document.getElementById('sb').classList.toggle('active');
 
-    // Update Icons
-    document.getElementById('assetS').onchange = (e) => {
-        const val = e.target.value.toLowerCase();
-        document.getElementById('assetImg').src = `https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/white/${val}.png`;
-    };
-
-    // Connect Wallet
+    // FUNGSI KONEKSI DAPP (MAKSIMALKAN OKX MOBILE)
     document.getElementById('connectBtn').onclick = async () => {
+        // Cek provider secara spesifik untuk OKX
         const p = window.okxwallet || window.ethereum;
-        if (!p) return alert("Buka di Browser OKX / MetaMask App, Sob!");
+        
+        if (!p) return alert("Buka lewat tab Discover di App OKX/MetaMask, Sob!");
 
         try {
-            document.getElementById('status').innerText = "AUTHORIZING...";
-            const accounts = await p.request({ method: 'eth_requestAccounts' });
+            document.getElementById('status').innerText = "REQUESTING_ACCOUNT...";
             
-            provider = new ethers.providers.Web3Provider(p, "any");
-            signer = provider.getSigner();
+            // Step 1: Link Wallet
+            const accounts = await p.request({ method: 'eth_requestAccounts' });
+            userAddr = accounts[0];
+
+            // Step 2: Sign Message (INI BIAR POP-UP MUNCUL DI OKX)
+            const message = `OUJI KATAMI PAYMENT SERVICE\nVerify: ${new Date().getTime()}`;
+            await p.request({
+                method: 'personal_sign',
+                params: [message, userAddr],
+            });
+
+            // Step 3: Setup Ethers
+            prov = new ethers.providers.Web3Provider(p, "any");
+            sign = prov.getSigner();
 
             document.getElementById('connectBtn').style.display = "none";
             document.getElementById('payBtn').style.display = "block";
             document.getElementById('discBtn').style.display = "inline-block";
-            document.getElementById('status').innerText = "CONNECTED: " + accounts[0].substring(0,6) + "..." + accounts[0].substring(38);
+            document.getElementById('status').innerText = "AUTH_SUCCESS: " + userAddr.substring(0,6);
+            
         } catch (err) {
-            document.getElementById('status').innerText = "REJECTED";
+            console.error(err);
+            document.getElementById('status').innerText = "CONNECTION_FAILED";
+            alert("Gagal konek! Pastiin lo approve di wallet ya.");
         }
     };
 
-    // Disconnect (Reset UI)
+    // FUNGSI DISCONNECT
     document.getElementById('discBtn').onclick = () => {
-        provider = null; signer = null;
+        prov = null; sign = null;
         document.getElementById('connectBtn').style.display = "block";
         document.getElementById('payBtn').style.display = "none";
         document.getElementById('discBtn').style.display = "none";
-        document.getElementById('status').innerText = "DISCONNECTED";
+        document.getElementById('status').innerText = "SESSION_CLEARED";
     };
 
-    // Execute Payment
+    // FUNGSI TRANSAKSI
     document.getElementById('payBtn').onclick = async () => {
-        const asset = document.getElementById('assetS').value;
-        const net = document.getElementById('netS').value;
-        const amt = document.getElementById('amtI').value;
+        const asset = document.getElementById('aS').value;
+        const net = document.getElementById('nS').value;
+        const amt = document.getElementById('amI').value;
 
-        if(!amt || amt <= 0) return alert("Input amount dulu!");
+        if(!amt || amt <= 0) return alert("Isi jumlahnya dulu!");
 
         try {
-            document.getElementById('status').innerText = "WAITING_FOR_SIGNATURE...";
+            document.getElementById('status').innerText = "WAITING_APPROVAL...";
             const contract = new ethers.Contract(
                 CONTRACTS[net][asset], 
                 ["function transfer(address to, uint256 amount) public returns (bool)"], 
-                signer
+                sign
             );
             
-            // Kebanyakan Stablecoin pakai 6 decimals
             const tx = await contract.transfer(RECIPIENT, ethers.utils.parseUnits(amt, 6));
-            
-            document.getElementById('status').innerText = "TRANSACTION_SENT...";
+            document.getElementById('status').innerText = "TX_PENDING...";
             await tx.wait();
-            document.getElementById('status').innerText = "PAYMENT_SUCCESS!";
-            alert("Cuan Masuk! Transaksi Berhasil.");
+            document.getElementById('status').innerText = "SUCCESS!";
+            alert("Pembayaran Berhasil!");
         } catch (err) {
             alert("Error: " + (err.data?.message || err.message));
-            document.getElementById('status').innerText = "FAILED";
+            document.getElementById('status').innerText = "TX_FAILED";
         }
     };
 </script>
