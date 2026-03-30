@@ -120,33 +120,3 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .drawer-content {
     padding-top: 100px !important;
 } 
-/* --- BRANDING LOGO (KIRI ATAS) --- */
-.top-nav {
-    display: flex;
-    justify-content: space-between; /* Nama di kiri, Menu di kanan */
-    align-items: center;
-    padding: 25px 30px; /* Jarak dari pojok layar */
-    width: 100%;
-}
-
-.brand-logo {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 800;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    color: #fff;
-    text-transform: uppercase;
-}
-
-.logo-sub {
-    color: #666; /* Warna "PORTFOLIO" dibikin agak gelap biar elegan */
-    font-weight: 400;
-}
-
-/* Biar di HP nggak terlalu lebar dan nabrak menu */
-@media (max-width: 480px) {
-    .brand-logo {
-        font-size: 0.75rem;
-        letter-spacing: 1px;
-    }
-} 
