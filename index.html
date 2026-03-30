@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ōuji Katami | Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="intro-active">
 
@@ -18,70 +18,78 @@
     </nav>
 
     <div id="side-menu" class="side-drawer">
-        <div class="menu-header">MENU</div>
-        <a href="community.html">Airdrop Scout Community</a>
-        <a href="services.html">Ouji Service</a>
-        <a href="airdrop.html">Airdrop</a>
-        <a href="market.html">Crypto Market</a>
+        <div class="drawer-content">
+            <h3 class="menu-title">MENU</h3>
+            <div class="menu-links">
+                <a href="community.html">AIRDROP SCOUT COMMUNITY</a>
+                <a href="services.html">OUJI SERVICE</a>
+                <a href="airdrop.html">AIRDROP</a>
+                <a href="market.html">CRYPTO MARKET</a>
+            </div>
+        </div>
     </div>
 
     <main id="scroller">
-        
         <section class="snap-panel">
-            <div class="content">
-                <div class="cyber-box main-story">
+            <div class="container">
+                <div class="cyber-box">
                     <h2>Story of Ouji</h2>
                     <p>Hello, my name is Ouji Katami, a Web3 enthusiast. I discovered crypto in 2022 and began my career in the Web3 in 2024. I first got involved because I was interested in Airdrop. I'm currently building my own community, Airdrop Scout. In 2025, I successfully worked on two crypto projects. I always contribute fully to projects that impact the Web3 industry.</p>
                 </div>
-                <div class="neon-cable">
-                    <svg viewBox="0 0 100 200"><path d="M50,0 L50,200" class="path-bg"/><path d="M50,0 L50,200" class="path-glow"/></svg>
+                <div class="neon-cable-container">
+                    <svg class="cable-svg" viewBox="0 0 100 200" preserveAspectRatio="none">
+                        <path d="M50,0 L50,200" class="path-base"/>
+                        <path d="M50,0 L50,200" class="path-neon"/>
+                    </svg>
                 </div>
             </div>
         </section>
 
         <section class="snap-panel">
-            <div class="content">
-                <h2 class="section-label">Experience</h2>
-                <div class="exp-grid">
-                    <div class="cyber-box mini">
-                        <span>Feb 2025 - Jul 2025</span>
+            <div class="container">
+                <div class="cyber-box exp-box">
+                    <h2>Experience</h2>
+                    <div class="exp-item">
+                        <small>Feb 2025 - Jul 2025</small>
                         <h4>Confidential Layer</h4>
-                        <p>Junior Moderator (Privacy Project)</p>
+                        <p>Junior Moderator (Crypto Privacy Project)</p>
                     </div>
-                    <div class="cyber-box mini">
-                        <span>Nov 2025 - Feb 2026</span>
+                    <div class="exp-item">
+                        <small>Nov 2025 - Feb 2026</small>
                         <h4>Satsume Labs</h4>
-                        <p>Moderator (CommerceFi/Testnet)</p>
+                        <p>Moderator (CommerceFi / Testnet Phase)</p>
                     </div>
-                    <div class="cyber-box mini"><h4>Enso Network</h4><p>Top Contributor</p></div>
-                    <div class="cyber-box mini"><h4>Public AI</h4><p>Top Contributor</p></div>
-                    <div class="cyber-box mini"><h4>Hana Network</h4><p>Top Contributor</p></div>
+                    <div class="exp-item"><h4>Enso Network</h4><p>Top Contributor</p></div>
+                    <div class="exp-item"><h4>Public AI</h4><p>Top Contributor</p></div>
+                    <div class="exp-item"><h4>Hana Network</h4><p>Top Contributor</p></div>
                 </div>
-                <div class="neon-cable">
-                    <svg viewBox="0 0 100 200"><path d="M50,0 L50,200" class="path-bg"/><path d="M50,0 L50,200" class="path-glow"/></svg>
+                <div class="neon-cable-container">
+                    <svg class="cable-svg" viewBox="0 0 100 200" preserveAspectRatio="none">
+                        <path d="M50,0 L50,200" class="path-base"/>
+                        <path d="M50,0 L50,200" class="path-neon"/>
+                    </svg>
                 </div>
             </div>
         </section>
 
         <section class="snap-panel">
-            <div class="content">
-                <div class="cyber-box social-container">
+            <div class="container">
+                <div class="cyber-box soc-box">
                     <h2>Social Media</h2>
-                    <div class="social-list">
-                        <a href="mailto:yours@mail.com" class="social-row"><i class="fas fa-envelope"></i> <span>Email</span></a>
-                        <a href="#" class="social-row"><i class="fab fa-x-twitter"></i> <span>X / Twitter</span></a>
-                        <a href="#" class="social-row"><i class="fab fa-tiktok"></i> <span>Tiktok</span></a>
-                        <a href="#" class="social-row"><i class="fab fa-linkedin"></i> <span>LinkedIn</span></a>
-                        <a href="#" class="social-row"><i class="fab fa-medium"></i> <span>Medium</span></a>
+                    <div class="social-links-list">
+                        <a href="mailto:doninovriandi07@gmail.com" class="soc-row"><i class="fas fa-envelope"></i> Email</a>
+                        <a href="https://x.com/Oujikatami" class="soc-row"><i class="fab fa-x-twitter"></i> X / Twitter</a>
+                        <a href="https://www.tiktok.com/@oujikatami" class="soc-row"><i class="fab fa-tiktok"></i> Tiktok</a>
+                        <a href="https://www.linkedin.com/in/ouji-katami" class="soc-row"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="https://medium.com/@doninovriandi07" class="soc-row"><i class="fab fa-medium"></i> Medium</a>
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
     <script src="script.js"></script>
 </body>
-                                                                                                       </html>
+</html>
