@@ -120,36 +120,43 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .drawer-content {
     padding-top: 100px !important;
 } 
-/* --- FIX LAYOUT HEADER (KIRI & KANAN) --- */
+
+/* --- FIX TOTAL LAYOUT HEADER (ANTI NUMPUK) --- */
 .top-nav {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* Full dari ujung ke ujung */
-    display: flex;
-    justify-content: space-between; /* INI KUNCINYA: Kiri & Kanan kepisah */
-    align-items: center;
-    padding: 25px 20px; /* Jarak dari pinggir layar */
-    z-index: 1000;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); /* Gradasi dikit biar teks kebaca */
+    width: 100vw; /* Paksa lebar satu layar penuh */
+    height: 80px; /* Tinggi header */
+    z-index: 2000; /* Paling depan */
+    background: transparent;
 }
 
-.brand-name {
+.brand-left {
+    position: absolute;
+    top: 30px; 
+    left: 20px; /* INI YANG MAKSA DIA KE KIRI POL */
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
+    font-size: 0.75rem;
     font-weight: 800;
+    letter-spacing: 1px;
     color: #fff;
-    text-transform: uppercase;
-    pointer-events: none; /* Biar gak keganggu kalo kesentuh */
+    white-space: nowrap; /* Biar gak turun ke bawah tulisannya */
 }
 
 .menu-btn {
-    /* Biar gak geser-geser */
-    margin: 0; 
+    position: absolute;
+    top: 20px;
+    right: 20px; /* INI YANG MAKSA DIA KE KANAN POL */
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 !important; /* Hapus margin yang bikin geser */
 }
 
-/* Responsif buat HP kecil banget */
-@media (max-width: 380px) {
-    .brand-name { font-size: 0.65rem; letter-spacing: 1px; }
+/* Biar gak tabrakan di layar super kecil */
+@media (max-width: 320px) {
+    .brand-left { font-size: 0.6rem; left: 10px; }
+    .menu-btn { right: 10px; }
 } 
