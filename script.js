@@ -1,34 +1,27 @@
-// INITIALIZE VANTA ON INTRO
-let introVanta = VANTA.NET({
+// Init Vanta
+let vantaEffect = VANTA.NET({
   el: "#intro-overlay",
   mouseControls: true, touchControls: true,
-  color: 0x444444, backgroundColor: 0x0,
-  points: 12.00, maxDistance: 20.00, spacing: 15.00
+  color: 0x444444, backgroundColor: 0x0, points: 10
 });
 
-// TIMELINE LOGIC
+// Timeline
 setTimeout(() => {
-    // Detik 3: Transisi ke Welcome Message
     document.getElementById('intro-overlay').style.opacity = '0';
-    const welcome = document.getElementById('welcome-overlay');
-    welcome.style.display = 'flex';
-    setTimeout(() => { welcome.style.opacity = '1'; }, 100);
-
+    document.getElementById('welcome-overlay').style.display = 'flex';
+    
     setTimeout(() => {
-        // Detik 6: Transisi ke Main Portfolio
-        welcome.style.opacity = '0';
+        document.getElementById('welcome-overlay').style.opacity = '0';
         setTimeout(() => {
             document.getElementById('intro-overlay').style.display = 'none';
-            welcome.style.display = 'none';
+            document.getElementById('welcome-overlay').style.display = 'none';
             document.body.classList.remove('intro-active');
-            
-            // Re-init Vanta on Main Body
-            VANTA.NET({
-                el: "body", color: 0x222222, backgroundColor: 0x0,
-                points: 8.00, maxDistance: 20.00, spacing: 18.00
-            });
+            // Re-init vanta to main body
+            VANTA.NET({ el: "body", color: 0x222222, backgroundColor: 0x0 });
         }, 1000);
-    }, 3000); // Durasi Welcome Message
-}, 3000); // Durasi Intro Jaring-jaring
+    }, 3000);
+}, 3000);
 
-function toggleMenu() { document.getElementById('side-menu').classList.toggle('active'); }
+function toggleMenu() {
+    document.getElementById('side-menu').classList.toggle('active');
+} 
