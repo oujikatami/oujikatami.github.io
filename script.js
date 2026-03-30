@@ -1,86 +1,47 @@
-// Loading Sequence
-window.onload = () => {
-  const loading1 = document.getElementById('loading1');
-  const loading2 = document.getElementById('loading2');
-  const mainContent = document.getElementById('main-content');
+// 1. Matrix/Random Numbers Effect
+const loaderText = document.getElementById('matrix-text');
+const chars = "0123456789ABCDEF";
 
-  // Random code animation
-  const codeEl = document.getElementById('random-code');
-  let codeInterval = setInterval(() => {
-    let str = '';
-    for (let i = 0; i < 12; i++) {
-      str += Math.random().toString(36).substring(2, 4) + ' ';
-    }
-    codeEl.textContent = str;
-  }, 80);
+let interval = setInterval(() => {
+    loaderText.innerText = Array(10).fill(0).map(() => chars[Math.floor(Math.random() * chars.length)]).join("");
+}, 50);
 
-  // Sequence
-  setTimeout(() => {
-    clearInterval(codeInterval);
-    loading1.style.opacity = '0';
+// Transition Timers
+setTimeout(() => {
+    clearInterval(interval);
+    document.getElementById('loader').classList.add('hidden');
+    document.getElementById('welcome').classList.remove('hidden');
+
     setTimeout(() => {
-      loading1.classList.add('hidden');
-      loading2.classList.remove('hidden');
-      
-      setTimeout(() => {
-        loading2.style.opacity = '0';
-        setTimeout(() => {
-          loading2.classList.add('hidden');
-          mainContent.classList.remove('hidden');
-          showPage(0); // Start from About
-        }, 800);
-      }, 2000);
-    }, 800);
-  }, 3000);
+        document.getElementById('welcome').classList.add('hidden');
+        document.getElementById('main-content').classList.remove('hidden');
+        initScrollEffect();
+    }, 2000); // Welcome duration
+}, 3000); // Matrix duration
 
-  // Menu
-  const menuBtn = document.getElementById('menuBtn');
-  const closeBtn = document.getElementById('closeBtn');
-  const sidebar = document.getElementById('sidebar');
-
-  menuBtn.addEventListener('click', () => sidebar.classList.add('active'));
-  closeBtn.addEventListener('click', () => sidebar.classList.remove('active'));
-
-  // Marquee Payment
-  const marquee = document.getElementById('marquee');
-  marquee.innerHTML = `
-    <div class="marquee-content">
-      <span>USDC • USDT • Ethereum • Binance Smart Chain • Arbitrum • Base</span>
-      <span>USDC • USDT • Ethereum • Binance Smart Chain • Arbitrum • Base</span>
-    </div>
-  `;
-};
-
-// Navigate pages
-function navigateTo(pageIndex) {
-  document.getElementById('sidebar').classList.remove('active');
-  showPage(pageIndex);
+// 2. Menu Toggle
+function toggleMenu() {
+    document.getElementById('side-menu').classList.toggle('active');
 }
 
-function showPage(pageIndex) {
-  document.querySelectorAll('.page').forEach(page => {
-    page.classList.remove('active');
-  });
-  document.getElementById(`page-${pageIndex}`).classList.add('active');
-}
-
-// Copy wallet
-function copyWallet() {
-  const wallet = "0xec274f9b3084a7aab2fa4cc077b1abcac4eae2af";
-  navigator.clipboard.writeText(wallet).then(() => {
-    const notif = document.createElement('div');
-    notif.textContent = 'Wallet address copied to clipboard!';
-    notif.style.position = 'fixed';
-    notif.style.bottom = '30px';
-    notif.style.left = '50%';
-    notif.style.transform = 'translateX(-50%)';
-    notif.style.background = '#222';
-    notif.style.color = '#fff';
-    notif.style.padding = '12px 25px';
-    notif.style.borderRadius = '8px';
-    notif.style.zIndex = '2000';
-    document.body.appendChild(notif);
+// 3. Scroll Reveal Effect
+function initScrollEffect() {
+    const sections = document.querySelectorAll('.scroll-section');
     
-    setTimeout(() => notif.remove(), 2500);
-  });
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+}
+
+// 4. Copy Wallet
+function copyWallet() {
+    const walletText = document.getElementById('wallet').innerText;
+    navigator.clipboard.writeText(walletText);
+    alert("Wallet address copied to clipboard!");
 }
