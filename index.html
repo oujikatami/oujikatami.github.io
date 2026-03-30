@@ -3,19 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ōuji Katami | Portfolio</title>
+    <title>Ōuji Katami | Web3 Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <div id="intro-overlay">
-        <canvas id="matrix-canvas"></canvas>
-    </div>
-
-    <div id="welcome-overlay">
-        <h1 class="glitch">Welcome To Ōuji Katami Portfolio</h1>
-    </div>
+    <div id="intro-overlay"><canvas id="matrix-canvas"></canvas></div>
+    <div id="welcome-overlay"><h1 class="glitch">Welcome To Ōuji Katami Portfolio</h1></div>
 
     <nav>
         <div class="menu-btn" onclick="toggleMenu()">
@@ -25,87 +20,65 @@
     </nav>
 
     <div id="side-menu" class="side-menu">
-        <a href="#about" onclick="toggleMenu()">About</a>
-        <a href="#experience" onclick="toggleMenu()">Experience</a>
-        <a href="#socials" onclick="toggleMenu()">Socials</a>
-        <a href="#services" onclick="toggleMenu()">Services</a>
+        <a href="community.html">Community</a>
+        <a href="payment.html">Payment</a>
     </div>
 
-    <main id="main-content">
-        
-        <section id="about" class="panel">
+    <main>
+        <section id="about" class="panel active">
             <div class="content">
-                <h2>About Me</h2>
-                <p>Hello, I am <strong>Ouji Katami</strong>. I am a Web3 enthusiast who began my journey in 2024. I am deeply dedicated to my work, consistently delivering results as a top contributor across various high-profile projects.</p>
+                <div class="cyber-card">
+                    <h2>About Me</h2>
+                    <p>Halo saya <strong>Ouji Katami</strong>. Saya adalah seorang antusias web3, memulai perjalanan pada tahun 2024. Dedikasi saya terbukti dengan menjadi top kontributor pada beberapa project besar.</p>
+                </div>
+                
+                <div class="cable-wrapper">
+                    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M50,0 L50,100" class="cable-path"/>
+                        <path d="M50,0 L50,100" class="light-pulse"/>
+                    </svg>
+                </div>
             </div>
         </section>
 
         <section id="experience" class="panel">
             <div class="content">
-                <h2>Experience</h2>
-                <ul>
-                    <li>Prev Junior Moderator at Confidential Layer (Crypto Privacy Project)</li>
-                    <li>Prev Moderator at Satsume Labs (CommerceFi)</li>
-                    <li>Top Contributor at Hana Network</li>
-                    <li>Top Contributor at Enso Network</li>
-                    <li>Top Contributor at Public AI</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="socials" class="panel">
-            <div class="content">
-                <h2>Connect With Me</h2>
-                <div class="social-grid">
-                    <div class="social-group">
-                        <h3>Personal</h3>
-                        <a href="mailto:doninovriandi07@gmail.com"><i class="fas fa-envelope"></i></a>
-                        <a href="https://x.com/Oujikatami" target="_blank"><i class="fab fa-x-twitter"></i></a>
-                        <a href="https://www.tiktok.com/@ouji-katami" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.linkedin.com/in/ouji-katami-41286a33b" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://medium.com/@doninovriandi07" target="_blank"><i class="fab fa-medium"></i></a>
+                <h2 class="section-title">Experience</h2>
+                <div class="experience-grid">
+                    <div class="mini-card">
+                        <span>Moderator</span>
+                        <p>Confidential Layer</p>
                     </div>
-                    <div class="social-group">
-                        <h3>Community</h3>
-                        <a href="mailto:timairdropscout@gmail.com"><i class="fas fa-envelope"></i></a>
-                        <a href="https://x.com/AirdropScout0x" target="_blank"><i class="fab fa-x-twitter"></i></a>
-                        <a href="https://www.tiktok.com/@airdropscout_id" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://discord.gg/ngyKCCVDM6" target="_blank"><i class="fab fa-discord"></i></a>
-                        <a href="https://t.me/airdropscout_id" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <div class="mini-card">
+                        <span>Moderator</span>
+                        <p>Satsume Labs</p>
+                    </div>
+                    <div class="mini-card">
+                        <span>Top Contributor</span>
+                        <p>Hana Network</p>
+                    </div>
+                    <div class="mini-card">
+                        <span>Top Contributor</span>
+                        <p>Enso Network</p>
+                    </div>
+                    <div class="mini-card">
+                        <span>Top Contributor</span>
+                        <p>Public AI</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="services" class="panel">
-            <div class="content">
-                <h2>Ouji Services</h2>
-                <div class="service-list">
-                    <div class="service-item"><span>Community Moderation</span> <span>$120/week</span></div>
-                    <div class="service-item"><span>X Content Writer</span> <span>$25/post</span></div>
-                    <div class="service-item"><span>Medium Article Writer</span> <span>$20/article</span></div>
-                    <div class="service-item"><span>Video Promotion</span> <span>Negotiable</span></div>
-                </div>
-
-                <div class="payment-section">
-                    <h3>Payment Support</h3>
-                    <div class="ticker-wrap">
-                        <div class="ticker">
-                            <span>USDT (ERC20, BSC, ARB, BASE)</span>
-                            <span>USDC (ERC20, BSC, ARB, BASE)</span>
-                            <span>USDT (ERC20, BSC, ARB, BASE)</span>
-                            <span>USDC (ERC20, BSC, ARB, BASE)</span>
-                        </div>
-                    </div>
-                    <div class="wallet-box" onclick="copyWallet()">
-                        <p id="wallet-address">0xec274f9b3084a7aab2fa4cc077b1abcac4eae2af</p>
-                        <small>(Click to copy address)</small>
-                    </div>
+                
+                <div class="cable-wrapper">
+                    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M50,0 L50,100" class="cable-path"/>
+                        <path d="M50,0 L50,100" class="light-pulse"/>
+                    </svg>
                 </div>
             </div>
         </section>
     </main>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
