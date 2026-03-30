@@ -159,3 +159,34 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     .brand-left { font-size: 0.6rem; left: 10px; }
     .menu-btn { right: 10px; }
 } 
+/* --- FIX SIMETRIS MENU (BIAR GAK TURUN BANGET) --- */
+.side-drawer {
+    padding-top: 25px !important; /* Naikin konten biar sejajar sama kiri */
+}
+
+.drawer-content {
+    padding-top: 0 !important; /* Hapus padding tambahan yang bikin turun */
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Jarak antar elemen biar gak nempel banget */
+    padding-left: 30px; /* Jarak dari pinggir sidebar */
+}
+
+/* Tombol Back biar lebih rapi */
+.close-menu {
+    position: static !important; /* Biar dia ikut alur flexbox, gak melayang */
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+/* Judul MENU biar sejajar garis mata */
+.menu-title {
+    margin-top: 0;
+    font-size: 1rem;
+    color: #444; /* Bikin agak redup biar elegan */
+}
+
+/* Link menu biar lebih rapet dikit gap-nya */
+.menu-links {
+    gap: 20px !important;
+} 
