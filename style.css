@@ -94,3 +94,29 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 
 /* INTRO */
 #intro-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: #000; transition: 1s; } 
+/* TOMBOL KEMBALI DI DALAM MENU */
+.close-menu {
+    position: absolute;
+    top: 25px;
+    left: 25px; /* Biar gampang ditekan jempol kiri */
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    z-index: 1200;
+}
+
+.close-menu i {
+    font-size: 1.2rem;
+}
+
+/* Biar konten menu nggak ketutupan tombol kembali */
+.drawer-content {
+    padding-top: 100px !important;
+} 
