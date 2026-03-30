@@ -94,3 +94,52 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 
 /* INTRO */
 #intro-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: #000; transition: 1s; }
+/* --- MASTER CAHAYA NEON MUTER & NYAMBUNG --- */
+.snap-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.circuit-container {
+    position: relative;
+    width: 320px; /* Lebar kotak disamain */
+    height: 100vh; /* Tinggi area kabel nembus ke bawah */
+    display: flex;
+    justify-content: center;
+}
+
+.circuit-svg {
+    position: absolute;
+    top: 50%; /* Tengahin di layar */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px; /* Lebih lebar dikit dari kotak */
+    height: 150vh; /* Biar nembus ke section bawah */
+    z-index: 1;
+    pointer-events: none;
+}
+
+.path-base { stroke: rgba(255, 255, 255, 0.1); stroke-width: 2; fill: none; }
+.path-neon {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 4;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 8px #fff) drop-shadow(0 0 15px #00f2ff);
+    stroke-dasharray: 60, 300;
+    animation: neonMove 2s linear infinite;
+}
+
+@keyframes neonMove {
+    0% { stroke-dashoffset: 360; }
+    100% { stroke-dashoffset: 0; }
+}
+
+.cyber-box {
+    margin-top: 15vh; /* Sesuaikan posisi kotak di dalem jalur */
+    z-index: 10;
+    background: #0b0e11;
+    border: 1px solid #2d333a;
+} 
