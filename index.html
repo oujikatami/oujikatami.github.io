@@ -3,83 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OUJI KATAMI | WEB3</title>
+    <title>Ōuji Katami | Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="glitch-active">
 
-    <div id="initial-loader" class="loader-overlay">
-        <div class="matrix-text"></div>
-        <div id="logo-reveal" class="hidden">
-    <img src="ouji.jpg" alt="Ouji Katami" class="main-logo">
-        </div> 
+    <div id="matrix-loader"></div>
+
+    <div id="welcome-overlay">
+        <h1 class="welcome-text">Welcome To Ōuji Katami Portfolio</h1>
     </div>
 
-    <div id="transition-loader" class="loader-overlay hidden">
-        <div class="matrix-text"></div>
+    <button id="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+    <div id="sidebar">
+        <a href="#" onclick="navTo('main-page')">HOME</a>
+        <a href="#" onclick="navTo('services-page')">SERVICES</a>
+        <a href="#" style="opacity: 0.3; cursor: not-allowed;">AIRDROP (SOON)</a>
     </div>
 
-    <nav>
-        <div class="menu-btn" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
-        </div>
-    </nav>
-
-    <div id="side-bar" class="side-bar">
-        <div class="close-btn" onclick="toggleMenu()">×</div>
-        <h3 class="side-title">AIRDROP SCOUT COMMUNITY</h3>
-        <div class="side-links">
-            <a href="#">EMAIL</a><a href="#">DISCORD</a><a href="#">X</a><a href="#">TIKTOK</a>
-            <a href="#">FACEBOOK</a><a href="#">INSTAGRAM</a><a href="#">MEDIUM</a><a href="payment.html">PAYMENT SERVICE</a> 
-        </div>
-    </div>
-
-    <main class="container">
-        <section class="slide white-bg" id="slide-1">
-            <div class="content-box dark-border">
-                <h2>[ THE JOURNEY ]</h2>
-                <p>Hello, I'm <strong>Ouji Katami</strong>, a dedicated Web3 enthusiast. I entered the crypto space in 2022 and began my professional career in 2024. My journey started with a fascination for Airdrops. Currently, I am building my own community, <strong>Airdrop Scout</strong>. In 2025, I successfully contributed to two major crypto projects. I am fully committed to projects that I believe will have a lasting impact on the Web3 ecosystem.</p>
-            </div>
+    <main id="main-page" class="page active">
+        <section class="content-section">
+            <h2>About Me</h2>
+            <p>Hi, I'm <strong>Ouji Katami</strong>. I am a Web3 enthusiast who began my journey in 2024. Dedicated and committed to excellence, I have a proven track record as a top contributor for several prominent ventures in the space.</p>
+            
+            <h3 class="sub-title">Experiences</h3>
+            <div class="exp-item">1. Former Junior Moderator @ Confidential Layer <span>(Crypto Privacy Project)</span></div>
+            <div class="exp-item">2. Former Moderator @ Satsume Labs <span>(CommerceFi)</span></div>
+            <div class="exp-item">3. Top Contributor @ Hana Network</div>
+            <div class="exp-item">4. Top Contributor @ Enso Network</div>
+            <div class="exp-item">5. Top Contributor @ Public AI</div>
         </section>
 
-        <section class="slide black-bg" id="slide-2">
-            <div class="content-box white-border">
-                <h2>[ EXPERIENCE ]</h2>
-                <div class="exp-list">
-                    <div class="exp-item"><strong>Prev Junior Moderator @ Confidential Layer</strong><small>Feb 2025 - July 2025 | Crypto Privacy</small></div>
-                    <div class="exp-item"><strong>Top Contributor @ Enso Network</strong></div>
-                    <div class="exp-item"><strong>Top Contributor @ Public AI</strong></div>
-                    <div class="exp-item"><strong>Top Contributor @ Hana Network</strong></div>
-                    <div class="exp-item"><strong>Prev Moderator @ Satsume Labs</strong><small>Nov 2025 - Feb 2026 | CommerceFi</small></div>
+        <section class="content-section">
+            <h2>Community</h2>
+            <p>I am currently branding my personal profile and community on X, dedicated to Web3 education and revenue-based airdrops.</p>
+            <div class="x-grid">
+                <div class="x-box">
+                    <a class="twitter-timeline" data-height="500" data-theme="dark" href="https://twitter.com/Oujikatami"></a>
+                </div>
+                <div class="x-box">
+                    <a class="twitter-timeline" data-height="500" data-theme="dark" href="https://twitter.com/AirdropScout0x"></a>
                 </div>
             </div>
         </section>
 
-        <section class="slide white-bg" id="slide-3">
-            <div class="content-box dark-border">
-                <h2>[ SOCIAL MEDIA ]</h2>
-                <div class="social-wrapper">
-                    <a href="mailto: doninovriandi07@gmail.com"class="social-row dark-btn"><i class="fa-solid fa-envelope"></i> EMAIL</a> 
-                     <a href="https://x.com/Oujikatami" class="social-row dark-btn" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 20px; width: 18px; display: inline-block; vertical-align: middle;">
-        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
-    </svg>
-    X (TWITTER)
-</a>
-                    <a href="https://discord.gg/ngyKCCVDM6" class="social-row dark-btn"><i class="fa-brands fa-discord"></i> DISCORD</a>
-                    <a href="https://www.instagram.com/donskyyy21?igsh=bnpoYW0xcHJ2cXN0"class="social-row dark-btn"><i class="fa-brands fa-instagram"></i> INSTAGRAM</a> 
-                    <a href="https://t.me/Oujikatami" class="social-row dark-btn"><i class="fa-brands fa-telegram"></i> TELEGRAM</a>
-                    <a href="https://www.tiktok.com/@oujikatami?_r=1&_t=ZS-94yyetbyJsa" class="social-row dark-btn"><i class="fa-brands fa-tiktok"></i> TIKTOK</a>
-                    <a href="https://www.facebook.com/share/1SpEotj2J9/" class="social-row dark-btn"><i class="fa-brands fa-facebook"></i> FACEBOOK</a>
-                    <a href="https://www.linkedin.com/in/ouji-katami-41286a33b" class="social-row dark-btn"><i class="fa-brands fa-linkedin"></i> LINKEDIN</a>
-                    <a href="https://medium.com/@doninovriandi07" class="social-row dark-btn"><i class="fa-brands fa-medium"></i> MEDIUM</a>
+        <section class="content-section socials">
+            <h2>Connect With Me</h2>
+            <div class="social-container">
+                <div class="social-group">
+                    <h3>PERSONAL</h3>
+                    <a href="mailto:doninovriandi07@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="https://x.com/Oujikatami" target="_blank"><i class="fab fa-x-twitter"></i> Twitter/X</a>
+                    <a href="https://www.tiktok.com/@oujikatami" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+                    <a href="https://www.linkedin.com/in/ouji-katami-41286a33b" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://medium.com/@doninovriandi07" target="_blank"><i class="fab fa-medium"></i> Medium</a>
                 </div>
-                <footer class="footer-tag">Ouji Katami 2026</footer>
+                <div class="social-group">
+                    <h3>COMMUNITY</h3>
+                    <a href="mailto:timairdropscout@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="https://x.com/AirdropScout0x" target="_blank"><i class="fab fa-x-twitter"></i> Twitter/X</a>
+                    <a href="https://www.tiktok.com/@airdropscout_id" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+                    <a href="https://discord.gg/ngyKCCVDM6" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+                    <a href="https://t.me/airdropscout_id" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main id="services-page" class="page">
+        <section class="content-section">
+            <h2>Ouji Services</h2>
+            <ul class="service-list">
+                <li><span>Community Moderation</span> <strong>$120/week</strong></li>
+                <li><span>X Writer</span> <strong>$25/content</strong></li>
+                <li><span>Medium Writer</span> <strong>$20/article</strong></li>
+                <li><span>Video Content</span> <strong>Negotiable</strong></li>
+            </ul>
+
+            <h3 class="sub-title" style="text-align: center; margin-top: 40px;">Payment Support</h3>
+            <div class="marquee">
+                <div class="marquee-inner">
+                    <span><i class="fas fa-coins"></i> USDC</span>
+                    <span><i class="fas fa-coins"></i> USDT</span>
+                    <span><i class="fab fa-ethereum"></i> ETHEREUM</span>
+                    <span><i class="fas fa-cube"></i> BINANCE SMART CHAIN</span>
+                    <span><i class="fas fa-link"></i> ARBITRUM</span>
+                    <span><i class="fas fa-bolt"></i> BASE</span>
+                    <span><i class="fas fa-coins"></i> USDC</span>
+                    <span><i class="fas fa-coins"></i> USDT</span>
+                    <span><i class="fab fa-ethereum"></i> ETHEREUM</span>
+                </div>
+            </div>
+
+            <div class="wallet-box" onclick="copyWallet()">
+                <p>Click to copy Wallet Address (EVM):</p>
+                <div id="wallet">0xec274f9b3084a7aab2fa4cc077b1abcac4eae2af</div>
             </div>
         </section>
     </main>
 
     <script src="script.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
