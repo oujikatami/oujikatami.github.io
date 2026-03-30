@@ -1,46 +1,54 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const initialLoader = document.getElementById('initial-loader');
-    const transLoader = document.getElementById('transition-loader');
-    const logoContainer = document.getElementById('logo-reveal');
-    const matrixTexts = document.querySelectorAll('.matrix-text');
+// 1. Matrix Loader (3 Detik)
+const loader = document.getElementById('matrix-loader');
+const matrixInt = setInterval(() => {
+    let str = "";
+    for(let i=0; i<800; i++) str += Math.floor(Math.random()*10);
+    loader.innerText = str;
+}, 50);
 
-    function startMatrix(element, duration, callback) {
-        element.parentElement.classList.remove('hidden');
-        let interval = setInterval(() => {
-            let str = "";
-            for(let i=0; i<600; i++) str += Math.floor(Math.random() * 10);
-            element.innerText = str;
-        }, 50);
+setTimeout(() => {
+    clearInterval(matrixInt);
+    loader.style.display = 'none';
+    
+    // 2. Welcome Overlay (2 Detik)
+    const welcome = document.getElementById('welcome-overlay');
+    welcome.style.display = 'flex';
+
+    setTimeout(() => {
+        // Start Glitch Transition
+        document.body.classList.add('glitch-active');
+        
         setTimeout(() => {
-            clearInterval(interval);
-            if(callback) callback();
-        }, duration);
-    }
+            welcome.style.display = 'none';
+            document.body.classList.remove('glitch-active');
+        }, 500); // Durasi glitch ilang
+    }, 2000);
+}, 3000);
 
-    // PHASE 1: INITIAL LOAD (5 SECONDS TOTAL)
-    startMatrix(matrixTexts[0], 3000, () => {
-        matrixTexts[0].classList.add('hidden');
-        logoContainer.classList.remove('hidden');
-        setTimeout(() => {
-            initialLoader.style.opacity = '0';
-            setTimeout(() => initialLoader.classList.add('hidden'), 800);
-        }, 2000); // Logo shows for 2s after 3s numbers
-    });
+// Menu Sidebar Toggle
+function toggleMenu() {
+    document.getElementById('sidebar').classList.toggle('open');
+}
 
-    // PHASE 2: SCROLL TRANSITION (2 SECONDS)
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', () => {
-        let st = window.pageYOffset || document.documentElement.scrollTop;
-        if (Math.abs(st - lastScrollTop) > 100) { // Trigger on meaningful scroll
-            transLoader.style.opacity = '1';
-            startMatrix(matrixTexts[1], 1500, () => {
-                transLoader.style.transition = '0.5s';
-                transLoader.style.opacity = '0';
-                setTimeout(() => transLoader.classList.add('hidden'), 500);
-            });
-        }
-        lastScrollTop = st;
-    }, {passive: true});
-});
+// Navigasi dengan efek "Rusak"
+function navTo(pageId) {
+    document.body.classList.add('glitch-active');
+    
+    setTimeout(() => {
+        // Sembunyiin semua page
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        // Munculin page tujuan
+        document.getElementById(pageId).classList.add('active');
+        
+        document.body.classList.remove('glitch-active');
+        document.getElementById('sidebar').classList.remove('open');
+        window.scrollTo(0,0);
+    }, 400);
+}
 
-function toggleMenu() { document.getElementById('side-bar').classList.toggle('active'); }
+// Copy Wallet
+function copyWallet() {
+    const address = document.getElementById('wallet').innerText;
+    navigator.clipboard.writeText(address);
+    alert("Wallet Address Copied to Clipboard!");
+}
