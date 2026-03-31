@@ -190,20 +190,3 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .menu-links {
     gap: 20px !important;
 } 
-/* --- BIAR TOMBOL BACK BISA DIPENCET --- */
-.close-menu {
-    position: relative; /* Pastikan dia punya posisi */
-    z-index: 1500 !important; /* Paksa dia ada di lapisan paling depan */
-    cursor: pointer !important;
-    pointer-events: auto !important; /* Pastikan dia bisa nerima sentuhan/klik */
-    display: inline-flex; /* Biar area kliknya pas */
-    align-items: center;
-    gap: 10px;
-    padding: 10px 15px;
-}
-
-/* Tambahan dikit biar pas dipencet ada efeknya (feedback visual) */
-.close-menu:active {
-    background: rgba(255, 255, 255, 0.1);
-    transform: scale(0.95);
-} 
