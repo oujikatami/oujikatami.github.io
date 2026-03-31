@@ -325,3 +325,33 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .pay-item:active {
     transform: scale(0.95); /* Efek pencet di HP */
 } 
+/* --- MARKET PAGE FIX --- */
+.market-container {
+    width: 95%;
+    max-width: 500px; /* Biar lebih lebar dikit dari kotak biasa */
+    z-index: 10;
+}
+
+.market-box-v3 {
+    padding: 15px !important;
+    background: rgba(11, 14, 17, 0.98) !important;
+    border: 1px solid #1f2328;
+    height: 650px; /* Sesuaikan biar widget enak dilihat */
+    overflow: hidden;
+}
+
+/* Biar scroll widget nggak tabrakan sama scroll body */
+.tradingview-widget-container {
+    border-radius: 8px;
+    overflow: hidden;
+    height: 550px;
+}
+
+@media (max-width: 480px) {
+    .market-box-v3 {
+        height: 600px;
+    }
+    .tradingview-widget-container {
+        height: 500px;
+    }
+} 
