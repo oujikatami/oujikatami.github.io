@@ -325,79 +325,69 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .pay-item:active {
     transform: scale(0.95); /* Efek pencet di HP */
 } 
-/* --- MARKET V6: DESIGN KOTAK PER ASET --- */
+/* --- MARKET V7: SLIM ROW DESIGN --- */
+.market-box-final {
+    height: 80vh; /* Kotak utama lebih tinggi */
+    display: flex;
+    flex-direction: column;
+    padding: 15px 10px !important;
+}
+
 .scroll-area {
+    flex-grow: 1;
+    overflow-y: auto; /* INI KUNCINYA BIAR BISA DI-SCROLL KE BAWAH */
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Jarak antar kotak koin */
-    overflow-y: auto;
-    padding: 5px;
+    gap: 8px;
+    padding-bottom: 20px;
 }
 
-.coin-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: transform 0.2s ease;
-}
-
-.coin-card:active {
-    transform: scale(0.98);
-    background: rgba(255, 255, 255, 0.07);
-}
-
-.coin-left {
+/* Kotak per aset yang ramping */
+.coin-card-slim {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 12px 10px;
     display: flex;
     align-items: center;
-    gap: 12px;
-}
-
-.coin-name-group {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.coin-symbol {
-    font-weight: 800;
-    color: #fff; /* Warna Putih */
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
-}
-
-.coin-rank {
-    font-size: 0.6rem;
-    color: #555;
-    font-weight: bold;
-}
-
-.coin-right {
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-}
-
-.coin-price {
-    font-weight: bold;
-    color: #fff; /* Warna Putih sesuai request */
-    font-size: 0.9rem;
-}
-
-.coin-vol {
-    font-size: 0.6rem;
-    color: #444; /* Volume agak redup biar gak ganggu mata */
-    margin-top: 2px;
-}
-
-/* Biar gak tabrakan sama menu di market.html */
-#market-list {
+    justify-content: space-between; /* Paksa berjejer kiri-tengah-kanan */
     width: 100%;
 }
 
+.coin-info-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1; /* Alokasi ruang kiri */
+}
+
+.coin-price-mid {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    color: #fff; /* PUTIH BERSIH */
+    font-size: 0.85rem;
+}
+
+.coin-vol-right {
+    flex: 1.2;
+    text-align: right;
+    font-size: 0.65rem;
+    color: #fff; /* PUTIH JUGA */
+    opacity: 0.6; /* Dikin dikit biar gak silau tapi tetep putih */
+}
+
+.coin-symbol-text {
+    font-weight: 800;
+    color: #fff;
+    font-size: 0.8rem;
+}
+
+.coin-rank-mini {
+    font-size: 0.55rem;
+    color: #555;
+    display: block;
+} 
 /* FIX JARNG-JARING BIAR GAK JADI BOLA */
 canvas.vanta-canvas {
     position: fixed !important;
