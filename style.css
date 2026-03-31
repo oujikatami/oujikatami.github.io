@@ -202,40 +202,74 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     align-items: center;
     justify-content: center;
 } 
-/* --- SERVICE & PAYMENT STYLING --- */
-.service-list {
+/* --- FIX LAYOUT SERVICE & PAYMENT (ANTI CACAT) --- */
+.snap-panel {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    text-align: left;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.service-item {
+.container {
+    width: 90%;
+    max-width: 400px; /* Batasi lebar di desktop */
+}
+
+/* Ouji Service Fix */
+.service-table {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.service-row-v2 {
+    display: flex;
+    justify-content: space-between; /* Misahin kiri dan kanan pol */
+    align-items: center;
     padding: 15px;
     border: 1px solid #1f2328;
     border-radius: 10px;
     background: rgba(255,255,255,0.02);
+    width: 100%;
 }
 
-.pay-label {
+.service-name-v2 {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #fff; /* Warna seragam putih */
+    text-align: left;
+}
+
+.service-price-v2 {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #fff; /* Warna seragam putih */
+    text-align: right;
+    white-space: nowrap; /* Biar harganya gak turun ke bawah */
+}
+
+/* Payment Fix */
+.pay-section {
+    text-align: left;
+    width: 100%;
+}
+
+.pay-label-final {
     font-size: 0.7rem;
     font-weight: bold;
     color: #666;
     letter-spacing: 2px;
-    text-align: left;
     margin-bottom: 10px;
+    display: block;
 }
 
-.asset-row {
+.pay-grid {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Biar logonya turun kalo gak muat */
     gap: 10px;
-    margin-bottom: 5px;
 }
 
-.asset-pill, .net-pill {
+.pay-item {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -243,30 +277,32 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     background: #161b22;
     border: 1px solid #30363d;
     border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #fff;
 }
 
-.address-card {
+.address-card-final {
     background: #000;
     border: 1px dashed #30363d;
-    padding: 15px;
+    padding: 12px;
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    width: 100%;
 }
 
-.address-card code {
+.address-card-final code {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
     color: #848e9c;
     word-break: break-all;
     text-align: left;
+    max-width: 85%;
 }
 
-.address-card button {
+.address-card-final button {
     background: none;
     border: none;
     color: #fff;
