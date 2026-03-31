@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drop Hunting | ŌUJI KATAMI</title>
+    <title>DROP HUNTING | ŌUJI KATAMI</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <div id="particles-js"></div>
 
     <nav class="top-nav">
         <div class="nav-left">
-            <span class="nav-title">DROP HUNTING</span>
+            <span class="nav-logo">ŌUJI KATAMI <span style="opacity: 0.5;">PORTAL</span></span>
         </div>
         <div class="nav-right" onclick="toggleMenu()">
             <div class="menu-icon">
@@ -36,89 +37,58 @@
         </div>
     </div>
 
-    <main class="main-content" style="padding-top: 100px;">
-        
-        <section class="search-section" style="padding: 0 20px; margin-bottom: 50px;">
-            <div class="search-wrapper">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" id="tutorialSearch" placeholder="Cari tutorial (misal: Satsume)...">
+    <main class="content-wrapper">
+        <h1 class="page-title">DROP HUNTING</h1>
+
+        <section class="search-area">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="">
             </div>
         </section>
 
-        <section class="tools-section" style="padding: 0 20px; max-width: 1000px; margin: 0 auto;">
-            <div class="tools-card">
-                <div class="tools-header">
-                    <h2>🛠️ TOOLS FOR AIRDROP</h2>
+        <section class="tools-container">
+            <h2 class="section-label">AIRDROP TOOLS</h2>
+            
+            <div class="tools-table">
+                <div class="tool-group">
+                    <span class="group-title">CRYPTO WALLET</span>
+                    <p>OKX WALLET / METAMASK / RABBY (EVM)</p>
+                    <p>PHANTOM / SOLFLARE (SOLANA)</p>
                 </div>
-                
-                <div class="tools-grid">
-                    <div class="tool-item">
-                        <h3><i class="fas fa-wallet"></i> CRYPTO WALLET</h3>
-                        <ul>
-                            <li>OKX Wallet / Metamask / Rabby (EVM)</li>
-                            <li>Phantom / Solflare (Solana)</li>
-                        </ul>
-                    </div>
 
-                    <div class="tool-item">
-                        <h3><i class="fas fa-users"></i> ACCOUNT SOCIAL</h3>
-                        <ul>
-                            <li>X / Twitter</li>
-                            <li>Telegram & Discord</li>
-                            <li>New email (Optional)</li>
-                        </ul>
-                    </div>
+                <div class="tool-group">
+                    <span class="group-title">ACCOUNT SOCIAL</span>
+                    <p>X • TELEGRAM • DISCORD</p>
+                    <p>NEW EMAIL FOR AIRDROP (OPTIONAL)</p>
+                </div>
 
-                    <div class="tool-item">
-                        <h3><i class="fas fa-globe"></i> BROWSER MOBILE</h3>
-                        <ul>
-                            <li>Kiwi, Brave, or Mises</li>
-                            <li class="recommend">Rec: Brave & Mises</li>
-                        </ul>
-                    </div>
+                <div class="tool-group">
+                    <span class="group-title">BROWSER MOBILE</span>
+                    <p>KIWI • BRAVE • MISES</p>
+                </div>
 
-                    <div class="tool-item cex-full">
-                        <h3><i class="fas fa-exchange-alt"></i> CENTRALIZED EXCHANGE (CEX)</h3>
-                        <p class="cex-note">Register by clicking the icons below:</p>
-                        
-                        <div class="cex-icons-grid">
-                            <a href="LINK_REFF_BINANCE" class="cex-link">
-                                <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="Binance">
-                                <span>Binance</span>
-                            </a>
-                            <a href="LINK_REFF_BYBIT" class="cex-link">
-                                <img src="https://cryptologos.cc/logos/bybit-logo.png" alt="Bybit" style="filter: brightness(2);">
-                                <span>Bybit</span>
-                            </a>
-                            <a href="LINK_REFF_OKX" class="cex-link">
-                                <img src="https://cryptologos.cc/logos/okx-logo.png" alt="OKX" style="filter: invert(1);">
-                                <span>OKX</span>
-                            </a>
-                            <a href="LINK_REFF_BITGET" class="cex-link">
-                                <img src="https://altcoinsbox.com/wp-content/uploads/2023/04/bitget-logo.png" alt="Bitget">
-                                <span>Bitget</span>
-                            </a>
-                            <a href="LINK_REFF_KUCOIN" class="cex-link">
-                                <img src="https://cryptologos.cc/logos/kucoin-kcs-logo.png" alt="Kucoin">
-                                <span>Kucoin</span>
-                            </a>
-                            <a href="LINK_REFF_GATEIO" class="cex-link">
-                                <img src="https://cryptologos.cc/logos/gate-io-logo.png" alt="Gate.io">
-                                <span>Gate.io</span>
-                            </a>
-                        </div>
-                        <p class="cex-footer">I recommend to have all account in all CEX.</p>
+                <div class="tool-group cex-section">
+                    <span class="group-title">EXCHANGE (CEX)</span>
+                    <div class="cex-grid">
+                        <a href="REFF_BINANCE">BINANCE</a>
+                        <a href="REFF_BYBIT">BYBIT</a>
+                        <a href="REFF_OKX">OKX</a>
+                        <a href="REFF_BITGET">BITGET</a>
+                        <a href="REFF_KUCOIN">KUCOIN</a>
+                        <a href="REFF_GATE">GATE.IO</a>
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
     <script>
         function toggleMenu() {
             document.getElementById('side-menu').classList.toggle('active');
         }
     </script>
 </body>
-                                  </html>
+</html>
