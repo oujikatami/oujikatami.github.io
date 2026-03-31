@@ -310,3 +310,18 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     font-size: 1rem;
     padding: 5px;
 } 
+
+.pay-item img {
+    display: block;
+    object-fit: contain;
+    background: rgba(255,255,255,0.05); /* Background tipis biar kelihatan ada isinya */
+    border-radius: 4px;
+}
+
+.pay-item {
+    transition: transform 0.2s;
+}
+
+.pay-item:active {
+    transform: scale(0.95); /* Efek pencet di HP */
+} 
