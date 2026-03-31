@@ -325,36 +325,3 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .pay-item:active {
     transform: scale(0.95); /* Efek pencet di HP */
 } 
-.side-drawer {
-    position: fixed;
-    top: 0;
-    right: -100%; /* Sembunyi total di kanan layar */
-    width: 280px; 
-    height: 100vh;
-    background: rgba(10, 10, 10, 0.98);
-    backdrop-filter: blur(15px);
-    z-index: 10000;
-    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.side-drawer.active {
-    right: 0 !important; /* Paksa muncul pas diklik */
-}
-
-.drawer-content {
-    padding: 100px 40px; /* Gue tambahin jadi 40px biar teksnya makin geser ke kanan & nggak mepet garis */
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.menu-links a {
-    display: block;
-    margin-bottom: 25px;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-} 
