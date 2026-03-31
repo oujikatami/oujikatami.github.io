@@ -325,57 +325,78 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .pay-item:active {
     transform: scale(0.95); /* Efek pencet di HP */
 } 
-/* --- FIX TOTAL MARKET V5 --- */
-.market-layout {
-    width: 95%;
-    max-width: 420px;
-    margin: 0 auto;
-    z-index: 10; /* Di depan jaring-jaring */
-    position: relative;
-}
-
-.market-v5 {
-    height: 75vh;
+/* --- MARKET V6: DESIGN KOTAK PER ASET --- */
+.scroll-area {
     display: flex;
     flex-direction: column;
-    padding: 20px 10px !important;
-}
-
-.title-market {
-    font-size: 0.9rem;
-    letter-spacing: 3px;
-    margin-bottom: 15px;
-    color: #fff;
-}
-
-.scroll-area {
-    flex-grow: 1;
+    gap: 10px; /* Jarak antar kotak koin */
     overflow-y: auto;
-    padding-right: 5px;
+    padding: 5px;
 }
 
-/* Biar scrollbar ilang tapi tetep bisa scroll */
-.scroll-area::-webkit-scrollbar { display: none; }
-
-.final-table {
-    width: 100%;
-    border-collapse: collapse;
+.coin-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s ease;
 }
 
-.final-table th {
-    position: sticky;
-    top: 0;
-    background: #0b0e11;
-    color: #555;
-    font-size: 0.6rem;
-    padding: 10px 5px;
+.coin-card:active {
+    transform: scale(0.98);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.coin-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.coin-name-group {
+    display: flex;
+    flex-direction: column;
     text-align: left;
-    border-bottom: 1px solid #222;
 }
 
-.coin-cell { display: flex; align-items: center; gap: 8px; font-weight: bold; }
-.price-cell { color: #00f2ff; font-weight: bold; font-size: 0.75rem; }
-.vol-cell { text-align: right; color: #666; font-size: 0.6rem; }
+.coin-symbol {
+    font-weight: 800;
+    color: #fff; /* Warna Putih */
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.coin-rank {
+    font-size: 0.6rem;
+    color: #555;
+    font-weight: bold;
+}
+
+.coin-right {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.coin-price {
+    font-weight: bold;
+    color: #fff; /* Warna Putih sesuai request */
+    font-size: 0.9rem;
+}
+
+.coin-vol {
+    font-size: 0.6rem;
+    color: #444; /* Volume agak redup biar gak ganggu mata */
+    margin-top: 2px;
+}
+
+/* Biar gak tabrakan sama menu di market.html */
+#market-list {
+    width: 100%;
+}
 
 /* FIX JARNG-JARING BIAR GAK JADI BOLA */
 canvas.vanta-canvas {
