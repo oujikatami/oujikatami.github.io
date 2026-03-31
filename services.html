@@ -38,49 +38,64 @@
     <main id="scroller">
         <section class="snap-panel">
             <div class="container">
-                <div class="cyber-box">
-                    <h2 style="margin-bottom: 25px;">Ōuji Service</h2>
-                    <div class="service-list">
-                        <div class="service-item">
-                            <span>Community Moderation</span>
-                            <strong style="color: #00f2ff;">$120/week</strong>
+                <div class="cyber-box service-box-final">
+                    <h2>Ōuji Service</h2>
+                    
+                    <div class="service-table">
+                        <div class="service-row-v2">
+                            <span class="service-name-v2">Community Moderation</span>
+                            <span class="service-price-v2">$120/week</span>
                         </div>
-                        <div class="service-item">
-                            <span>Medium Writer</span>
-                            <strong style="color: #00f2ff;">$25/Article</strong>
+                        
+                        <div class="service-row-v2">
+                            <span class="service-name-v2">Medium Writer</span>
+                            <span class="service-price-v2">$25/Article</span>
                         </div>
-                        <div class="service-item">
-                            <span>X Writer</span>
-                            <strong style="color: #00f2ff;">$20/Content</strong>
+                        
+                        <div class="service-row-v2">
+                            <span class="service-name-v2">X Writer</span>
+                            <span class="service-price-v2">$20/Content</span>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
         <section class="snap-panel">
             <div class="container">
-                <div class="cyber-box payment-box">
+                <div class="cyber-box payment-box-final">
                     <h2>Payment</h2>
                     
-                    <p class="pay-label">STABLE COIN</p>
-                    <div class="asset-row">
-                        <div class="asset-pill"><img src="https://cryptologos.cc/logos/tether-usdt-logo.png" width="20"> USDT</div>
-                        <div class="asset-pill"><img src="https://mint.ethena.fi/favicon.ico" width="20"> USDe</div>
+                    <div class="pay-section">
+                        <p class="pay-label-final">STABLE COIN</p>
+                        <div class="pay-grid">
+                            <div class="pay-item">
+                                <img src="https://cryptologos.cc/logos/tether-usdt-logo.png?v=032" width="20" alt="USDT"> USDT
+                            </div>
+                            <div class="pay-item">
+                                <img src="https://mint.ethena.fi/favicon.ico" width="20" alt="USDe"> USDe
+                            </div>
+                        </div>
                     </div>
 
-                    <p class="pay-label" style="margin-top: 20px;">NETWORK</p>
-                    <div class="asset-row">
-                        <div class="net-pill"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" width="15"> Ethereum</div>
-                        <div class="net-pill"><img src="https://raw.githubusercontent.com/base-org/brand-kit/main/logo/symbol/Base_Symbol_Blue.png" width="15"> Base</div>
-                        <div class="net-pill"><img src="https://cryptologos.cc/logos/arbitrum-arb-logo.png" width="15"> Arbitrum</div>
+                    <div class="pay-section" style="margin-top: 20px;">
+                        <p class="pay-label-final">NETWORK</p>
+                        <div class="pay-grid">
+                            <div class="pay-item"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png?v=032" width="15" alt="ETH"> Ethereum</div>
+                            <div class="pay-item"><img src="https://raw.githubusercontent.com/base-org/brand-kit/main/logo/symbol/Base_Symbol_Blue.png" width="15" alt="BASE"> Base</div>
+                            <div class="pay-item"><img src="https://cryptologos.cc/logos/arbitrum-arb-logo.png?v=032" width="15" alt="ARB"> Arbitrum</div>
+                        </div>
                     </div>
 
-                    <p class="pay-label" style="margin-top: 25px;">WALLET ADDRESS</p>
-                    <div class="address-card">
-                        <code>0xec274f9b3084a7aab2fa4cc077b1abcac4eae2af</code>
-                        <button onclick="copyAddress()" id="copyBtn"><i class="fas fa-copy"></i></button>
+                    <div class="pay-section" style="margin-top: 25px;">
+                        <p class="pay-label-final">WALLET ADDRESS</p>
+                        <div class="address-card-final">
+                            <code>0xec274f9b3084a7aab2fa4cc077b1abcac4eae2af</code>
+                            <button onclick="copyAddress()" id="copyBtn"><i class="fas fa-copy"></i></button>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -99,4 +114,4 @@
         }
     </script>
 </body>
-                                                                                      </html>
+</html>
