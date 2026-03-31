@@ -325,51 +325,49 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .pay-item:active {
     transform: scale(0.95); /* Efek pencet di HP */
 } 
-/* --- MARKET PAGE FIX --- */
-.market-container {
-    width: 95%;
-    max-width: 500px; /* Biar lebih lebar dikit dari kotak biasa */
-    z-index: 10;
-}
-
-.market-box-v3 {
+/* --- MARKET API TABLE STYLING --- */
+.market-box-api {
     padding: 15px !important;
-    background: rgba(11, 14, 17, 0.98) !important;
-    border: 1px solid #1f2328;
-    height: 650px; /* Sesuaikan biar widget enak dilihat */
-    overflow: hidden;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Biar scroll widget nggak tabrakan sama scroll body */
-.tradingview-widget-container {
-    border-radius: 8px;
-    overflow: hidden;
-    height: 550px;
+.table-wrapper {
+    overflow-y: auto; /* Bisa di-scroll ke bawah di dalem kotak */
+    margin-top: 10px;
+    scrollbar-width: none;
+}
+.table-wrapper::-webkit-scrollbar { display: none; }
+
+.crypto-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.75rem;
+    text-align: left;
 }
 
-@media (max-width: 480px) {
-    .market-box-v3 {
-        height: 600px;
-    }
-    .tradingview-widget-container {
-        height: 500px;
-    }
-    /* --- FIX MARKET DATA AGAR MUNCUL --- */
-#tradingview-wrapper {
-    position: relative;
-    z-index: 20; /* Pastikan di depan background */
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
+.crypto-table th {
+    position: sticky;
+    top: 0;
+    background: #0b0e11;
+    padding: 10px 5px;
+    color: #666;
+    font-weight: bold;
+    border-bottom: 1px solid #1f2328;
+    z-index: 5;
 }
 
-.market-box-v3 {
-    width: 100% !important;
-    max-width: 450px;
-    padding: 10px !important;
+.crypto-table td {
+    padding: 12px 5px;
+    border-bottom: 1px solid #1f2328;
+    vertical-align: middle;
 }
 
-/* Biar screener TradingView-nya muat di layar HP */
-.tradingview-widget-container iframe {
-    min-height: 500px !important;
+.asset-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
- 
+
+.asset-info img { border-radius: 50%; }
