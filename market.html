@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ōuji Katami | Crypto Market</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="intro-active">
+
+    <div id="intro-overlay"></div>
+
+    <nav class="top-nav">
+        <div class="brand-left">
+            CRYPTO <span style="color: #666;">MARKET</span>
+        </div>
+        <div class="menu-btn" onclick="toggleMenu()">
+            <div class="bar"></div><div class="bar"></div>
+        </div>
+    </nav>
+
+    <div id="side-menu" class="side-drawer">
+        <div class="close-menu" onclick="toggleMenu()">
+            <i class="fas fa-arrow-left"></i> BACK
+        </div>
+        <div class="drawer-content">
+            <h3 class="menu-title">MENU</h3>
+            <div class="menu-links">
+                <a href="index.html">ŌUJI KATAMI PORTFOLIO</a>
+                <a href="community.html">AIRDROP SCOUT COMMUNITY</a>
+                <a href="services.html">ŌUJI SERVICE</a>
+                <a href="airdrop.html">AIRDROP</a>
+            </div>
+        </div>
+    </div>
+
+    <main id="scroller">
+        <section class="snap-panel">
+            <div class="market-container">
+                <div class="cyber-box market-box-v3">
+                    <h2 style="margin-bottom: 20px;">Live Market Data</h2>
+                    
+                    <div class="tradingview-widget-container">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+                        {
+                        "width": "100%",
+                        "height": "500",
+                        "defaultColumn": "overview",
+                        "screener_type": "crypto_mcap",
+                        "displayCurrency": "USD",
+                        "colorTheme": "dark",
+                        "locale": "en",
+                        "isTransparent": true
+                        }
+                        </script>
+                    </div>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
