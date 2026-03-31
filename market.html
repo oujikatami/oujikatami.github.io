@@ -61,29 +61,35 @@
     <script src="script.js"></script>
     <script>
         async function getMarket() {
-            try {
-                const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false');
-                const coins = await res.json();
-                const list = document.getElementById('market-list');
-                list.innerHTML = '';
-                coins.forEach(c => {
-                    list.innerHTML += `
-                        <tr>
-                            <td>
-                                <div class="coin-cell">
-                                    <img src="${c.image}" width="16">
-                                    <span>${c.symbol.toUpperCase()}</span>
-                                </div>
-                            </td>
-                            <td class="price-cell">$${c.current_price.toLocaleString()}</td>
-                            <td class="vol-cell">$${Math.round(c.total_volume).toLocaleString()}</td>
-                        </tr>
-                    `;
-                });
-            } catch (e) { console.log("Error fetch"); }
-        }
-        getMarket();
-        setInterval(getMarket, 30000);
+    try {
+        const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false');
+        const coins = await res.json();
+        const list = document.getElementById('market-list');
+        list.innerHTML = '';
+
+        coins.forEach(c => {
+            list.innerHTML += `
+                <div class="coin-card">
+                    <div class="coin-left">
+                        <img src="${c.image}" width="20">
+                        <div class="coin-name-group">
+                            <span class="coin-symbol">${c.symbol.toUpperCase()}</span>
+                            <span class="coin-rank">#${c.market_cap_rank}</span>
+                        </div>
+                    </div>
+                    <div class="coin-right">
+                        <span class="coin-price">$${c.current_price.toLocaleString()}</span>
+                        <span class="coin-vol">Vol: $${Math.round(c.total_volume).toLocaleString()}</span>
+                    </div>
+                </div>
+            `;
+        });
+    } catch (e) { 
+        document.getElementById('market-list').innerHTML = '<p style="text-align:center; padding:20px;">Failed to fetch alpha...</p>';
+    }
+}
+getMarket();
+setInterval(getMarket, 30000);
     </script>
 </body>
 </html>
