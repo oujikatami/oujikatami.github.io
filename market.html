@@ -69,23 +69,27 @@
 
         coins.forEach(c => {
             list.innerHTML += `
-                <div class="coin-card">
-                    <div class="coin-left">
-                        <img src="${c.image}" width="20">
-                        <div class="coin-name-group">
-                            <span class="coin-symbol">${c.symbol.toUpperCase()}</span>
-                            <span class="coin-rank">#${c.market_cap_rank}</span>
+                <div class="coin-card-slim">
+                    <div class="coin-info-left">
+                        <img src="${c.image}" width="18">
+                        <div>
+                            <span class="coin-symbol-text">${c.symbol.toUpperCase()}</span>
+                            <span class="coin-rank-mini">#${c.market_cap_rank}</span>
                         </div>
                     </div>
-                    <div class="coin-right">
-                        <span class="coin-price">$${c.current_price.toLocaleString()}</span>
-                        <span class="coin-vol">Vol: $${Math.round(c.total_volume).toLocaleString()}</span>
+
+                    <div class="coin-price-mid">
+                        $${c.current_price.toLocaleString()}
+                    </div>
+
+                    <div class="coin-vol-right">
+                        $${Math.round(c.total_volume / 1000000).toLocaleString()}M
                     </div>
                 </div>
             `;
         });
     } catch (e) { 
-        document.getElementById('market-list').innerHTML = '<p style="text-align:center; padding:20px;">Failed to fetch alpha...</p>';
+        console.log("Error Fetch");
     }
 }
 getMarket();
