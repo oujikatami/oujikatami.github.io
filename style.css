@@ -354,4 +354,22 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     .tradingview-widget-container {
         height: 500px;
     }
-} 
+    /* --- FIX MARKET DATA AGAR MUNCUL --- */
+#tradingview-wrapper {
+    position: relative;
+    z-index: 20; /* Pastikan di depan background */
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.market-box-v3 {
+    width: 100% !important;
+    max-width: 450px;
+    padding: 10px !important;
+}
+
+/* Biar screener TradingView-nya muat di layar HP */
+.tradingview-widget-container iframe {
+    min-height: 500px !important;
+}
+ 
