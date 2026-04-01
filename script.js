@@ -20,61 +20,63 @@ setTimeout(() => {
 function toggleMenu() {
     document.getElementById('side-menu').classList.toggle('active');
 }
-const NOTION_TOKEN = "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";
-const DATABASE_ID = "335fee4b95628099895be4d2b2f2248e";
-const PROXY = "https://corsproxy.io/?";
+<script>
+const TOKEN = "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";
+const DB_ID = "335fee4b95628099895be4d2b2f2248e";
+const PROXY = "https://api.allorigins.win/get?url=";
 
+// 1. Fungsi Ambil Data Awal
 async function fetchAirdrops() {
     const container = document.getElementById('tutorialContainer');
-    if (!container) return;
-    container.innerHTML = "<p style='color:#333; font-size:0.5rem; text-align:center;'>CONNECTING TO DATABASE...</p>";
-
+    const targetUrl = encodeURIComponent(`https://api.notion.com/v1/databases/${DB_ID}/query`);
+    
     try {
-        const url = encodeURIComponent(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`);
-        const res = await fetch(PROXY + url, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${NOTION_TOKEN}`,
-                'Notion-Version': '2022-06-28',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({})
-        });
-        const data = await res.json();
-        container.innerHTML = "";
+        const res = await fetch(PROXY + targetUrl);
+        const json = await res.json();
+        const data = JSON.parse(json.contents);
+        
+        container.innerHTML = ""; // Bersihin loading
         
         data.results.forEach(page => {
             const name = page.properties["AIRDROP NAME"]?.title[0]?.plain_text || "UNTITLED";
             const tags = page.properties["TAGS"]?.multi_select.map(t => t.name).join(" • ") || "ACTIVE";
             
-            const div = document.createElement('div');
-            div.style = "background:rgba(255,255,255,0.02); border:1px solid #222; padding:15px; border-radius:10px; cursor:pointer; text-align:left;";
-            div.onclick = () => openTutorial(page.id);
-            div.innerHTML = `<span style="font-size:0.5rem; color:#444; letter-spacing:1px;">${tags.toUpperCase()}</span><h4 style="color:#fff; margin-top:5px; font-size:0.8rem;">${name.toUpperCase()}</h4>`;
-            container.appendChild(div);
+            // Bikin element list
+            const item = document.createElement('div');
+            item.className = "notion-item"; // Buat pencarian
+            item.style = "background:rgba(255,255,255,0.03); border:1px solid #222; padding:15px; border-radius:10px; cursor:pointer; display:block;";
+            
+            // INI KUNCINYA: Lempar user ke airdrop.html bawa ID Notion
+            item.onclick = () => {
+                window.location.href = `airdrop.html?id=${page.id}`;
+            };
+
+            item.innerHTML = `
+                <span style="font-size:0.5rem; color:#444;">${tags.toUpperCase()}</span>
+                <h4 style="color:#fff; margin-top:5px; font-size:0.8rem;">${name.toUpperCase()}</h4>
+            `;
+            container.appendChild(item);
         });
-    } catch (e) { container.innerHTML = "<p style='color:red; font-size:0.5rem;'>DATABASE OFFLINE</p>"; }
+    } catch (e) {
+        console.log("Error koneksi Notion");
+    }
 }
 
-async function openTutorial(id) {
-    const modal = document.getElementById('tutorialModal');
-    const body = document.getElementById('modalBody');
-    modal.style.display = "block";
-    body.innerHTML = "<p style='color:#444;'>FETCHING CONTENT...</p>";
-    try {
-        const res = await fetch(PROXY + encodeURIComponent(`https://api.notion.com/v1/blocks/${id}/children`), {
-            headers: { 'Authorization': `Bearer ${NOTION_TOKEN}`, 'Notion-Version': '2022-06-28' }
-        });
-        const data = await res.json();
-        let html = "";
-        data.results.forEach(b => {
-            if (b.type === 'paragraph') html += `<p style="margin-bottom:15px;">${b.paragraph.rich_text[0]?.plain_text || ""}</p>`;
-            if (b.type === 'image') html += `<img src="${b.image.type === 'external' ? b.image.external.url : b.image.file.url}">`;
-            if (b.type.includes('heading')) html += `<h3 style="color:#fff; margin:20px 0 10px;">${b[b.type].rich_text[0]?.plain_text}</h3>`;
-        });
-        body.innerHTML = html;
-    } catch (e) { body.innerHTML = "FAILED TO LOAD"; }
+// 2. Fungsi Search (Filter List)
+function searchNotion() {
+    let input = document.getElementById('tutorialSearch').value.toLowerCase();
+    let items = document.getElementsByClassName('notion-item');
+    
+    for (let i = 0; i < items.length; i++) {
+        let text = items[i].getElementsByTagName('h4')[0].innerText.toLowerCase();
+        if (text.includes(input)) {
+            items[i].style.display = "block";
+        } else {
+            items[i].style.display = "none";
+        }
+    }
 }
 
-function closeModal() { document.getElementById('tutorialModal').style.display = "none"; }
+// Jalankan saat loading
 fetchAirdrops();
+</script> 
