@@ -100,87 +100,88 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
     <script src="script.js"></script>  
-<script>
-<script>
-// Data Airdrop (hardcode dulu)
-const airdropsData = [
-  {
-    "title": "Satsume Airdrop",
-    "slug": "satsume",
-    "notion_link": "https://determined-casquette-4d9.notion.site/Satsume-Airdrop-335fee4b9562809f82f9fc6e2d51532a"
-  }
-];
+    
+   <!-- SCRIPT SEARCH AIRDROP -->
+    <script>
+    // Data Airdrop (hardcode dulu)
+    const airdropsData = [
+      {
+        "title": "Satsume Airdrop",
+        "slug": "satsume",
+        "notion_link": "https://determined-casquette-4d9.notion.site/Satsume-Airdrop-335fee4b9562809f82f9fc6e2d51532a"
+      }
+    ];
 
-function showInitialMessage() {
-    document.getElementById('results').innerHTML = `
-        <p style="color: #666; text-align: center; padding: 30px 20px; font-size: 0.9rem;">
-            Ketik nama airdrop untuk mencari tutorial...
-        </p>`;
-}
-
-function renderResults(filteredData) {
-    const container = document.getElementById('results');
-    container.innerHTML = '';
-
-    if (filteredData.length === 0) {
-        container.innerHTML = `
-            <p style="color: #888; text-align: center; padding: 30px;">
-                Tidak ditemukan
+    function showInitialMessage() {
+        document.getElementById('results').innerHTML = `
+            <p style="color: #666; text-align: center; padding: 40px 20px; font-size: 0.95rem;">
+                Ketik nama airdrop untuk mencari tutorial...
             </p>`;
-        return;
     }
 
-    filteredData.forEach(item => {
-        const itemEl = document.createElement('div');
-        itemEl.style.cssText = `
-            background: rgba(255,255,255,0.06);
-            color: #fff;
-            padding: 16px 20px;
-            margin-bottom: 8px;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(255,255,255,0.08);
-        `;
-        itemEl.textContent = item.title;
-        
-        itemEl.addEventListener('click', () => {
-            window.location.href = `tutorial.html?slug=${item.slug}`;
-        });
+    function renderResults(filteredData) {
+        const container = document.getElementById('results');
+        container.innerHTML = '';
 
-        // Hover effect
-        itemEl.addEventListener('mouseenter', () => {
-            itemEl.style.background = 'rgba(0, 255, 157, 0.15)';
-            itemEl.style.borderColor = '#00ff9d';
-        });
-        itemEl.addEventListener('mouseleave', () => {
-            itemEl.style.background = 'rgba(255,255,255,0.06)';
-            itemEl.style.borderColor = 'rgba(255,255,255,0.08)';
-        });
+        if (filteredData.length === 0) {
+            container.innerHTML = `
+                <p style="color: #888; text-align: center; padding: 40px 20px;">
+                    Tidak ditemukan
+                </p>`;
+            return;
+        }
 
-        container.appendChild(itemEl);
+        filteredData.forEach(item => {
+            const itemEl = document.createElement('div');
+            itemEl.style.cssText = `
+                background: rgba(255,255,255,0.06);
+                color: #fff;
+                padding: 16px 20px;
+                margin-bottom: 8px;
+                border-radius: 8px;
+                font-size: 1.02rem;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                border: 1px solid rgba(255,255,255,0.1);
+            `;
+            itemEl.textContent = item.title;
+            
+            itemEl.addEventListener('click', () => {
+                window.location.href = `tutorial.html?slug=${item.slug}`;
+            });
+
+            // Hover effect
+            itemEl.addEventListener('mouseenter', () => {
+                itemEl.style.background = 'rgba(0, 255, 157, 0.15)';
+                itemEl.style.borderColor = '#00ff9d';
+            });
+            itemEl.addEventListener('mouseleave', () => {
+                itemEl.style.background = 'rgba(255,255,255,0.06)';
+                itemEl.style.borderColor = 'rgba(255,255,255,0.1)';
+            });
+
+            container.appendChild(itemEl);
+        });
+    }
+
+    // Real-time search
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase().trim();
+
+        if (term === '') {
+            showInitialMessage();
+            return;
+        }
+
+        const filtered = airdropsData.filter(item => 
+            item.title.toLowerCase().includes(term)
+        );
+
+        renderResults(filtered);
     });
-}
 
-// Real-time search
-document.getElementById('searchInput').addEventListener('input', (e) => {
-    const term = e.target.value.toLowerCase().trim();
-
-    if (term === '') {
-        showInitialMessage();
-        return;
-    }
-
-    const filtered = airdropsData.filter(item => 
-        item.title.toLowerCase().includes(term)
-    );
-
-    renderResults(filtered);
-});
-
-// Load awal
-window.addEventListener('load', showInitialMessage);
-</script> 
+    // Load awal
+    window.addEventListener('load', showInitialMessage);
+                                                            </script>
 </body>
 </html> 
