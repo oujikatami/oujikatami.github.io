@@ -19,8 +19,7 @@ setTimeout(() => {
 // Menu Function
 function toggleMenu() {
     document.getElementById('side-menu').classList.toggle('active');
-}
-<script>
+} 
 const TOKEN = "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";
 const DB_ID = "335fee4b95628099895be4d2b2f2248e";
 const PROXY = "https://api.allorigins.win/get?url=";
@@ -79,4 +78,3 @@ function searchNotion() {
 
 // Jalankan saat loading
 fetchAirdrops();
-</script> 
