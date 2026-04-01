@@ -103,6 +103,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
     <script src="script.js"></script>
     <script>
+<script>
 // Data Airdrop dari JSON
 let airdropsData = [];
 
@@ -110,9 +111,14 @@ async function loadAirdrops() {
     try {
         const res = await fetch('/airdrops.json');
         airdropsData = await res.json();
-        renderAllResults(); // tampilkan semua saat pertama load
+        // JANGAN render semua saat load
+        // renderAllResults();  ← kita hapus baris ini
     } catch (e) {
         console.error("Gagal load airdrops.json", e);
+        document.getElementById('results').innerHTML = `
+            <p style="color: #888; text-align: center; padding: 40px 20px;">
+                Gagal memuat data tutorial. Cek file airdrops.json
+            </p>`;
     }
 }
 
@@ -122,8 +128,9 @@ function renderResults(filteredData) {
 
     if (filteredData.length === 0) {
         container.innerHTML = `
-            <p style="color: #888; text-align: center; padding: 40px 20px;">
-                Tidak ada tutorial yang cocok dengan pencarianmu.
+            <p style="color: #888; text-align: center; padding: 40px 20px; font-size: 0.9rem;">
+                Tidak ada tutorial yang cocok.<br>
+                Coba ketik nama airdrop lain.
             </p>`;
         return;
     }
@@ -132,7 +139,7 @@ function renderResults(filteredData) {
         const card = document.createElement('div');
         card.className = 'tutorial-card';
         card.style.cssText = `
-            background: rgba(30,30,30,0.8); 
+            background: rgba(30,30,30,0.85); 
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: 12px; 
             padding: 18px; 
@@ -141,42 +148,54 @@ function renderResults(filteredData) {
             transition: all 0.3s ease;
         `;
         card.innerHTML = `
-            <h3 style="margin: 0 0 8px 0; font-size: 1rem; color: #fff;">${item.title}</h3>
-            <p style="color: #aaa; font-size: 0.8rem; line-height: 1.4; margin: 0 0 12px 0;">
+            <h3 style="margin: 0 0 8px 0; font-size: 1.05rem; color: #fff;">${item.title}</h3>
+            <p style="color: #aaa; font-size: 0.85rem; line-height: 1.5; margin: 0 0 15px 0;">
                 ${item.description}
             </p>
-            <span style="font-size: 0.7rem; color: #00ff9d; letter-spacing: 1px;">→ BACA TUTORIAL</span>
+            <span style="color: #00ff9d; font-size: 0.8rem; letter-spacing: 1px;">→ BACA TUTORIAL</span>
         `;
-        card.onclick = () => {
+        
+        card.addEventListener('click', () => {
             window.location.href = `/tutorial.html?slug=${item.slug}`;
-        };
+        });
+        
+        // Hover effect
+        card.addEventListener('mouseenter', () => {
+            card.style.borderColor = 'rgba(0, 255, 157, 0.3)';
+            card.style.transform = 'translateY(-2px)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.borderColor = 'rgba(255,255,255,0.08)';
+            card.style.transform = 'translateY(0)';
+        });
+
         container.appendChild(card);
     });
-}
-
-function renderAllResults() {
-    renderResults(airdropsData);
 }
 
 // Real-time search
 document.getElementById('searchInput').addEventListener('input', (e) => {
     const term = e.target.value.toLowerCase().trim();
-    
+    const resultsBox = document.getElementById('results');
+
     if (term === '') {
-        renderAllResults();
+        resultsBox.innerHTML = `
+            <p style="color: #666; text-align: center; padding: 30px 20px; font-size: 0.9rem;">
+                Ketik nama airdrop untuk mencari tutorial...
+            </p>`;
         return;
     }
 
     const filtered = airdropsData.filter(item => 
         item.title.toLowerCase().includes(term) || 
-        item.description.toLowerCase().includes(term)
+        (item.description && item.description.toLowerCase().includes(term))
     );
-    
+
     renderResults(filtered);
 });
 
 // Load data saat halaman dibuka
 window.addEventListener('load', loadAirdrops);
-            </script> 
+</script> 
 </body>
 </html> 
