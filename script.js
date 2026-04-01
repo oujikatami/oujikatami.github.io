@@ -24,44 +24,58 @@ const TOKEN = "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";
 const DB_ID = "335fee4b95628099895be4d2b2f2248e";
 const PROXY = "https://api.allorigins.win/get?url=";
 
-// 1. Fungsi Ambil Data Awal
 async function fetchAirdrops() {
     const container = document.getElementById('tutorialContainer');
-    const targetUrl = encodeURIComponent(`https://api.notion.com/v1/databases/${DB_ID}/query`);
+    if(!container) return;
+    
+    container.innerHTML = "<p style='color:#444; font-size:0.5rem; text-align:center;'>SCANNING DATABASE...</p>";
+
+    // Kita tembak lewat Proxy AllOrigins dengan format yang bener
+    const targetUrl = `https://api.notion.com/v1/databases/${DB_ID}/query`;
     
     try {
-        const res = await fetch(PROXY + targetUrl);
+        const res = await fetch(PROXY + encodeURIComponent(targetUrl), {
+            headers: {
+                'Authorization': `Bearer ${TOKEN}`,
+                'Notion-Version': '2022-06-28'
+            }
+        });
+        
         const json = await res.json();
+        // AllOrigins balikin datanya di dalam field 'contents'
         const data = JSON.parse(json.contents);
         
+        if (!data.results || data.results.length === 0) {
+            container.innerHTML = "<p style='color:#444; font-size:0.5rem; text-align:center;'>NO DATA FOUND. CHECK CONNECTION.</p>";
+            return;
+        }
+
         container.innerHTML = ""; // Bersihin loading
         
         data.results.forEach(page => {
             const name = page.properties["AIRDROP NAME"]?.title[0]?.plain_text || "UNTITLED";
             const tags = page.properties["TAGS"]?.multi_select.map(t => t.name).join(" • ") || "ACTIVE";
             
-            // Bikin element list
             const item = document.createElement('div');
-            item.className = "notion-item"; // Buat pencarian
-            item.style = "background:rgba(255,255,255,0.03); border:1px solid #222; padding:15px; border-radius:10px; cursor:pointer; display:block;";
+            item.className = "notion-item";
+            item.style = "background:rgba(255,255,255,0.02); border:1px solid #222; padding:15px; border-radius:10px; cursor:pointer; margin-bottom:10px;";
             
-            // INI KUNCINYA: Lempar user ke airdrop.html bawa ID Notion
             item.onclick = () => {
                 window.location.href = `airdrop.html?id=${page.id}`;
             };
 
             item.innerHTML = `
-                <span style="font-size:0.5rem; color:#444;">${tags.toUpperCase()}</span>
-                <h4 style="color:#fff; margin-top:5px; font-size:0.8rem;">${name.toUpperCase()}</h4>
+                <span style="font-size:0.5rem; color:#444; letter-spacing:1px;">${tags.toUpperCase()}</span>
+                <h4 style="color:#fff; margin-top:5px; font-size:0.8rem; letter-spacing:1px;">${name.toUpperCase()}</h4>
             `;
             container.appendChild(item);
         });
     } catch (e) {
-        console.log("Error koneksi Notion");
+        container.innerHTML = "<p style='color:red; font-size:0.5rem; text-align:center;'>CONNECTION ERROR</p>";
+        console.error(e);
     }
 }
 
-// 2. Fungsi Search (Filter List)
 function searchNotion() {
     let input = document.getElementById('tutorialSearch').value.toLowerCase();
     let items = document.getElementsByClassName('notion-item');
@@ -76,5 +90,4 @@ function searchNotion() {
     }
 }
 
-// Jalankan saat loading
 fetchAirdrops();
