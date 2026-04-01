@@ -2,116 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DROP HUNTING | OUJI KATAMI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Drop Hunting | Ōuji Katami</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body>
+<body class="intro-active">
+
+    <div id="intro-overlay"></div>
+
+    <nav class="top-nav">
+        <div class="brand-left">
+            DROP <span style="color: #666;">HUNTING</span>
+        </div>
+        <div class="menu-btn" onclick="toggleMenu()">
+            <div class="bar"></div><div class="bar"></div>
+        </div>
+    </nav>
+
+    <div id="side-menu" class="side-drawer">
+        <div class="close-menu" onclick="toggleMenu()"></div>
+        <div class="drawer-content" style="padding-left: 25px !important; padding-top: 15px !important;">
+            <h3 class="menu-title">MENU</h3>
+            <div class="menu-links">
+                <a href="index.html">ŌUJI KATAMI PORTFOLIO</a>
+                <a href="community.html">AIRDROP SCOUT COMMUNITY</a>
+                <a href="services.html">ŌUJI SERVICE</a>
+                <a href="market.html">CRYPTO MARKET</a>
+            </div>
+        </div>
+    </div>
 
 <main id="scroller">
-    <section class="snap-panel">
-        <div class="container" style="padding-top: 80px; display: flex; flex-direction: column; align-items: center; width: 100%; box-sizing: border-box;">
-            
-            <div class="cyber-box" style="width: 90%; max-width: 400px; padding: 20px; margin-bottom: 20px;">
-                <p style="font-size: 0.6rem; color: #666; margin-bottom: 12px; text-align: center; letter-spacing: 2px;">FIND AIRDROP TUTORIAL</p>
-                <input type="text" id="tutorialSearch" onkeyup="searchTutorial()" placeholder="Search..." 
-                       style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid #333; border-radius: 8px; color: #fff; outline: none; text-align: center;">
-
-                <div id="tutorialContainer" style="width: 100%; margin-top: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <section class="snap-panel">
+            <div class="container" style="padding-top: 80px;"> <div class="cyber-box" style="margin-bottom: 20px; padding: 20px;">
+                    <p style="font-size: 0.7rem; letter-spacing: 3px; color: #666; margin-bottom: 15px; text-align: center; font-weight: 800;">FIND AIRDROP TUTORIAL HERE</p>
+                    <div class="search-wrapper-vanta">
+                        <i class="fas fa-search" style="opacity: 0.3; margin-right: 15px;"></i>
+                        <input type="text" id="searchInput" placeholder="" style="background: transparent; border: none; color: #fff; outline: none; width: 100%; font-family: inherit; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
                     </div>
-            </div>
-
-            <div class="cyber-box" style="width: 90%; max-width: 400px; padding: 20px;">
-                <h2 style="font-size: 0.8rem; border-bottom: 1px solid #222; padding-bottom: 10px; margin-bottom: 15px; letter-spacing: 2px; text-align: center;">AIRDROP TOOLS</h2>
-                <div class="cex-grid">
-                    <a href="#" class="cex-btn">BINANCE</a>
-                    <a href="#" class="cex-btn">BYBIT</a>
-                    <a href="#" class="cex-btn">OKX</a>
-                    <a href="#" class="cex-btn">BITGET</a>
-                    <a href="#" class="cex-btn">KUCOIN</a>
-                    <a href="#" class="cex-btn">GATE.IO</a>
                 </div>
+
+                <div class="cyber-box" style="text-align: left; padding: 20px;">
+                    <h2 style="font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; color: #fff;">AIRDROP TOOLS</h2>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div class="tool-item-vanta">
+                            <p style="font-weight: 800; font-size: 0.65rem; color: #fff; margin-bottom: 5px;">WALLET</p>
+                            <p style="color: #888; font-size: 0.65rem;">OKX/METAMASK/RABBY<br>PHANTOM/SOLFLARE</p>
+                        </div>
+                        <div class="tool-item-vanta">
+                            <p style="font-weight: 800; font-size: 0.65rem; color: #fff; margin-bottom: 5px;">SOCIAL</p>
+                            <p style="color: #888; font-size: 0.65rem;">X • TELE • DISCORD<br>NEW EMAIL</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-item-vanta" style="margin-bottom: 20px;">
+                        <p style="font-weight: 800; font-size: 0.65rem; color: #fff; margin-bottom: 5px;">BROWSER MOBILE (REC)</p>
+                        <p style="color: #888; font-size: 0.65rem;">BRAVE • MISES • KIWI</p>
+                    </div>
+
+                    <div class="tool-item-vanta">
+                        <p style="font-weight: 800; font-size: 0.65rem; color: #fff; margin-bottom: 10px; text-align: center;">EXCHANGE (CEX)</p>
+                        <div class="cex-link-grid" style="grid-template-columns: repeat(3, 1fr); gap: 8px;">
+                            <a href="REFF_BINANCE" class="cex-btn-vanta" style="padding: 8px; font-size: 0.6rem;">BINANCE</a>
+                            <a href="REFF_BYBIT" class="cex-btn-vanta" style="padding: 8px; font-size: 0.6rem;">BYBIT</a>
+                            <a href="REFF_OKX" class="cex-btn-vanta" style="padding: 8px; font-size: 0.6rem;">OKX</a>
+                            <a href="REFF_BITGET" class="cex-btn-vanta" style="padding: 8px; font-size: 0.6rem;">BITGET</a>
+                            <a href="REFF_KUCOIN" class="cex-btn-vanta" style="padding: 8px; font-size: 0.6rem;">KUCOIN</a>
+                            <a href="REFF_GATE" class="cex-btn-vanta" style="padding: 8px; font-size: 0.6rem;">GATE.IO</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+        </section>
+</main> 
 
-        </div>
-    </section>
-</main>
-
-<div id="tutorialModal" class="modal-vanta">
-    <div class="modal-content-cyber">
-        <span class="close-modal" onclick="closeModal()">× CLOSE</span>
-        <div id="modalBody" class="modal-body-text"></div>
-    </div>
-</div>
-
-<script>
-const TOKEN = "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";
-const DB_ID = "335fee4b95628099895be4d2b2f2248e";
-const PROXY = "https://api.allorigins.win/get?url=";
-
-async function fetchAirdrops() {
-    const container = document.getElementById('tutorialContainer');
-    container.innerHTML = "<p style='color:#444; font-size:0.5rem; text-align:center;'>CONNECTING...</p>";
-
-    const targetUrl = encodeURIComponent(`https://api.notion.com/v1/databases/${DB_ID}/query`);
-    
-    try {
-        const res = await fetch(PROXY + targetUrl);
-        const json = await res.json();
-        const data = JSON.parse(json.contents);
-        
-        container.innerHTML = "";
-        data.results.forEach(page => {
-            const name = page.properties["AIRDROP NAME"]?.title[0]?.plain_text || "UNTITLED";
-            const tags = page.properties["TAGS"]?.multi_select.map(t => t.name).join(" • ") || "ACTIVE";
-            
-            const div = document.createElement('div');
-            div.className = "notion-item";
-            div.style = "background:rgba(255,255,255,0.02); border:1px solid #222; padding:15px; border-radius:10px; cursor:pointer;";
-            div.onclick = () => openTutorial(page.id);
-            div.innerHTML = `<span style="font-size:0.5rem; color:#444;">${tags.toUpperCase()}</span><h4 style="color:#fff; margin-top:5px; font-size:0.8rem;">${name.toUpperCase()}</h4>`;
-            container.appendChild(div);
-        });
-    } catch (e) {
-        container.innerHTML = "<p style='color:red;'>FAILED TO LOAD</p>";
-    }
-}
-
-// Fungsi Cari
-function searchTutorial() {
-    let input = document.getElementById('tutorialSearch').value.toLowerCase();
-    let items = document.getElementsByClassName('notion-item');
-    for (i = 0; i < items.length; i++) {
-        if (!items[i].innerHTML.toLowerCase().includes(input)) {
-            items[i].style.display="none";
-        } else {
-            items[i].style.display="block";
-        }
-    }
-}
-
-async function openTutorial(id) {
-    const modal = document.getElementById('tutorialModal');
-    const body = document.getElementById('modalBody');
-    modal.style.display = "block";
-    body.innerHTML = "LOADING...";
-    
-    try {
-        const res = await fetch(PROXY + encodeURIComponent(`https://api.notion.com/v1/blocks/${id}/children`));
-        const json = await res.json();
-        const data = JSON.parse(json.contents);
-        let html = "";
-        data.results.forEach(b => {
-            if (b.type === 'paragraph') html += `<p style="margin-bottom:15px;">${b.paragraph.rich_text[0]?.plain_text || ""}</p>`;
-            if (b.type === 'image') html += `<img src="${b.image.type === 'external' ? b.image.external.url : b.image.file.url}" style="width:100%; border-radius:10px;">`;
-        });
-        body.innerHTML = html;
-    } catch (e) { body.innerHTML = "ERROR"; }
-}
-
-function closeModal() { document.getElementById('tutorialModal').style.display = "none"; }
-fetchAirdrops();
-</script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script src="script.js"></script>
 </body>
-</html> 
+</html>
