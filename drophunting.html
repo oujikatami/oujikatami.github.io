@@ -104,22 +104,21 @@
     <script src="script.js"></script>
     <script>
 <script>
-// Data Airdrop dari JSON
-let airdropsData = [];
+// Data Sementara (Hardcode) - Nanti bisa diganti ke fetch JSON
+const airdropsData = [
+  {
+    "title": "Satsume Airdrop",
+    "slug": "satsume",
+    "description": "Satsume tutorial airdrop lengkap",
+    "notion_link": "https://determined-casquette-4d9.notion.site/Satsume-Airdrop-335fee4b9562809f82f9fc6e2d51532a"
+  }
+];
 
-async function loadAirdrops() {
-    try {
-        const res = await fetch('/airdrops.json');
-        airdropsData = await res.json();
-        // JANGAN render semua saat load
-        // renderAllResults();  ← kita hapus baris ini
-    } catch (e) {
-        console.error("Gagal load airdrops.json", e);
-        document.getElementById('results').innerHTML = `
-            <p style="color: #888; text-align: center; padding: 40px 20px;">
-                Gagal memuat data tutorial. Cek file airdrops.json
-            </p>`;
-    }
+function showInitialMessage() {
+    document.getElementById('results').innerHTML = `
+        <p style="color: #666; text-align: center; padding: 50px 20px; font-size: 0.95rem;">
+            Ketik nama airdrop di atas untuk mencari tutorial...
+        </p>`;
 }
 
 function renderResults(filteredData) {
@@ -128,74 +127,61 @@ function renderResults(filteredData) {
 
     if (filteredData.length === 0) {
         container.innerHTML = `
-            <p style="color: #888; text-align: center; padding: 40px 20px; font-size: 0.9rem;">
-                Tidak ada tutorial yang cocok.<br>
-                Coba ketik nama airdrop lain.
+            <p style="color: #888; text-align: center; padding: 40px 20px;">
+                Tidak ada tutorial yang cocok dengan pencarianmu.
             </p>`;
         return;
     }
 
     filteredData.forEach(item => {
         const card = document.createElement('div');
-        card.className = 'tutorial-card';
         card.style.cssText = `
-            background: rgba(30,30,30,0.85); 
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px; 
-            padding: 18px; 
-            margin-bottom: 15px;
+            background: rgba(30, 30, 30, 0.9);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
             cursor: pointer;
             transition: all 0.3s ease;
         `;
         card.innerHTML = `
-            <h3 style="margin: 0 0 8px 0; font-size: 1.05rem; color: #fff;">${item.title}</h3>
-            <p style="color: #aaa; font-size: 0.85rem; line-height: 1.5; margin: 0 0 15px 0;">
+            <h3 style="margin: 0 0 10px 0; color: #fff; font-size: 1.1rem;">${item.title}</h3>
+            <p style="color: #bbb; font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px;">
                 ${item.description}
             </p>
-            <span style="color: #00ff9d; font-size: 0.8rem; letter-spacing: 1px;">→ BACA TUTORIAL</span>
+            <span style="color: #00ff9d; font-size: 0.85rem; letter-spacing: 1.5px;">→ BACA TUTORIAL</span>
         `;
-        
+
         card.addEventListener('click', () => {
-            window.location.href = `/tutorial.html?slug=${item.slug}`;
+            window.location.href = `tutorial.html?slug=${item.slug}`;
         });
-        
+
         // Hover effect
-        card.addEventListener('mouseenter', () => {
-            card.style.borderColor = 'rgba(0, 255, 157, 0.3)';
-            card.style.transform = 'translateY(-2px)';
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.borderColor = 'rgba(255,255,255,0.08)';
-            card.style.transform = 'translateY(0)';
-        });
+        card.addEventListener('mouseenter', () => card.style.borderColor = '#00ff9d');
+        card.addEventListener('mouseleave', () => card.style.borderColor = 'rgba(255,255,255,0.1)');
 
         container.appendChild(card);
     });
 }
 
-// Real-time search
+// Search real-time
 document.getElementById('searchInput').addEventListener('input', (e) => {
     const term = e.target.value.toLowerCase().trim();
-    const resultsBox = document.getElementById('results');
 
     if (term === '') {
-        resultsBox.innerHTML = `
-            <p style="color: #666; text-align: center; padding: 30px 20px; font-size: 0.9rem;">
-                Ketik nama airdrop untuk mencari tutorial...
-            </p>`;
+        showInitialMessage();
         return;
     }
 
     const filtered = airdropsData.filter(item => 
-        item.title.toLowerCase().includes(term) || 
-        (item.description && item.description.toLowerCase().includes(term))
+        item.title.toLowerCase().includes(term)
     );
 
     renderResults(filtered);
 });
 
-// Load data saat halaman dibuka
-window.addEventListener('load', loadAirdrops);
-</script> 
+// Load awal
+window.addEventListener('load', showInitialMessage);
+</script>  
 </body>
 </html> 
