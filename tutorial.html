@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial Airdrop - oujikatami.xyz</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0f0f0f;
+      color: white;
+    }
+    .header {
+      padding: 15px 20px;
+      background: #1a1a1a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header a {
+      color: #aaa;
+      text-decoration: none;
+    }
+    iframe {
+      width: 100%;
+      height: calc(100vh - 60px);
+      border: none;
+      background: white;
+    }
+    .not-found {
+      text-align: center;
+      padding: 50px 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2 id="page-title">Loading Tutorial...</h2>
+    <a href="/drophunting.html">← Kembali ke Drop Hunting</a>
+  </div>
+
+  <iframe id="notion-iframe" src="" allowfullscreen></iframe>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get('slug');
+
+    fetch('/airdrops.json')
+      .then(response => response.json())
+      .then(data => {
+        const tutorial = data.find(item => item.slug === slug);
+        
+        if (tutorial) {
+          document.getElementById('page-title').textContent = tutorial.title;
+          document.getElementById('notion-iframe').src = tutorial.notion_link;
+        } else {
+          document.getElementById('page-title').textContent = "Tutorial Tidak Ditemukan";
+          document.querySelector('iframe').style.display = 'none';
+          const msg = document.createElement('div');
+          msg.className = 'not-found';
+          msg.innerHTML = `<p>Tutorial yang kamu cari tidak ada atau slug salah.</p>`;
+          document.body.appendChild(msg);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById('page-title').textContent = "Error Loading Tutorial";
+      });
+  </script>
+</body>
+</html>
