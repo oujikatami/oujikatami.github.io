@@ -324,97 +324,32 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 
 .pay-item:active {
     transform: scale(0.95); /* Efek pencet di HP */
-/* --- DROP HUNTING REFINED --- */
-.page-title {
-    font-size: 1.5rem;
-    font-weight: 900;
-    letter-spacing: 5px;
-    text-align: center;
-    margin: 40px 0;
-    color: #fff;
-}
-
-.search-area {
-    padding: 0 30px;
-    margin-bottom: 60px;
-}
-
-.search-box {
+} 
+.search-wrapper-vanta {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 10px;
-}
-
-.search-box input {
-    background: transparent;
-    border: none;
-    color: #fff;
     width: 100%;
-    padding: 10px;
-    outline: none;
-    font-family: 'Space Mono', monospace; /* Sesuaikan font lo */
+    padding: 10px 0;
 }
 
-.section-label {
-    font-size: 0.8rem;
-    letter-spacing: 3px;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.tools-table {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 0 20px 100px 20px; /* Jarak bawah biar bisa scroll */
-}
-
-.tool-group {
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    padding: 25px 0;
-}
-
-.group-title {
-    display: block;
-    font-weight: 800;
-    font-size: 0.75rem;
-    margin-bottom: 10px;
-    color: #fff;
-}
-
-.tool-group p {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.6;
-}
-
-.cex-grid {
+.cex-link-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
-    margin-top: 15px;
 }
 
-.cex-grid a {
-    font-size: 0.7rem;
+.cex-btn-vanta {
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 12px;
+    text-align: center;
     color: #fff;
     text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 10px;
-    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 800;
     transition: 0.3s;
 }
 
-.cex-grid a:hover {
+.cex-btn-vanta:hover {
     background: #fff;
     color: #000;
 }
-
-/* Fix Scroll */
-body {
-    overflow-y: auto !important;
-    height: auto !important;
-} 
