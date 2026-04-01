@@ -2,30 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DROP HUNTING | ŌUJI KATAMI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Drop Hunting | Ōuji Katami</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body>
-    <div id="particles-js"></div>
+<body class="intro-active">
+
+    <div id="intro-overlay"></div>
 
     <nav class="top-nav">
-        <div class="nav-left">
-            <span class="nav-logo">ŌUJI KATAMI <span style="opacity: 0.5;">PORTAL</span></span>
+        <div class="brand-left">
+            DROP <span style="color: #666;">HUNTING</span>
         </div>
-        <div class="nav-right" onclick="toggleMenu()">
-            <div class="menu-icon">
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
+        <div class="menu-btn" onclick="toggleMenu()">
+            <div class="bar"></div><div class="bar"></div>
         </div>
     </nav>
 
     <div id="side-menu" class="side-drawer">
-        <div class="close-menu" onclick="toggleMenu()">
-            <i class="fas fa-arrow-left"></i> BACK
-        </div>
+        <div class="close-menu" onclick="toggleMenu()"></div>
         <div class="drawer-content" style="padding-left: 25px !important; padding-top: 15px !important;">
             <h3 class="menu-title">MENU</h3>
             <div class="menu-links">
@@ -37,58 +33,56 @@
         </div>
     </div>
 
-    <main class="content-wrapper">
-        <h1 class="page-title">DROP HUNTING</h1>
-
-        <section class="search-area">
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="">
+    <main id="scroller">
+        <section class="snap-panel">
+            <div class="container">
+                <div class="cyber-box">
+                    <div class="search-wrapper-vanta">
+                        <i class="fas fa-search" style="opacity: 0.3; margin-right: 15px;"></i>
+                        <input type="text" id="searchInput" placeholder="" style="background: transparent; border: none; color: #fff; outline: none; width: 100%; font-family: inherit; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="tools-container">
-            <h2 class="section-label">AIRDROP TOOLS</h2>
-            
-            <div class="tools-table">
-                <div class="tool-group">
-                    <span class="group-title">CRYPTO WALLET</span>
-                    <p>OKX WALLET / METAMASK / RABBY (EVM)</p>
-                    <p>PHANTOM / SOLFLARE (SOLANA)</p>
-                </div>
+        <section class="snap-panel">
+            <div class="container">
+                <div class="cyber-box" style="text-align: left; max-height: 80vh; overflow-y: auto;">
+                    <h2 style="font-size: 1rem; letter-spacing: 3px; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">AIRDROP TOOLS</h2>
+                    
+                    <div class="tool-item-vanta">
+                        <p style="font-weight: 800; font-size: 0.8rem; color: #fff;">CRYPTO WALLET</p>
+                        <p style="color: #aaa; font-size: 0.8rem; margin-bottom: 15px;">OKX / METAMASK / RABBY (EVM)<br>PHANTOM / SOLFLARE (SOLANA)</p>
+                    </div>
 
-                <div class="tool-group">
-                    <span class="group-title">ACCOUNT SOCIAL</span>
-                    <p>X / TWITTER • TELEGRAM • DISCORD</p>
-                    <p>NEW EMAIL FOR AIRDROP (OPTIONAL)</p>
-                </div>
+                    <div class="tool-item-vanta">
+                        <p style="font-weight: 800; font-size: 0.8rem; color: #fff;">ACCOUNT SOCIAL</p>
+                        <p style="color: #aaa; font-size: 0.8rem; margin-bottom: 15px;">X • TELEGRAM • DISCORD • NEW EMAIL</p>
+                    </div>
 
-                <div class="tool-group">
-                    <span class="group-title">BROWSER MOBILE</span>
-                    <p>KIWI • BRAVE • MISES</p>
-                </div>
+                    <div class="tool-item-vanta">
+                        <p style="font-weight: 800; font-size: 0.8rem; color: #fff;">BROWSER MOBILE (RECOMMENDED)</p>
+                        <p style="color: #aaa; font-size: 0.8rem; margin-bottom: 15px;">BRAVE • MISES • KIWI</p>
+                    </div>
 
-                <div class="tool-group cex-section">
-                    <span class="group-title">EXCHANGE (CEX)</span>
-                    <div class="cex-grid">
-                        <a href="REFF_BINANCE">BINANCE</a>
-                        <a href="REFF_BYBIT">BYBIT</a>
-                        <a href="REFF_OKX">OKX</a>
-                        <a href="REFF_BITGET">BITGET</a>
-                        <a href="REFF_KUCOIN">KUCOIN</a>
-                        <a href="REFF_GATE">GATE.IO</a>
+                    <div class="tool-item-vanta">
+                        <p style="font-weight: 800; font-size: 0.8rem; color: #fff; margin-bottom: 10px;">EXCHANGE (CEX)</p>
+                        <div class="cex-link-grid">
+                            <a href="REFF_BINANCE" class="cex-btn-vanta">BINANCE</a>
+                            <a href="REFF_BYBIT" class="cex-btn-vanta">BYBIT</a>
+                            <a href="REFF_OKX" class="cex-btn-vanta">OKX</a>
+                            <a href="REFF_BITGET" class="cex-btn-vanta">BITGET</a>
+                            <a href="REFF_KUCOIN" class="cex-btn-vanta">KUCOIN</a>
+                            <a href="REFF_GATE" class="cex-btn-vanta">GATE.IO</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
     <script src="script.js"></script>
-    <script>
-        function toggleMenu() {
-            document.getElementById('side-menu').classList.toggle('active');
-        }
-    </script>
 </body>
 </html>
