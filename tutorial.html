@@ -11,7 +11,8 @@
       padding: 0;
       background: #0a0a0a;
       color: white;
-      font-family: system-ui, sans-serif;
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
     }
     .header {
       background: #111;
@@ -29,15 +30,27 @@
       text-decoration: none;
       font-size: 0.95rem;
     }
-    iframe {
-      width: 100%;
-      height: calc(100vh - 60px);
-      border: none;
-    }
-    .error-msg {
+    .content {
+      padding: 40px 20px;
       text-align: center;
-      padding: 80px 20px;
-      color: #888;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .btn {
+      display: inline-block;
+      background: #00ff9d;
+      color: #000;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 20px;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+    }
+    .btn:hover {
+      background: #00cc7a;
+      transform: translateY(-3px);
     }
   </style>
 </head>
@@ -48,13 +61,18 @@
     <a href="drophunting.html">← Kembali ke Drop Hunting</a>
   </div>
 
-  <iframe id="notion-frame" src="" allowfullscreen></iframe>
+  <div class="content">
+    <h1 style="font-size: 1.8rem; margin-bottom: 20px;">Tutorial Siap Dibaca</h1>
+    <p style="color: #aaa; font-size: 1.05rem; line-height: 1.6;">
+      Kamu akan diarahkan ke halaman tutorial lengkap di Notion.
+    </p>
+    <a href="#" id="openTutorial" class="btn">BUKA TUTORIAL SEKARANG →</a>
+  </div>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get('slug');
 
-    // Data sama seperti di drophunting.html
     const airdropsData = [
       {
         "title": "Satsume Airdrop",
@@ -67,10 +85,9 @@
 
     if (tutorial) {
       document.getElementById('title').textContent = tutorial.title;
-      document.getElementById('notion-frame').src = tutorial.notion_link;
+      document.getElementById('openTutorial').href = tutorial.notion_link;
     } else {
       document.getElementById('title').textContent = "Tutorial Tidak Ditemukan";
-      document.getElementById('notion-frame').style.display = 'none';
     }
   </script>
 </body>
