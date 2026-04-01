@@ -85,15 +85,13 @@
                 </div>
             </div>
 
-            <!-- HASIL PENCARIAN AIRDROP -->
-            <div class="cyber-box" id="resultsContainer" style="padding: 20px; min-height: 200px;">
-                <h2 style="font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 20px; color: #fff;">
-                    HASIL PENCARIAN
-                </h2>
-                <div id="results" class="results-grid">
-                    <!-- Hasil akan muncul di sini via JavaScript -->
-                </div>
-            </div>
+<!-- HASIL PENCARIAN SIMPEL -->
+<div class="cyber-box" id="resultsContainer" style="padding: 20px; min-height: 100px;">
+    <h2 style="font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 15px; color: #fff;">
+        HASIL PENCARIAN
+    </h2>
+    <div id="results"></div>
+</div> 
 
         </div>
     </section>
@@ -101,23 +99,22 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-    <script src="script.js"></script>
-    <script>
+    <script src="script.js"></script>  
 <script>
-// Data Sementara (Hardcode) - Nanti bisa diganti ke fetch JSON
+<script>
+// Data Airdrop (hardcode dulu)
 const airdropsData = [
   {
     "title": "Satsume Airdrop",
     "slug": "satsume",
-    "description": "Satsume tutorial airdrop lengkap",
     "notion_link": "https://determined-casquette-4d9.notion.site/Satsume-Airdrop-335fee4b9562809f82f9fc6e2d51532a"
   }
 ];
 
 function showInitialMessage() {
     document.getElementById('results').innerHTML = `
-        <p style="color: #666; text-align: center; padding: 50px 20px; font-size: 0.95rem;">
-            Ketik nama airdrop di atas untuk mencari tutorial...
+        <p style="color: #666; text-align: center; padding: 30px 20px; font-size: 0.9rem;">
+            Ketik nama airdrop untuk mencari tutorial...
         </p>`;
 }
 
@@ -127,44 +124,46 @@ function renderResults(filteredData) {
 
     if (filteredData.length === 0) {
         container.innerHTML = `
-            <p style="color: #888; text-align: center; padding: 40px 20px;">
-                Tidak ada tutorial yang cocok dengan pencarianmu.
+            <p style="color: #888; text-align: center; padding: 30px;">
+                Tidak ditemukan
             </p>`;
         return;
     }
 
     filteredData.forEach(item => {
-        const card = document.createElement('div');
-        card.style.cssText = `
-            background: rgba(30, 30, 30, 0.9);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 16px;
+        const itemEl = document.createElement('div');
+        itemEl.style.cssText = `
+            background: rgba(255,255,255,0.06);
+            color: #fff;
+            padding: 16px 20px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.08);
         `;
-        card.innerHTML = `
-            <h3 style="margin: 0 0 10px 0; color: #fff; font-size: 1.1rem;">${item.title}</h3>
-            <p style="color: #bbb; font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px;">
-                ${item.description}
-            </p>
-            <span style="color: #00ff9d; font-size: 0.85rem; letter-spacing: 1.5px;">→ BACA TUTORIAL</span>
-        `;
-
-        card.addEventListener('click', () => {
+        itemEl.textContent = item.title;
+        
+        itemEl.addEventListener('click', () => {
             window.location.href = `tutorial.html?slug=${item.slug}`;
         });
 
         // Hover effect
-        card.addEventListener('mouseenter', () => card.style.borderColor = '#00ff9d');
-        card.addEventListener('mouseleave', () => card.style.borderColor = 'rgba(255,255,255,0.1)');
+        itemEl.addEventListener('mouseenter', () => {
+            itemEl.style.background = 'rgba(0, 255, 157, 0.15)';
+            itemEl.style.borderColor = '#00ff9d';
+        });
+        itemEl.addEventListener('mouseleave', () => {
+            itemEl.style.background = 'rgba(255,255,255,0.06)';
+            itemEl.style.borderColor = 'rgba(255,255,255,0.08)';
+        });
 
-        container.appendChild(card);
+        container.appendChild(itemEl);
     });
 }
 
-// Search real-time
+// Real-time search
 document.getElementById('searchInput').addEventListener('input', (e) => {
     const term = e.target.value.toLowerCase().trim();
 
@@ -182,6 +181,6 @@ document.getElementById('searchInput').addEventListener('input', (e) => {
 
 // Load awal
 window.addEventListener('load', showInitialMessage);
-</script>  
+</script> 
 </body>
 </html> 
