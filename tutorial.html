@@ -3,74 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tutorial Airdrop - oujikatami.xyz</title>
+  <title id="page-title">Tutorial Airdrop - Ōuji Katami</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background: #0f0f0f;
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
       color: white;
+      font-family: system-ui, sans-serif;
     }
     .header {
+      background: #111;
       padding: 15px 20px;
-      background: #1a1a1a;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .header a {
       color: #aaa;
       text-decoration: none;
+      font-size: 0.95rem;
     }
     iframe {
       width: 100%;
       height: calc(100vh - 60px);
       border: none;
-      background: white;
     }
-    .not-found {
+    .error-msg {
       text-align: center;
-      padding: 50px 20px;
-      font-size: 18px;
+      padding: 80px 20px;
+      color: #888;
     }
   </style>
 </head>
 <body>
+
   <div class="header">
-    <h2 id="page-title">Loading Tutorial...</h2>
-    <a href="/drophunting.html">← Kembali ke Drop Hunting</a>
+    <h2 id="title">Satsume Airdrop</h2>
+    <a href="drophunting.html">← Kembali ke Drop Hunting</a>
   </div>
 
-  <iframe id="notion-iframe" src="" allowfullscreen></iframe>
+  <iframe id="notion-frame" src="" allowfullscreen></iframe>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const slug = params.get('slug');
+    const urlParams = new URLSearchParams(window.location.search);
+    const slug = urlParams.get('slug');
 
-    fetch('/airdrops.json')
-      .then(response => response.json())
-      .then(data => {
-        const tutorial = data.find(item => item.slug === slug);
-        
-        if (tutorial) {
-          document.getElementById('page-title').textContent = tutorial.title;
-          document.getElementById('notion-iframe').src = tutorial.notion_link;
-        } else {
-          document.getElementById('page-title').textContent = "Tutorial Tidak Ditemukan";
-          document.querySelector('iframe').style.display = 'none';
-          const msg = document.createElement('div');
-          msg.className = 'not-found';
-          msg.innerHTML = `<p>Tutorial yang kamu cari tidak ada atau slug salah.</p>`;
-          document.body.appendChild(msg);
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        document.getElementById('page-title').textContent = "Error Loading Tutorial";
-      });
+    // Data sama seperti di drophunting.html
+    const airdropsData = [
+      {
+        "title": "Satsume Airdrop",
+        "slug": "satsume",
+        "notion_link": "https://determined-casquette-4d9.notion.site/Satsume-Airdrop-335fee4b9562809f82f9fc6e2d51532a"
+      }
+    ];
+
+    const tutorial = airdropsData.find(item => item.slug === slug);
+
+    if (tutorial) {
+      document.getElementById('title').textContent = tutorial.title;
+      document.getElementById('notion-frame').src = tutorial.notion_link;
+    } else {
+      document.getElementById('title').textContent = "Tutorial Tidak Ditemukan";
+      document.getElementById('notion-frame').style.display = 'none';
+    }
   </script>
 </body>
-</html>
+</html> 
