@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sell | Crypto</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { background: #000; margin: 0; overflow-x: hidden; }
+        #vanta-canvas { position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; }
+        main { position: relative; z-index: 10; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 20px; box-sizing: border-box;}
+        .cyber-card {
+            width: 100%; max-width: 400px; padding: 30px;
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px; backdrop-filter: blur(15px);
+        }
+        input, select {
+            width: 100%; padding: 15px; background: rgba(255,255,255,0.03);
+            border: 1px solid #222; border-radius: 12px; color: #fff;
+            text-align: center; margin-bottom: 20px; outline: none; font-size: 1rem; font-family: inherit;
+        }
+        input:focus { border-color: #ff3e3e !important; }
+        .asset-img { width: 60px; height: 60px; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
+        .btn-wa {
+            width: 100%; padding: 18px; border-radius: 12px; border: none;
+            font-weight: 800; cursor: pointer; background: #25D366; color: #fff;
+            font-size: 0.9rem; letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body class="intro-active">
+
+    <div id="vanta-canvas"></div>
+
+    <nav class="top-nav">
+        <div class="brand-left">SELL <span style="color: #666;">CRYPTO</span></div>
+        <div class="menu-btn" onclick="toggleMenu()">
+            <div class="bar"></div><div class="bar"></div>
+        </div>
+    </nav>
+
+    <div id="side-menu" class="side-drawer">
+        <div class="close-menu" onclick="toggleMenu()">×</div>
+        <div class="drawer-content" style="padding-left: 25px !important; padding-top: 15px !important;">
+            <h3 class="menu-title">MENU</h3>
+            <div class="menu-links">
+                <a href="index.html">ŌUJI KATAMI PORTFOLIO</a>
+                <a href="community.html">AIRDROP SCOUT COMMUNITY</a>
+                <a href="services.html">ŌUJI SERVICE</a>
+                <a href="drophunting.html">DROP HUNTING</a>
+                <a href="market.html">CRYPTO MARKET</a>  
+                <a href="retail.html">BUY CRYPTO</a> 
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div id="step1" class="cyber-card">
+            <p style="font-size: 0.5rem; color: #444; letter-spacing: 3px; text-align: center; margin-bottom: 15px; font-weight: 800;">SELL SYSTEM</p>
+            
+            <div style="text-align: center;">
+                <img id="assetLogo" src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/usdt.png" class="asset-img">
+            </div>
+
+            <label style="font-size: 0.5rem; color: #666; display: block; margin-bottom: 5px; text-align: center;">AMOUNT CRYPTO</label>
+            <input type="number" id="amountCrypto" placeholder="0.00" oninput="calculate()">
+
+            <select id="assetSelect" onchange="updateUI()">
+                <option value="USDT" data-logo="usdt">USDT</option>
+                <option value="USDC" data-logo="usdc">USDC</option>
+                <option value="ETH" data-logo="eth">ETHEREUM</option>
+                <option value="BNB" data-logo="bnb">BNB</option>
+                <option value="SOL" data-logo="sol">SOLANA</option>
+                <option value="MATIC" data-logo="matic">POLYGON</option>
+                <option value="TON" data-logo="ton">TONCOIN</option>
+            </select>
+
+            <div style="border: 1px dashed #222; padding: 15px; border-radius: 12px; margin-bottom: 25px; text-align: center;">
+                <p style="font-size: 0.5rem; color: #ff3e3e; margin-bottom: 5px; font-weight: 800;">YOU RECEIVE (IDR)</p>
+                <h3 id="resAmt" style="font-size: 1.5rem; margin: 0; color: #fff;">Rp 0</h3>
+            </div>
+
+            <button onclick="toStep2()" style="width: 100%; padding: 15px; background: #fff; color: #000; border: none; border-radius: 12px; font-weight: 900; cursor: pointer; letter-spacing: 1px;">PROCEED SELL</button>
+        </div>
+
+        <div id="step2" class="cyber-card" style="display: none;">
+            <p style="font-size: 0.5rem; color: #444; letter-spacing: 3px; text-align: center; margin-bottom: 20px; font-weight: 800;">YOUR PAYMENT INFO</p>
+            
+            <div id="sellDetail" style="font-size: 0.75rem; text-align: center; color: #aaa; margin-bottom: 20px; line-height: 1.8;"></div>
+
+            <input type="text" id="userBank" placeholder="Nama Bank / E-Wallet (Contoh: BCA)">
+            <input type="text" id="userNorek" placeholder="Nomor Rekening / HP">
+            <input type="text" id="userName" placeholder="Atas Nama (Sesuai Rekening)">
+
+            <button class="btn-wa" onclick="sendWA()" style="background: #ff3e3e;">CONFIRM VIA WHATSAPP</button>
+            <p onclick="location.reload()" style="font-size: 0.5rem; text-align: center; margin-top: 20px; cursor: pointer; color: #444;">CANCEL</p>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
+    <script>
+        function toggleMenu() { document.getElementById('side-menu').classList.toggle('active'); }
+
+        VANTA.NET({
+            el: "#vanta-canvas", mouseControls: true, touchControls: true, gyroControls: false,
+            minHeight: 200.00, minWidth: 200.00, scale: 1.00, scaleMobile: 1.00,
+            color: 0xffffff, backgroundColor: 0x0, points: 10.00, maxDistance: 20.00, spacing: 15.00
+        });
+
+        let totalIDR = 0;
+
+        function updateUI() {
+            const sel = document.getElementById('assetSelect');
+            const logo = sel.options[sel.selectedIndex].getAttribute('data-logo');
+            document.getElementById('assetLogo').src = `https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/${logo}.png`;
+            calculate();
+        }
+
+        async function calculate() {
+            const amt = document.getElementById('amountCrypto').value;
+            const crypto = document.getElementById('assetSelect').value;
+            if (amt <= 0) { document.getElementById('resAmt').innerText = "Rp 0"; return; }
+            try {
+                const res = await fetch(`https://min-api.cryptocompare.com/data/price?fsym=${crypto}&tsyms=IDR`);
+                const data = await res.json();
+                // Logic: Harga Market * Jumlah * 0.92 (Fee lo 8%)
+                totalIDR = Math.floor((amt * data.IDR) * 0.92);
+                document.getElementById('resAmt').innerText = "Rp " + totalIDR.toLocaleString('id-ID');
+            } catch(e) { console.log("Price Error"); }
+        }
+
+        function toStep2() {
+            const amt = document.getElementById('amountCrypto').value;
+            if (amt <= 0) return alert("Masukan jumlah koin sob!");
+            document.getElementById('step1').style.display = "none";
+            document.getElementById('step2').style.display = "block";
+            const asset = document.getElementById('assetSelect').options[document.getElementById('assetSelect').selectedIndex].text;
+            document.getElementById('sellDetail').innerHTML = `YOU SELL: ${amt} ${asset}<br>YOU RECEIVE: Rp ${totalIDR.toLocaleString('id-ID')}`;
+        }
+
+        function sendWA() {
+            const amt = document.getElementById('amountCrypto').value;
+            const asset = document.getElementById('assetSelect').options[document.getElementById('assetSelect').selectedIndex].text;
+            const bank = document.getElementById('userBank').value;
+            const norek = document.getElementById('userNorek').value;
+            const name = document.getElementById('userName').value;
+
+            if(!bank || !norek || !name) return alert("Lengkapi data pembayaran lo sob!");
+
+            const msg = encodeURIComponent(`Halo Ouji!\nSAYA MAU JUAL ${asset}.\n\nDetail:\n- Jumlah: ${amt} ${asset}\n- Terima IDR: Rp ${totalIDR.toLocaleString('id-ID')}\n\nData Pembayaran Saya:\n- Bank: ${bank}\n- Norek: ${norek}\n- A.N: ${name}\n\nMohon alamat wallet tujuan buat saya kirim koinnya sob!`);
+            window.open(`https://wa.me/6281556694081?text=${msg}`);
+        }
+    </script>
+</body>
+      </html>
