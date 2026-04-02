@@ -4,90 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Retail | Crypto</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background: #000; color: #fff; overflow-x: hidden; min-height: 100vh; }
-        
-        /* Navigasi */
-        .top-nav { position: fixed; top: 0; width: 100%; padding: 20px; display: flex; justify-content: space-between; z-index: 100; background: rgba(0,0,0,0.8); }
-        .brand-left { font-weight: 800; letter-spacing: 2px; font-size: 0.9rem; }
-        
-        /* Container Utama */
-        main { position: relative; z-index: 10; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        .cyber-box { 
-            width: 100%; max-width: 400px; padding: 30px; 
-            background: rgba(15,15,15,0.9); border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 20px; backdrop-filter: blur(10px);
+        body { background: #000; margin: 0; overflow-x: hidden; }
+        #vanta-canvas { position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; }
+        main { position: relative; z-index: 10; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 20px; box-sizing: border-box;}
+        .cyber-card {
+            width: 100%; max-width: 400px; padding: 30px;
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px; backdrop-filter: blur(15px);
         }
-
-        /* Input & Select */
-        input, select { 
-            width: 100%; padding: 15px; background: rgba(255,255,255,0.05); 
-            border: 1px solid #333; border-radius: 12px; color: #fff; 
-            text-align: center; margin-bottom: 20px; outline: none; font-size: 1rem;
+        input, select {
+            width: 100%; padding: 15px; background: rgba(255,255,255,0.03);
+            border: 1px solid #222; border-radius: 12px; color: #fff;
+            text-align: center; margin-bottom: 20px; outline: none; font-size: 1rem; font-family: inherit;
         }
         input:focus { border-color: #00ffa3; }
-
-        /* Payment List */
-        .payment-row { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; text-align: left; }
-        .payment-info { font-size: 0.8rem; }
-
-        /* Tombol */
-        .btn-main { 
-            width: 100%; padding: 15px; border-radius: 12px; border: none; 
-            font-weight: 800; cursor: pointer; letter-spacing: 1px; transition: 0.3s;
+        .bank-list { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 15px; border: 1px solid #222; margin: 20px 0; }
+        .bank-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 0.8rem; }
+        .bank-item i { color: #666; width: 20px; text-align: center; }
+        .btn-wa {
+            width: 100%; padding: 18px; border-radius: 12px; border: none;
+            font-weight: 800; cursor: pointer; background: #25D366; color: #fff;
+            font-size: 0.9rem; letter-spacing: 1px;
         }
-        .btn-white { background: #fff; color: #000; }
-        .btn-wa { background: #25D366; color: #fff; margin-top: 20px; }
     </style>
 </head>
-<body>
+<body class="intro-active">
+
+    <div id="vanta-canvas"></div>
 
     <nav class="top-nav">
         <div class="brand-left">RETAIL <span style="color: #666;">CRYPTO</span></div>
+        <div class="menu-btn" onclick="toggleMenu()">
+            <div class="bar"></div><div class="bar"></div>
+        </div>
     </nav>
 
-    <main id="vanta-bg">
-        <div id="step1" class="cyber-box">
-            <p style="font-size: 0.6rem; color: #444; letter-spacing: 3px; text-align: center; margin-bottom: 20px; font-weight: 800;">ORDER SYSTEM</p>
+    <div id="side-menu" class="side-drawer">
+        <div class="close-menu" onclick="toggleMenu()">×</div>
+        <div class="drawer-content" style="padding-left: 25px !important; padding-top: 15px !important;">
+            <h3 class="menu-title">MENU</h3>
+            <div class="menu-links">
+                <a href="index.html">ŌUJI KATAMI PORTFOLIO</a>
+                <a href="community.html">AIRDROP SCOUT COMMUNITY</a>
+                <a href="services.html">ŌUJI SERVICE</a>
+                <a href="drophunting.html">DROP HUNTING</a>
+                <a href="market.html">CRYPTO MARKET</a>  
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div id="step1" class="cyber-card">
+            <p style="font-size: 0.5rem; color: #444; letter-spacing: 3px; text-align: center; margin-bottom: 20px; font-weight: 800;">ORDER SYSTEM</p>
             
-            <div id="mainIcon" style="font-size: 2.5rem; text-align: center; margin-bottom: 15px;"><i class="fab fa-ethereum"></i></div>
+            <div id="assetIcon" style="font-size: 2.5rem; text-align: center; margin-bottom: 20px; color: #fff;">
+                <i class="fab fa-ethereum"></i>
+            </div>
 
-            <label style="font-size: 0.5rem; color: #666; display: block; margin-bottom: 5px; text-align: center;">NOMINAL IDR</label>
-            <input type="number" id="amountIDR" placeholder="Min. 50,000" oninput="calculateCrypto()">
+            <input type="number" id="amountIDR" placeholder="Min. 50,000" oninput="calculate()">
 
-            <select id="cryptoSelect" onchange="updateIcon(); calculateCrypto();">
-                <option value="ethereum" data-icon="fa-ethereum">ETHEREUM (L1)</option>
-                <option value="ethereum" data-icon="fa-ethereum">ETHEREUM (BASE)</option>
-                <option value="ethereum" data-icon="fa-ethereum">ETHEREUM (ARBITRUM)</option>
-                <option value="binancecoin" data-icon="fa-bitcoin">BNB (BEP20)</option>
-                <option value="solana" data-icon="fa-connectdevelop">SOLANA</option>
-                <option value="matic-network" data-icon="fa-layer-group">POLYGON (MATIC)</option>
+            <select id="assetSelect" onchange="updateUI()">
+                <option value="ethereum" data-icon="fa-ethereum" data-type="fab">ETHERUEM L1</option>
+                <option value="ethereum" data-icon="fa-ethereum" data-type="fab">ETHERUEM BASE</option>
+                <option value="ethereum" data-icon="fa-ethereum" data-type="fab">ETHERUEM ARBITRUM</option>
+                <option value="binancecoin" data-icon="fa-hubspot" data-type="fab">BNB</option>
+                <option value="solana" data-icon="fa-connectdevelop" data-type="fab">SOLANA</option>
+                <option value="matic-network" data-icon="fa-layer-group" data-type="fas">POLYGON</option>
             </select>
 
-            <div style="border: 1px dashed #333; padding: 15px; border-radius: 12px; margin-bottom: 20px; text-align: center;">
-                <p style="font-size: 0.5rem; color: #00ffa3; margin-bottom: 5px;">ESTIMASI TERIMA:</p>
-                <h3 id="cryptoResult" style="font-size: 1.3rem;">0.0000</h3>
+            <div style="border: 1px dashed #222; padding: 15px; border-radius: 12px; margin-bottom: 25px; text-align: center;">
+                <p style="font-size: 0.5rem; color: #00ffa3; margin-bottom: 5px; font-weight: 800;">ESTIMASI TERIMA (-5% FEE):</p>
+                <h3 id="resAmt" style="font-size: 1.5rem; margin: 0; color: #fff;">0.0000</h3>
             </div>
 
-            <button class="btn-main btn-white" onclick="goToStep2()">PROCEED</button>
+            <button onclick="toStep2()" style="width: 100%; padding: 15px; background: #fff; color: #000; border: none; border-radius: 12px; font-weight: 900; cursor: pointer; letter-spacing: 1px;">PROCEED</button>
         </div>
 
-        <div id="step2" class="cyber-box" style="display: none;">
-            <p style="font-size: 0.6rem; color: #666; letter-spacing: 3px; text-align: center; margin-bottom: 20px;">INVOICE</p>
-            <div id="invoiceDetail" style="font-size: 0.75rem; color: #888; text-align: center; margin-bottom: 20px; line-height: 1.6;"></div>
+        <div id="step2" class="cyber-card" style="display: none;">
+            <p style="font-size: 0.5rem; color: #444; letter-spacing: 3px; text-align: center; margin-bottom: 20px; font-weight: 800;">INVOICE</p>
+            
+            <div id="orderInfo" style="font-size: 0.75rem; text-align: center; color: #aaa; margin-bottom: 20px; line-height: 1.8;"></div>
 
-            <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid #222;">
-                <div class="payment-row"><i class="fas fa-university"></i><div class="payment-info">BRI: 369501052082539</div></div>
-                <div class="payment-row"><i class="fas fa-university"></i><div class="payment-info">MANDIRI: 1390030938686</div></div>
-                <div class="payment-row"><i class="fas fa-university"></i><div class="payment-info">BNI: 1955102534</div></div>
-                <div class="payment-row"><i class="fas fa-wallet"></i><div class="payment-info">SHOPEE: 081556694081</div></div>
-                <p style="font-size: 0.6rem; color: #00ffa3; text-align: center; margin-top: 10px; font-weight: 800;">A.N DONI NOVRIANDI</p>
+            <div class="bank-list">
+                <div class="bank-item"><i class="fas fa-university"></i> BRI: 369501052082539</div>
+                <div class="bank-item"><i class="fas fa-university"></i> MANDIRI: 1390030938686</div>
+                <div class="bank-item"><i class="fas fa-university"></i> BNI: 1955102534</div>
+                <div class="bank-item"><i class="fas fa-wallet"></i> SHOPEEPAY: 081556694081</div>
+                <p style="font-size: 0.55rem; color: #00ffa3; text-align: center; margin-top: 15px; font-weight: 800; letter-spacing: 1px;">A.N DONI NOVRIANDI</p>
             </div>
 
-            <button class="btn-main btn-wa" onclick="confirmOrder()">CONFIRM WHATSAPP</button>
-            <p onclick="location.reload()" style="font-size: 0.5rem; text-align: center; margin-top: 15px; cursor: pointer; color: #444;">CANCEL</p>
+            <button class="btn-wa" onclick="sendWA()">CONFIRM WHATSAPP</button>
+            <p onclick="location.reload()" style="font-size: 0.5rem; text-align: center; margin-top: 20px; cursor: pointer; color: #444; letter-spacing: 2px;">CANCEL</p>
         </div>
     </main>
 
@@ -95,50 +106,55 @@
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
 
     <script>
-        // Init Vanta
-        try {
-            VANTA.NET({
-                el: "body", mouseControls: true, touchControls: true, gyroControls: false,
-                minHeight: 200.00, minWidth: 200.00, scale: 1.00, scaleMobile: 1.00,
-                color: 0xffffff, backgroundColor: 0x0, points: 10.00, maxDistance: 20.00, spacing: 15.00
-            });
-        } catch(e) { console.log("Vanta error"); }
+        function toggleMenu() { document.getElementById('side-menu').classList.toggle('active'); }
 
-        function updateIcon() {
-            const select = document.getElementById('cryptoSelect');
-            const icon = select.options[select.selectedIndex].getAttribute('data-icon');
-            document.getElementById('mainIcon').innerHTML = `<i class="fab ${icon}"></i>`;
+        VANTA.NET({
+            el: "#vanta-canvas", mouseControls: true, touchControls: true, gyroControls: false,
+            minHeight: 200.00, minWidth: 200.00, scale: 1.00, scaleMobile: 1.00,
+            color: 0xffffff, backgroundColor: 0x0, points: 10.00, maxDistance: 20.00, spacing: 15.00
+        });
+
+        let finalAmt = 0;
+
+        function updateUI() {
+            const sel = document.getElementById('assetSelect');
+            const icon = sel.options[sel.selectedIndex].getAttribute('data-icon');
+            const type = sel.options[sel.selectedIndex].getAttribute('data-type');
+            document.getElementById('assetIcon').innerHTML = `<i class="${type} ${icon}"></i>`;
+            calculate();
         }
 
-        let finalAmount = 0;
-        async function calculateCrypto() {
+        async function calculate() {
             const idr = document.getElementById('amountIDR').value;
-            const crypto = document.getElementById('cryptoSelect').value;
+            const crypto = document.getElementById('assetSelect').value;
             if (idr < 1000) return;
             try {
                 const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=idr`);
                 const data = await res.json();
-                const price = data[crypto].idr;
-                finalAmount = (idr / price).toFixed(6);
-                document.getElementById('cryptoResult').innerText = finalAmount;
-            } catch(e) { console.log("API Error"); }
+                
+                // POTONGAN 5% UNTUK PROFIT LO SOB
+                const netIdr = idr * 0.95; 
+                finalAmt = (netIdr / data[crypto].idr).toFixed(6);
+                
+                document.getElementById('resAmt').innerText = finalAmt;
+            } catch(e) { console.log("Price Error"); }
         }
 
-        function goToStep2() {
-            if (document.getElementById('amountIDR').value < 50000) return alert("Min. 50rb sob!");
+        function toStep2() {
+            const idr = document.getElementById('amountIDR').value;
+            if (idr < 50000) return alert("Min. 50rb sob!");
             document.getElementById('step1').style.display = "none";
             document.getElementById('step2').style.display = "block";
-            const idr = document.getElementById('amountIDR').value;
-            const asset = document.getElementById('cryptoSelect').options[document.getElementById('cryptoSelect').selectedIndex].text;
-            document.getElementById('invoiceDetail').innerHTML = `ORDER: ${asset}<br>NOMINAL: RP ${parseInt(idr).toLocaleString('id-ID')}<br>RECEIVE: ${finalAmount}`;
+            const asset = document.getElementById('assetSelect').options[document.getElementById('assetSelect').selectedIndex].text;
+            document.getElementById('orderInfo').innerHTML = `ORDER: ${asset}<br>NOMINAL: RP ${parseInt(idr).toLocaleString('id-ID')}<br>RECEIVE: ${finalAmt}`;
         }
 
-        function confirmOrder() {
+        function sendWA() {
             const idr = document.getElementById('amountIDR').value;
-            const asset = document.getElementById('cryptoSelect').options[document.getElementById('cryptoSelect').selectedIndex].text;
-            const msg = encodeURIComponent(`Halo Ouji!\nSaya mau beli ${asset}.\nNominal: Rp ${idr}\nEstimasi: ${finalAmount}\nSudah transfer ya!`);
+            const asset = document.getElementById('assetSelect').options[document.getElementById('assetSelect').selectedIndex].text;
+            const msg = encodeURIComponent(`Halo Ouji!\nSaya mau order ${asset}.\nNominal: Rp ${parseInt(idr).toLocaleString('id-ID')}\nEstimasi: ${finalAmt}\n\nSudah transfer ya sob!`);
             window.open(`https://wa.me/6281556694081?text=${msg}`);
         }
     </script>
 </body>
-</html> 
+    </html>
