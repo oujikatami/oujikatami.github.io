@@ -22,9 +22,9 @@
             text-align: center; margin-bottom: 20px; outline: none; font-size: 1rem; font-family: inherit;
         }
         input:focus { border-color: #00ffa3; }
+        .asset-img { width: 60px; height: 60px; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
         .bank-list { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 15px; border: 1px solid #222; margin: 20px 0; }
         .bank-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 0.8rem; }
-        .bank-item i { color: #666; width: 20px; text-align: center; }
         .btn-wa {
             width: 100%; padding: 18px; border-radius: 12px; border: none;
             font-weight: 800; cursor: pointer; background: #25D366; color: #fff;
@@ -59,21 +59,21 @@
 
     <main>
         <div id="step1" class="cyber-card">
-            <p style="font-size: 0.5rem; color: #444; letter-spacing: 3px; text-align: center; margin-bottom: 20px; font-weight: 800;">ORDER SYSTEM</p>
+            <p style="font-size: 0.5rem; color: #444; letter-spacing: 3px; text-align: center; margin-bottom: 15px; font-weight: 800;">ORDER SYSTEM</p>
             
-            <div id="assetIcon" style="font-size: 2.5rem; text-align: center; margin-bottom: 20px; color: #fff;">
-                <i class="fab fa-ethereum"></i>
+            <div style="text-align: center;">
+                <img id="assetLogo" src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/eth.png" class="asset-img">
             </div>
 
             <input type="number" id="amountIDR" placeholder="Min. 50,000" oninput="calculate()">
 
             <select id="assetSelect" onchange="updateUI()">
-                <option value="ethereum" data-icon="fa-ethereum" data-type="fab">ETHERUEM L1</option>
-                <option value="ethereum" data-icon="fa-ethereum" data-type="fab">ETHERUEM BASE</option>
-                <option value="ethereum" data-icon="fa-ethereum" data-type="fab">ETHERUEM ARBITRUM</option>
-                <option value="binancecoin" data-icon="fa-hubspot" data-type="fab">BNB</option>
-                <option value="solana" data-icon="fa-connectdevelop" data-type="fab">SOLANA</option>
-                <option value="matic-network" data-icon="fa-layer-group" data-type="fas">POLYGON</option>
+                <option value="ETH" data-logo="eth">ETHERUEM L1</option>
+                <option value="ETH" data-logo="eth">ETHERUEM BASE</option>
+                <option value="ETH" data-logo="eth">ETHERUEM ARBITRUM</option>
+                <option value="BNB" data-logo="bnb">BNB (BEP20)</option>
+                <option value="SOL" data-logo="sol">SOLANA</option>
+                <option value="MATIC" data-logo="matic">POLYGON</option>
             </select>
 
             <div style="border: 1px dashed #222; padding: 15px; border-radius: 12px; margin-bottom: 25px; text-align: center;">
@@ -86,9 +86,7 @@
 
         <div id="step2" class="cyber-card" style="display: none;">
             <p style="font-size: 0.5rem; color: #444; letter-spacing: 3px; text-align: center; margin-bottom: 20px; font-weight: 800;">INVOICE</p>
-            
             <div id="orderInfo" style="font-size: 0.75rem; text-align: center; color: #aaa; margin-bottom: 20px; line-height: 1.8;"></div>
-
             <div class="bank-list">
                 <div class="bank-item"><i class="fas fa-university"></i> BRI: 369501052082539</div>
                 <div class="bank-item"><i class="fas fa-university"></i> MANDIRI: 1390030938686</div>
@@ -96,9 +94,8 @@
                 <div class="bank-item"><i class="fas fa-wallet"></i> SHOPEEPAY: 081556694081</div>
                 <p style="font-size: 0.55rem; color: #00ffa3; text-align: center; margin-top: 15px; font-weight: 800; letter-spacing: 1px;">A.N DONI NOVRIANDI</p>
             </div>
-
             <button class="btn-wa" onclick="sendWA()">CONFIRM WHATSAPP</button>
-            <p onclick="location.reload()" style="font-size: 0.5rem; text-align: center; margin-top: 20px; cursor: pointer; color: #444; letter-spacing: 2px;">CANCEL</p>
+            <p onclick="location.reload()" style="font-size: 0.5rem; text-align: center; margin-top: 20px; cursor: pointer; color: #444;">CANCEL</p>
         </div>
     </main>
 
@@ -118,9 +115,8 @@
 
         function updateUI() {
             const sel = document.getElementById('assetSelect');
-            const icon = sel.options[sel.selectedIndex].getAttribute('data-icon');
-            const type = sel.options[sel.selectedIndex].getAttribute('data-type');
-            document.getElementById('assetIcon').innerHTML = `<i class="${type} ${icon}"></i>`;
+            const logo = sel.options[sel.selectedIndex].getAttribute('data-logo');
+            document.getElementById('assetLogo').src = `https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/${logo}.png`;
             calculate();
         }
 
@@ -129,13 +125,11 @@
             const crypto = document.getElementById('assetSelect').value;
             if (idr < 1000) return;
             try {
-                const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=idr`);
+                // PAKE CRYPTOCOMPARE - LEBIH REALTIME & KENCENG
+                const res = await fetch(`https://min-api.cryptocompare.com/data/price?fsym=${crypto}&tsyms=IDR`);
                 const data = await res.json();
-                
-                // POTONGAN 5% UNTUK PROFIT LO SOB
                 const netIdr = idr * 0.95; 
-                finalAmt = (netIdr / data[crypto].idr).toFixed(6);
-                
+                finalAmt = (netIdr / data.IDR).toFixed(6);
                 document.getElementById('resAmt').innerText = finalAmt;
             } catch(e) { console.log("Price Error"); }
         }
@@ -157,4 +151,4 @@
         }
     </script>
 </body>
-    </html>
+</html>
