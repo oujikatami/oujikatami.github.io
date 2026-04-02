@@ -77,6 +77,7 @@
                 <option value="BNB" data-logo="bnb">BNB (BEP20)</option>
                 <option value="SOL" data-logo="sol">SOLANA</option>
                 <option value="MATIC" data-logo="matic">POLYGON</option>
+                <option value="USDT" data-logo="usdt">USDT THETHER</option>
             </select>
 
             <div style="border: 1px dashed #222; padding: 15px; border-radius: 12px; margin-bottom: 25px; text-align: center;">
@@ -131,7 +132,7 @@
                 // PAKE CRYPTOCOMPARE - LEBIH REALTIME & KENCENG
                 const res = await fetch(`https://min-api.cryptocompare.com/data/price?fsym=${crypto}&tsyms=IDR`);
                 const data = await res.json();
-                const netIdr = idr * 0.95; 
+                const netIdr = idr * 0.92; 
                 finalAmt = (netIdr / data.IDR).toFixed(6);
                 document.getElementById('resAmt').innerText = finalAmt;
             } catch(e) { console.log("Price Error"); }
