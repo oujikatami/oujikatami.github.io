@@ -9,8 +9,10 @@
     <style>
         body { background: #000; margin: 0; overflow-x: hidden; }
         #vanta-canvas { position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; }
-        main { position: relative; z-index: 10; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 20px; box-sizing: border-box;}
+        
+        main { position: relative; z-index: 10; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 20px; box-sizing: border-box;}
 
+        /* CONTAINER SLIDER CANDLE */
         .market-scroll {
             width: 100%; max-width: 400px; display: flex; overflow-x: auto; gap: 10px;
             padding-bottom: 15px; scroll-snap-type: x mandatory; scrollbar-width: none; 
@@ -21,27 +23,23 @@
             min-width: 100%; height: 180px; background: rgba(10, 10, 10, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 15px;
             scroll-snap-align: center; overflow: hidden; backdrop-filter: blur(10px);
-        } 
+        }
+
+        /* BOX ORDER DIKECILIN DIKIT */
         .cyber-card {
-            width: 100%; max-width: 400px; padding: 30px;
+            width: 100%; max-width: 400px; padding: 20px 25px;
             background: rgba(10, 10, 10, 0.9);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 20px; backdrop-filter: blur(15px);
         }
+        
         input, select {
-            width: 100%; padding: 15px; background: rgba(255,255,255,0.03);
-            border: 1px solid #222; border-radius: 12px; color: #fff;
-            text-align: center; margin-bottom: 20px; outline: none; font-size: 1rem; font-family: inherit;
+            width: 100%; padding: 12px; background: rgba(255,255,255,0.03);
+            border: 1px solid #222; border-radius: 10px; color: #fff;
+            text-align: center; margin-bottom: 15px; outline: none; font-size: 0.9rem;
         }
-        input:focus { border-color: #00ffa3; }
-        .asset-img { width: 60px; height: 60px; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
-        .bank-list { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 15px; border: 1px solid #222; margin: 20px 0; }
-        .bank-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 0.8rem; }
-        .btn-wa {
-            width: 100%; padding: 18px; border-radius: 12px; border: none;
-            font-weight: 800; cursor: pointer; background: #25D366; color: #fff;
-            font-size: 0.9rem; letter-spacing: 1px;
-        }
+        .asset-img { width: 50px; height: 50px; margin-bottom: 10px; }
+        .btn-wa { width: 100%; padding: 15px; border-radius: 10px; border: none; font-weight: 800; cursor: pointer; background: #25D366; color: #fff; font-size: 0.8rem; }
     </style>
 </head>
 <body class="intro-active">
@@ -50,17 +48,13 @@
 
     <nav class="top-nav">
         <div class="brand-left">RETAIL <span style="color: #666;">CRYPTO</span></div>
-        <div class="menu-btn" onclick="toggleMenu()">
-            
-            <div class="bar"></div><div class="bar"></div>
-        </div>
+        <div class="menu-btn" onclick="toggleMenu()"><div class="bar"></div><div class="bar"></div></div>
     </nav>
 
     <div id="side-menu" class="side-drawer">
         <div class="close-menu" onclick="toggleMenu()"> 
-            
         </div>
-        <div class="drawer-content" style="padding-left: 25px !important; padding-top: 15px !important;">
+        <div class="drawer-content" style="padding-left: 25px; padding-top: 15px;">
             <h3 class="menu-title">MENU</h3>
             <div class="menu-links">
                 <a href="index.html">ŌUJI KATAMI PORTFOLIO</a>
@@ -90,8 +84,6 @@
         </div>
 
         <div id="step1" class="cyber-card">
-            <p style="font-size: 0.5rem; color: #444; letter-spacing: 3px; text-align: center; margin-bottom: 15px; font-weight: 800;">ORDER SYSTEM</p>
-            
             <div style="text-align: center;">
                 <img id="assetLogo" src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/eth.png" class="asset-img">
             </div>
@@ -99,34 +91,33 @@
             <input type="number" id="amountIDR" placeholder="Min. 30,000" oninput="calculate()">
 
             <select id="assetSelect" onchange="updateUI()">
-                <option value="ETH" data-logo="eth">ETHEREUM L1</option>
-                <option value="ETH" data-logo="eth">ETHEREUM BASE</option>
-                <option value="ETH" data-logo="eth">ETHEREUM ARBITRUM</option>
+                <option value="ETH" data-logo="eth">ETHERUEM</option>
                 <option value="BNB" data-logo="bnb">BNB (BEP20)</option>
                 <option value="SOL" data-logo="sol">SOLANA</option>
                 <option value="MATIC" data-logo="matic">POLYGON</option>
+                <option value="USDT" data-logo="usdt">USDT (TETHER)</option>
             </select>
 
-            <div style="border: 1px dashed #222; padding: 15px; border-radius: 12px; margin-bottom: 25px; text-align: center;">
+            <div style="border: 1px dashed #222; padding: 12px; border-radius: 10px; margin-bottom: 20px; text-align: center; background: rgba(0,255,163,0.02);">
                 <p style="font-size: 0.5rem; color: #00ffa3; margin-bottom: 5px; font-weight: 800;">ESTIMATION RECEIVED</p>
-                <h3 id="resAmt" style="font-size: 1.5rem; margin: 0; color: #fff;">0.0000</h3>
+                <h3 id="resAmt" style="font-size: 1.4rem; margin: 0; color: #fff;">0.0000</h3>
             </div>
 
-            <button onclick="toStep2()" style="width: 100%; padding: 15px; background: #fff; color: #000; border: none; border-radius: 12px; font-weight: 900; cursor: pointer; letter-spacing: 1px;">PROCEED</button>
+            <button onclick="toStep2()" style="width: 100%; padding: 15px; background: #fff; color: #000; border: none; border-radius: 10px; font-weight: 900; cursor: pointer;">PROCEED</button>
         </div>
 
         <div id="step2" class="cyber-card" style="display: none;">
-            <p style="font-size: 0.5rem; color: #444; letter-spacing: 3px; text-align: center; margin-bottom: 20px; font-weight: 800;">INVOICE</p>
-            <div id="orderInfo" style="font-size: 0.75rem; text-align: center; color: #aaa; margin-bottom: 20px; line-height: 1.8;"></div>
+            <p style="font-size: 0.5rem; color: #444; letter-spacing: 3px; text-align: center; margin-bottom: 15px;">INVOICE</p>
+            <div id="orderInfo" style="font-size: 0.7rem; text-align: center; color: #aaa; margin-bottom: 15px; line-height: 1.6;"></div>
             <div class="bank-list">
                 <div class="bank-item"><i class="fas fa-university"></i> BRI: 369501052082539</div>
                 <div class="bank-item"><i class="fas fa-university"></i> MANDIRI: 1390030938686</div>
                 <div class="bank-item"><i class="fas fa-university"></i> BNI: 1955102534</div>
-                <div class="bank-item"><i class="fas fa-wallet"></i> SHOPEEPAY: 081556694081</div>
-                <p style="font-size: 0.55rem; color: #00ffa3; text-align: center; margin-top: 15px; font-weight: 800; letter-spacing: 1px;">A.N DONI NOVRIANDI</p>
+                <div class="bank-item"><i class="fas fa-wallet"></i> SHOPEE: 081556694081</div>
+                <p style="font-size: 0.55rem; color: #00ffa3; text-align: center; margin-top: 10px; font-weight: 800;">A.N DONI NOVRIANDI</p>
             </div>
             <button class="btn-wa" onclick="sendWA()">CONFIRM WHATSAPP</button>
-            <p onclick="location.reload()" style="font-size: 0.5rem; text-align: center; margin-top: 20px; cursor: pointer; color: #444;">CANCEL</p>
+            <p onclick="location.reload()" style="font-size: 0.5rem; text-align: center; margin-top: 15px; cursor: pointer; color: #444;">CANCEL</p>
         </div>
     </main>
 
@@ -143,7 +134,6 @@
         });
 
         let finalAmt = 0;
-
         function updateUI() {
             const sel = document.getElementById('assetSelect');
             const logo = sel.options[sel.selectedIndex].getAttribute('data-logo');
@@ -156,10 +146,9 @@
             const crypto = document.getElementById('assetSelect').value;
             if (idr < 1000) return;
             try {
-                // PAKE CRYPTOCOMPARE - LEBIH REALTIME & KENCENG
                 const res = await fetch(`https://min-api.cryptocompare.com/data/price?fsym=${crypto}&tsyms=IDR`);
                 const data = await res.json();
-                const netIdr = idr * 0.95; 
+                const netIdr = idr * 0.93; // FEE 7%
                 finalAmt = (netIdr / data.IDR).toFixed(6);
                 document.getElementById('resAmt').innerText = finalAmt;
             } catch(e) { console.log("Price Error"); }
@@ -177,7 +166,7 @@
         function sendWA() {
             const idr = document.getElementById('amountIDR').value;
             const asset = document.getElementById('assetSelect').options[document.getElementById('assetSelect').selectedIndex].text;
-            const msg = encodeURIComponent(`Halo Ouji!\nSaya mau order ${asset}.\nNominal: Rp ${parseInt(idr).toLocaleString('id-ID')}\nEstimasi: ${finalAmt}\n\nSudah transfer ya dan ini bukti transfernya!`);
+            const msg = encodeURIComponent(`Halo Ouji!\nSaya mau order ${asset}.\nNominal: Rp ${idr}\nEstimasi: ${finalAmt}\n\nSudah transfer dan ini bukti transfernya!`);
             window.open(`https://wa.me/6281556694081?text=${msg}`);
         }
     </script>
