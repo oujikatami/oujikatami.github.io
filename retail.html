@@ -9,7 +9,9 @@
     <style>
         body { background: #000; margin: 0; overflow-x: hidden; }
         #vanta-canvas { position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; }
-        main { position: relative; z-index: 10; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 20px; box-sizing: border-box;}
+        /* Main gue tambahin flex-direction column biar ticker bisa di atas card */
+        main { position: relative; z-index: 10; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px 20px; box-sizing: border-box;}
+        
         .cyber-card {
             width: 100%; max-width: 400px; padding: 30px;
             background: rgba(10, 10, 10, 0.9);
@@ -30,6 +32,8 @@
             font-weight: 800; cursor: pointer; background: #25D366; color: #fff;
             font-size: 0.9rem; letter-spacing: 1px;
         }
+        /* Style buat widget harga di atas */
+        .ticker-wrapper { width: 100%; max-width: 400px; margin-bottom: 15px; background: rgba(0,0,0,0.5); border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
     </style>
 </head>
 <body class="intro-active">
@@ -39,15 +43,12 @@
     <nav class="top-nav">
         <div class="brand-left">RETAIL <span style="color: #666;">CRYPTO</span></div>
         <div class="menu-btn" onclick="toggleMenu()">
-            
             <div class="bar"></div><div class="bar"></div>
         </div>
     </nav>
 
     <div id="side-menu" class="side-drawer">
-        <div class="close-menu" onclick="toggleMenu()"> 
-            
-        </div>
+        <div class="close-menu" onclick="toggleMenu()">×</div>
         <div class="drawer-content" style="padding-left: 25px !important; padding-top: 15px !important;">
             <h3 class="menu-title">MENU</h3>
             <div class="menu-links">
@@ -61,6 +62,27 @@
     </div>
 
     <main>
+        <div class="ticker-wrapper">
+            <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
+                {
+                "symbols": [
+                  { "proName": "BINANCE:ETHUSDT", "title": "ETH" },
+                  { "proName": "BINANCE:BNBUSDT", "title": "BNB" },
+                  { "proName": "BINANCE:SOLUSDT", "title": "SOL" },
+                  { "proName": "BINANCE:MATICUSDT", "title": "MATIC" },
+                  { "proName": "BINANCE:USDTIDR", "title": "USDT" }
+                ],
+                "colorTheme": "dark",
+                "isTransparent": true,
+                "showSymbolLogo": true,
+                "locale": "en"
+                }
+                </script>
+            </div>
+        </div>
+
         <div id="step1" class="cyber-card">
             <p style="font-size: 0.5rem; color: #444; letter-spacing: 3px; text-align: center; margin-bottom: 15px; font-weight: 800;">ORDER SYSTEM</p>
             
@@ -71,16 +93,17 @@
             <input type="number" id="amountIDR" placeholder="Min. 30,000" oninput="calculate()">
 
             <select id="assetSelect" onchange="updateUI()">
-                <option value="ETH" data-logo="eth">ETHEREUM L1</option>
-                <option value="ETH" data-logo="eth">ETHEREUM BASE</option>
-                <option value="ETH" data-logo="eth">ETHEREUM ARBITRUM</option>
+                <option value="ETH" data-logo="eth">ETHERUEM L1</option>
+                <option value="ETH" data-logo="eth">ETHERUEM BASE</option>
+                <option value="ETH" data-logo="eth">ETHERUEM ARBITRUM</option>
                 <option value="BNB" data-logo="bnb">BNB (BEP20)</option>
                 <option value="SOL" data-logo="sol">SOLANA</option>
                 <option value="MATIC" data-logo="matic">POLYGON</option>
+                <option value="USDT" data-logo="usdt">USDT (TETHER)</option>
             </select>
 
             <div style="border: 1px dashed #222; padding: 15px; border-radius: 12px; margin-bottom: 25px; text-align: center;">
-                <p style="font-size: 0.5rem; color: #00ffa3; margin-bottom: 5px; font-weight: 800;">ESTIMATION RECEIVED</p>
+                <p style="font-size: 0.5rem; color: #00ffa3; margin-bottom: 5px; font-weight: 800; letter-spacing: 1px;">ESTIMATION RECEIVED</p>
                 <h3 id="resAmt" style="font-size: 1.5rem; margin: 0; color: #fff;">0.0000</h3>
             </div>
 
@@ -128,10 +151,11 @@
             const crypto = document.getElementById('assetSelect').value;
             if (idr < 1000) return;
             try {
-                // PAKE CRYPTOCOMPARE - LEBIH REALTIME & KENCENG
                 const res = await fetch(`https://min-api.cryptocompare.com/data/price?fsym=${crypto}&tsyms=IDR`);
                 const data = await res.json();
-                const netIdr = idr * 0.95; 
+                
+                // FEE 7% SOB (idr * 0.93)
+                const netIdr = idr * 0.93; 
                 finalAmt = (netIdr / data.IDR).toFixed(6);
                 document.getElementById('resAmt').innerText = finalAmt;
             } catch(e) { console.log("Price Error"); }
