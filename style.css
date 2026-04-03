@@ -1,7 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow: hidden; }
+
+body { 
+    /* GANTI #000 JADI TRANSPARENT BIAR VANTA KELIHATAN */
+    background: transparent !important; 
+    
+    color: #fff; 
+    font-family: 'Inter', sans-serif; 
+    overflow: hidden; 
+
+    /* TAMBAHAN: Pastiin container Vanta lo bener-bener di paling belakang */
+}
+
+/* Kalo lo pake ID #vanta-canvas atau sejenisnya, pastiin dia gak ketutup */
+#vanta-canvas, canvas {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: -1 !important; /* Di belakang semua konten */
+}
 
 /* --- PONDASI UTAMA (STRUKTUR TETAP ASLI OUJI) --- */
 #scroller {
