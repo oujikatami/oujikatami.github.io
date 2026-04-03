@@ -51,19 +51,6 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .cyber-box h2 { font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
 .cyber-box p { font-size: 0.9rem; line-height: 1.6; color: #ccc; }
 
-.cable-svg { width: 100%; height: 100%; }
-.path-base { stroke: rgba(255, 255, 255, 0.05); stroke-width: 2; fill: none; }
-.path-neon {
-    stroke-width: 4; fill: none;
-    stroke-dasharray: 50, 150;
-    animation: flowNeon 2s linear infinite;
-    /* Efek Neon Warna-warni */
-    stroke: #fff;
-    filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 10px #00f2ff);
-}
-
-@keyframes flowNeon { 0% { stroke-dashoffset: 200; } 100% { stroke-dashoffset: 0; } }
-
 /* EXPERIENCE LIST */
 .exp-box { text-align: left; }
 .exp-item { border-bottom: 1px solid #1f2328; padding: 12px 0; }
