@@ -37,18 +37,16 @@
     <div id="vanta-canvas"></div>
 
 <nav class="top-nav" style="display: flex !important; justify-content: space-between !important; align-items: center !important; padding: 20px !important; height: 80px !important; width: 100%; box-sizing: border-box; background: transparent; position: relative; z-index: 9999 !important;"> 
-    
-    <div style="flex-shrink: 0; z-index: 10000 !important;"> 
-        <a href="sell.html" style="text-decoration: none; color: #fff; font-size: 0.6rem; font-weight: 800; background: rgba(255,255,255,0.1); padding: 10px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px); display: inline-flex; align-items: center; gap: 8px;">
-            <i class="fas fa-exchange-alt" style="color: #ff3e3e;"></i> SWITCH TO SELL
+    <div class="brand-left">
+        <a href="sell.html" class="switch-btn-link" style="text-decoration: none; color: #fff; font-size: 0.6rem; font-weight: 800; background: rgba(255,255,255,0.1); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);">
+            <i class="fas fa-exchange-alt" style="color: #00ffa3; margin-right: 5px;"></i> SWITCH TO SELL
         </a>
-    </div> 
-    
-    <div class="menu-btn" onclick="toggleMenu()" style="cursor: pointer !important; position: relative !important; z-index: 10000 !important; margin: 0 !important; flex-shrink: 0 !important; display: flex !important; flex-direction: column !important; gap: 6px !important;">
-        <div class="bar" style="margin: 0 !important; width: 25px; height: 2px; background: #fff;"></div>
-        <div class="bar" style="margin: 0 !important; width: 25px; height: 2px; background: #fff;"></div>
     </div>
-</nav>
+
+    <div class="menu-btn" onclick="toggleMenu()">
+        <div class="bar"></div><div class="bar"></div>
+    </div>
+    </nav>
     
     <div id="side-menu" class="side-drawer">
         <div class="close-menu" onclick="toggleMenu()"> 
