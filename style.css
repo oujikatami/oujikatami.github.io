@@ -451,25 +451,35 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 
 .cex-link-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* TETEP BAGI DUA SIMETRIS */
     gap: 10px;
+    background: transparent !important;
 }
 
 .cex-btn-vanta {
-    border: 1px solid rgba(255,255,255,0.1);
     padding: 12px;
     text-align: center;
     color: #fff;
     text-decoration: none;
-    font-size: 0.7rem;
-    font-weight: 800;
+    font-size: 0.7rem; /* TETEP UKURAN ASLI LO */
+    font-weight: 800; /* TETEP TEBEL ASLI LO */
     transition: 0.3s;
+    border-radius: 8px; /* Tambahan biar gak kaku banget ujungnya */
+
+    /* --- EFEK GLASSY (GANTI BIAR GAK POLOSAN) --- */
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
 }
 
+/* EFEK HOVER (TETEP PAKE LOGIKA ASLI LO: BALIK KE PUTIH SOLID) */
 .cex-btn-vanta:hover {
-    background: #fff;
-    color: #000;
+    background: #fff !important;
+    color: #000 !important;
+    backdrop-filter: none !important;
 }
+
 /* GRID UNTUK TOMBOL CEX */
 .cex-grid {
     display: grid;
