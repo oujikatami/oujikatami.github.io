@@ -25,7 +25,16 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     width: 90%; max-width: 400px;
     display: flex; flex-direction: column; align-items: center;
     position: relative;
-} 
+}
+
+/* KOTAKAN (CYBER BOX) */
+.cyber-box {
+    background: rgba(11, 14, 17, 0.95);
+    border: 1px solid #2d333a;
+    padding: 25px; border-radius: 15px;
+    width: 100%; text-align: center;
+    position: relative; z-index: 10;
+}
 .cyber-box h2 { font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
 .cyber-box p { font-size: 0.9rem; line-height: 1.6; color: #ccc; }
 
@@ -398,36 +407,25 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     margin-right: 5px;
     color: #00ffa3;
 } 
-/* --- THE ULTIMATE MIDNIGHT GLASS (FIXED) --- */
-.cyber-box, 
-.cyber-card, 
-.market-card, 
-.exp-box, 
-.soc-box {
-    /* 1. KUNCINYA: Turunin ke 0.75 biar jaring Vanta tembus */
+/* --- TEMA MIDNIGHT GLASS (SETENGAH TRANSPARAN) --- */
+.cyber-card, .market-card {
+    /* 1. Hitam transparan biar teks putih kontras */
     background: rgba(10, 10, 10, 0.75) !important; 
     
-    /* 2. EFEK FROSTED: Biar jaringnya burem estetik */
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
+    /* 2. Border tipis banget biar elegan */
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    
+    /* 3. Efek burem (blur) biar jaring Vanta di belakang gak bikin pusing */
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
 
-    /* 3. BORDER: Putih tipis biar siluet kotak tegas */
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-
-    /* 4. LAYOUT: Biar konsisten di semua halaman */
+    /* 4. Layout standar biar konsisten di HP */
     border-radius: 20px !important;
     padding: 25px !important;
     box-sizing: border-box !important;
-    position: relative !important;
-    z-index: 100 !important; /* Naikin biar di depan Vanta */
+    position: relative;
+    z-index: 10;
     
-    /* 5. SHADOW: Biar kotaknya melayang */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6) !important;
-    
-    margin-bottom: 20px !important;
-}
-
-/* Pastiin Container & Scroller gak punya warna yang nutupin */
-.container, #scroller, .snap-panel {
-    background: transparent !important;
+    /* 5. Bayangan biar kotaknya berasa melayang */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
 } 
