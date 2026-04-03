@@ -343,16 +343,18 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .pay-label-final {
     font-size: 0.7rem;
     font-weight: bold;
-    color: #666;
+    color: #666; /* TETEP REDUP ELEGAN */
     letter-spacing: 2px;
     margin-bottom: 10px;
     display: block;
+    background: transparent !important;
 }
 
 .pay-grid {
     display: flex;
-    flex-wrap: wrap; /* Biar logonya turun kalo gak muat */
+    flex-wrap: wrap; /* TETEP BIAR LOGONYA TURUN OTOMATIS */
     gap: 10px;
+    background: transparent !important;
 }
 
 .pay-item {
@@ -360,13 +362,19 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     align-items: center;
     gap: 8px;
     padding: 8px 12px;
-    background: #161b22;
-    border: 1px solid #30363d;
-    border-radius: 20px;
+    border-radius: 20px; /* TETEP RADIUS ASLI LO */
     font-size: 0.8rem;
     font-weight: bold;
     color: #fff;
-}
+    
+    /* --- EFEK GLASSY (GANTI DARI #161B22 JADI INI) --- */
+    background: rgba(255, 255, 255, 0.05) !important; 
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    
+    transition: 0.3s ease;
+} 
 
 .address-card-final {
     background: #000;
