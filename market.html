@@ -36,18 +36,26 @@
         }
 
         .market-card {
-            background: rgba(10, 10, 10, 0.9);
-            border: 1px solid #333;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 400px;
-            height: 70vh;
-            display: flex;
-            flex-direction: column;
-            padding: 20px 15px;
-            backdrop-filter: blur(10px);
-            margin-top: 60px; /* Jarak dari navbar */
-        }
+    /* Ganti background jadi transparan (0.05 itu tingkat transparansinya) */
+    background: rgba(255, 255, 255, 0.03); 
+    
+    /* Tambahin border tipis banget biar kelihatan garis kotaknya */
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+    
+    /* EFEK KUNCI: Bikin jaring-jaring di belakangnya kelihatan burem cakep */
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px); /* Support Safari */
+
+    border-radius: 20px; /* Bikin sudutnya makin smooth */
+    width: 100%;
+    max-width: 400px;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 15px;
+    margin-top: 60px;
+    box-sizing: border-box;
+        } 
 
         .market-header {
             display: flex;
