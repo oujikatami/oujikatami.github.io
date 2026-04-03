@@ -569,13 +569,25 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     backdrop-filter: none !important;
 }
 
+/* EFEK HOVER SWITCHER (STRUKTUR & WARNA TETAP ASLI) */
 .switch-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #00ffa3;
+    /* TETEP PAKE WARNA & BORDER PILIHAN LO */
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: #00ffa3 !important;
+    
+    /* TETEP JAGA EFEK KACA PAS HOVER */
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    
+    /* Kasih sedikit glow biar neonnya 'nyala' di atas Vanta */
+    box-shadow: 0 0 15px rgba(0, 255, 163, 0.3);
 }
+
+/* ICON DI DALAM TOMBOL (STRUKTUR TETAP ASLI) */
 .switch-btn i {
-    margin-right: 5px;
-    color: #00ffa3;
+    margin-right: 5px; /* TETEP JARAK ASLI LO */
+    color: #00ffa3;    /* TETEP WARNA HIJAU NEON ASLI LO */
+    background: transparent !important;
 } 
 /* --- TEMA MIDNIGHT GLASS (SETENGAH TRANSPARAN) --- */
 .cyber-card, .market-card {
