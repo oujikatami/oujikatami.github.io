@@ -164,6 +164,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 /* Biar konten menu nggak ketutupan tombol kembali */
 .drawer-content {
     padding-top: 100px !important;
+    background: transparent ! important;
 } 
 /* --- FIX TOTAL LAYOUT HEADER (ANTI NUMPUK) --- */
 .top-nav {
@@ -173,7 +174,10 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     width: 100vw; /* Paksa lebar satu layar penuh */
     height: 80px; /* Tinggi header */
     z-index: 2000; /* Paling depan */
+    
     background: transparent;
+    backdrop-filter: blur(5px) !important; 
+    -webkit-backdrop-filter: blur(5px) !important;
 }
 
 .brand-left {
