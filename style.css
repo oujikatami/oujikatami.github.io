@@ -617,28 +617,3 @@ canvas.vanta-canvas {
     color: #00ffa3;    /* TETEP WARNA HIJAU NEON ASLI LO */
     background: transparent !important;
 } 
-/* --- TEMA MIDNIGHT GLASS (STANDAR GLOBAL WEB3) --- */
-.cyber-card, .market-card, #step1, #step2 {
-    /* 1. Pakai 0.65 biar Jaring Vanta "Lepas" & Tembus (Gak Kegelapan) */
-    background: rgba(10, 10, 10, 0.65) !important; 
-    
-    /* 2. Border Tipis Elegan */
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    
-    /* 3. Blur Mewah (Naikin ke 15px biar Jaringnya Gak Nusuk Mata) */
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-
-    /* 4. Layout Standar (STRUKTUR ASLI LO - JANGAN DIUBAH) */
-    border-radius: 20px !important;
-    padding: 25px !important;
-    box-sizing: border-box !important;
-    position: relative;
-    z-index: 10;
-    
-    /* 5. Bayangan Melayang */
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
-    
-    /* Tambahan biar di HP transisinya smooth */
-    transition: all 0.3s ease;
-} 
