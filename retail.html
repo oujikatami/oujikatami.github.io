@@ -36,23 +36,24 @@
 
     <div id="vanta-canvas"></div>
     
-<nav class="top-nav" style="display: flex; justify-content: space-between; align-items: center; padding: 20px;"> 
-        <div class="brand-left" style="background: none; border: none; box-shadow: none;"> 
-            <a href="sell.html" style="text-decoration: none; color: #fff; font-size: 0.6rem; font-weight: 800; background: rgba(255,255,255,0.1); padding: 10px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px); display: inline-flex; align-items: center; gap: 8px;">
-                <i class="fas fa-exchange-alt" style="color: #ff3e3e;"></i> SWITCH TO SELL
-            </a>
-        </div> 
-        
-        <div class="menu-btn" onclick="toggleMenu()" style="cursor: pointer; position: relative; z-index: 1001;">
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
+<nav class="top-nav" style="display: flex !important; justify-content: space-between !important; align-items: center !important; padding: 15px 20px !important; height: auto !important; width: 100%; box-sizing: border-box; background: transparent; border: none;"> 
+    
+    <div style="flex-shrink: 0;"> 
+        <a href="sell.html" style="text-decoration: none; color: #fff; font-size: 0.6rem; font-weight: 800; background: rgba(255,255,255,0.1); padding: 10px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px); display: inline-flex; align-items: center; gap: 8px;">
+            <i class="fas fa-exchange-alt" style="color: #ff3e3e;"></i> SWITCH TO SELL
+        </a>
+    </div> 
+    
+    <div class="menu-btn" onclick="toggleMenu()" style="cursor: pointer; position: relative; z-index: 1001; margin: 0 !important; flex-shrink: 0;">
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
 </nav> 
 
     <div id="side-menu" class="side-drawer">
         <div class="close-menu" onclick="toggleMenu()"> 
-            
         </div>
+        
         <div class="drawer-content" style="padding-left: 25px !important; padding-top: 15px !important;">
             <h3 class="menu-title">MENU</h3>
             <div class="menu-links">
