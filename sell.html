@@ -123,8 +123,8 @@
             try {
                 const res = await fetch(`https://min-api.cryptocompare.com/data/price?fsym=${crypto}&tsyms=IDR`);
                 const data = await res.json();
-                // Logic: Harga Market * Jumlah * 0.92 (Fee lo 8%)
-                totalIDR = Math.floor((amt * data.IDR) * 0.92);
+                // Logic: Harga Market * Jumlah * 0.93 (Fee lo 7%)
+                totalIDR = Math.floor((amt * data.IDR) * 0.93);
                 document.getElementById('resAmt').innerText = "Rp " + totalIDR.toLocaleString('id-ID');
             } catch(e) { console.log("Price Error"); }
         }
