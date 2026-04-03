@@ -407,27 +407,25 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     margin-right: 5px;
     color: #00ffa3;
 } 
-/* Taruh ini di bagian <style> tiap halaman */
+/* --- TEMA MIDNIGHT GLASS (SETENGAH TRANSPARAN) --- */
 .cyber-card, .market-card {
-    /* Transparan total tapi tetep ada kesan 'kaca' */
-    background: rgba(255, 255, 255, 0.01) !important;
+    /* 1. Hitam transparan biar teks putih kontras */
+    background: rgba(10, 10, 10, 0.75) !important; 
     
-    /* Garis pinggir biar bentuk kotaknya tegas */
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    /* 2. Border tipis banget biar elegan */
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
     
-    /* Blur tipis banget biar teks gak 'tabrakan' sama jaring vanta */
-    backdrop-filter: blur(2px) !important;
-    -webkit-backdrop-filter: blur(2px) !important;
+    /* 3. Efek burem (blur) biar jaring Vanta di belakang gak bikin pusing */
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
 
-    /* Ukuran standar biar rapi di HP */
-    border-radius: 20px;
-    width: 100%;
-    max-width: 400px;
-    padding: 25px;
-    box-sizing: border-box;
+    /* 4. Layout standar biar konsisten di HP */
+    border-radius: 20px !important;
+    padding: 25px !important;
+    box-sizing: border-box !important;
     position: relative;
     z-index: 10;
     
-    /* Efek bayangan gelap tipis biar gak 'flat' banget */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    /* 5. Bayangan biar kotaknya berasa melayang */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
 } 
