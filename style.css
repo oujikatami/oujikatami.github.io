@@ -319,23 +319,26 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .service-name-v2 {
     font-size: 0.85rem;
     font-weight: bold;
-    color: #fff; /* Warna seragam putih */
+    color: #fff; /* TETEP WARNA SERAGAM PUTIH */
     text-align: left;
+    background: transparent !important; /* Mastiin gak ada background yang nutupin kaca */
 }
 
 .service-price-v2 {
     font-size: 0.85rem;
     font-weight: bold;
-    color: #fff; /* Warna seragam putih */
+    color: #fff; /* TETEP WARNA SERAGAM PUTIH */
     text-align: right;
-    white-space: nowrap; /* Biar harganya gak turun ke bawah */
+    white-space: nowrap; /* TETEP BIAR HARGA GAK TURUN */
+    background: transparent !important;
 }
 
-/* Payment Fix */
+/* Payment Fix (STRUKTUR TETAP ASLI) */
 .pay-section {
     text-align: left;
     width: 100%;
-}
+    background: transparent !important;
+} 
 
 .pay-label-final {
     font-size: 0.7rem;
