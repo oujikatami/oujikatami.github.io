@@ -2,26 +2,34 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* --- BODY SETTINGS (DNA UTAMA) --- */
 body { 
-    /* GANTI #000 JADI TRANSPARENT BIAR VANTA KELIHATAN */
-    background: transparent !important; 
+    /* 1. Kasih dasar hitam pekat biar jaring putihnya kontras */
+    background-color: #000 !important; 
     
     color: #fff; 
     font-family: 'Inter', sans-serif; 
     overflow: hidden; 
-
-    /* TAMBAHAN: Pastiin container Vanta lo bener-bener di paling belakang */
+    margin: 0;
+    padding: 0;
 }
 
-/* Kalo lo pake ID #vanta-canvas atau sejenisnya, pastiin dia gak ketutup */
-#vanta-canvas, canvas {
+/* --- CANVAS VANTA (PASTIKAN DI PALING BELAKANG) --- */
+/* Vanta biasanya otomatis bikin canvas, kita kunci posisinya di sini */
+canvas.vanta-canvas {
     position: fixed !important;
-    top: 0;
-    left: 0;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: -1 !important; /* WAJIB: Di belakang semua kartu transparan lo */
     width: 100% !important;
     height: 100% !important;
-    z-index: -1 !important; /* Di belakang semua konten */
+    pointer-events: none; /* Biar gak ganggu klik tombol lo */
 }
+
+/* Fix tambahan biar Snap Panel lo gak nutupin Vanta */
+.snap-panel, .container {
+    background: transparent !important;
+} 
 
 /* --- PONDASI UTAMA (STRUKTUR TETAP ASLI OUJI) --- */
 #scroller {
