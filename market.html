@@ -7,68 +7,40 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* CSS DARURAT BIAR GAK NYASAR KE MENU */
-        body, html {
+    body, html {
         margin: 0; padding: 0;
         height: 100%;
         overflow: hidden; /* Tetap hidden biar body gak scroll */
         background: #000;
-        } 
+    }
 
-        #vanta-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Jaring-jaring di paling belakang */
-        }
+    .main-wrapper {
+        position: relative;
+        z-index: 10;
+        height: 100vh; /* Full layar */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
 
-        .main-wrapper {
-    position: relative;
-    z-index: 10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 10px; /* Kurangin padding samping biar konten bisa melebar */
-    width: 100%;
-    box-sizing: border-box;
-}
+    /* INI KUNCINYA BIAR BISA SCROLL */
+    #market-list {
+        width: 100%;
+        max-width: 500px;
+        flex-grow: 1; /* Ambil sisa layar */
+        overflow-y: auto; /* Aktifkan scroll di sini */
+        padding-top: 100px; /* Jarak dari navbar */
+        padding-bottom: 50px;
+        scrollbar-width: none; /* Hilangkan scrollbar di Firefox */
+    }
 
-        .market-card {
-            background: rgba(10, 10, 10, 0.9);
-            border: 1px solid #333;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 400px;
-            height: 70vh;
-            display: flex;
-            flex-direction: column;
-            padding: 20px 15px;
-            backdrop-filter: blur(10px);
-            margin-top: 60px; /* Jarak dari navbar */
-        }
+    #market-list::-webkit-scrollbar {
+        display: none; /* Hilangkan scrollbar di Chrome/Safari */
+    }
+    </style> 
 
-        .market-header {
-            display: flex;
-            justify-content: space-between;
-            color: #555;
-            font-size: 0.65rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #222;
-        }
-
-        #market-list {
-    width: 100%;
-    max-width: 500px; /* Kita naikin dari 400px biar lebih gagah */
-    padding: 20px 10px;
-    margin-top: 20px;
-    /* Efek bayangan halus biar tulisan tetep kebaca di atas jaring-jaring */
-    text-shadow: 0 0 10px rgba(0,0,0,0.5); 
-        } 
 
         /* Styling Baris Aset (Berjejer) */
         .coin-row {
