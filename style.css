@@ -211,23 +211,27 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 } 
 
-/* Biar gak tabrakan di layar super kecil */
+/* Biar gak tabrakan di layar super kecil (STRUKTUR TETAP ASLI) */
 @media (max-width: 320px) {
     .brand-left { font-size: 0.6rem; left: 10px; }
     .menu-btn { right: 10px; }
 } 
-/* --- FIX SIMETRIS MENU (BIAR GAK TURUN BANGET) --- */
+
+/* --- FIX SIMETRIS MENU (STRUKTUR TETAP ASLI) --- */
 .side-drawer {
-    padding-top: 25px !important; /* Naikin konten biar sejajar sama kiri */
+    padding-top: 25px !important; /* TETEP NAIKIN KONTEN */
+    background: rgba(10, 10, 10, 0.7) !important; /* Biar sinkron sama yang tadi */
+    backdrop-filter: blur(15px) !important;
 }
 
 .drawer-content {
-    padding-top: 0 !important; /* Hapus padding tambahan yang bikin turun */
+    padding-top: 0 !important; /* TETEP HAPUS PADDING TAMBAHAN */
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Jarak antar elemen biar gak nempel banget */
-    padding-left: 30px; /* Jarak dari pinggir sidebar */
-}
+    gap: 30px; 
+    padding-left: 30px; 
+    background: transparent !important; /* WAJIB: Biar gak ada kotak item di dalem sidebar */
+} 
 
 /* Tombol Back biar lebih rapi */
 .close-menu {
