@@ -90,12 +90,20 @@
 
     <div id="vanta-bg"></div>
 
-    <nav class="top-nav">
-        <div class="brand-left">CRYPTO <span style="color: #666;">MARKET</span></div>
-        <div class="menu-btn" onclick="toggleMenu()">
-            <div class="bar"></div><div class="bar"></div>
-        </div>
-    </nav>
+<nav class="top-nav" style="display: flex !important; justify-content: space-between !important; align-items: center !important; padding: 20px !important; height: 80px !important; width: 100%; box-sizing: border-box; background: transparent; position: relative; z-index: 9999 !important;"> 
+    
+    <div class="brand-left">
+        <a href="retail.html" class="switch-btn-link" style="text-decoration: none; color: #fff; font-size: 0.6rem; font-weight: 800; background: rgba(255,255,255,0.1); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px); display: inline-flex; align-items: center; gap: 8px;">
+            <i class="fas fa-sync-alt" style="color: #00ffa3;"></i> SWITCH TO EXCHANGE
+        </a>
+    </div>
+
+    <div class="menu-btn" onclick="toggleMenu()" style="cursor: pointer;">
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+</nav> 
 
     <div id="side-menu" class="side-drawer">
         <div class="close-menu" onclick="toggleMenu()"></div> 
