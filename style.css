@@ -51,14 +51,6 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .cyber-box h2 { font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
 .cyber-box p { font-size: 0.9rem; line-height: 1.6; color: #ccc; }
 
-/* KABEL NEON WARNA-WARNI */
-.neon-cable-container {
-    position: absolute;
-    top: 100%; /* Mulai dari bawah kotak */
-    height: 100vh; /* Panjang sampai ke kotak berikutnya */
-    width: 4px;
-    z-index: 5;
-}
 .cable-svg { width: 100%; height: 100%; }
 .path-base { stroke: rgba(255, 255, 255, 0.05); stroke-width: 2; fill: none; }
 .path-neon {
