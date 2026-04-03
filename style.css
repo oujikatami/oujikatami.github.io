@@ -259,25 +259,30 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     gap: 20px !important;
     background: transparent !important;
 }  
-/* Warna khusus icon social community */
+/* Warna khusus icon social community (WARNA ASLI TETAP) */
 .fa-discord { color: #5865F2; }
 .fa-telegram { color: #0088cc; }
 
-/* Pastikan transisi antar section tetep smooth */
+/* Pastikan transisi antar section tetep smooth (STRUKTUR TETAP ASLI) */
 .snap-panel {
     scroll-snap-align: start;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    /* PENTING: Pastiin panel ini bening biar Vanta gak ketutup tembok warna */
+    background: transparent !important; 
 } 
-/* --- FIX LAYOUT SERVICE & PAYMENT (ANTI CACAT) --- */
+
+/* --- FIX LAYOUT SERVICE & PAYMENT (ANTI CACAT - STRUKTUR TETAP) --- */
 .snap-panel {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-}
+    background: transparent !important; /* Tambahan: Mastiin double check transparan */
+} 
 
 .container {
     width: 90%;
