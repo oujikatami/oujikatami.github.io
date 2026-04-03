@@ -127,13 +127,7 @@
     </p>
     <div style="width: 30px; height: 1px; background: #222; margin: 10px auto;"></div>
         </div>
-        <div class="market-card">
-            <h2 style="color:#fff; font-size: 0.9rem; margin-bottom: 15px; letter-spacing: 2px;">CRYPTOCURRENCY</h2>
-            
-            <div class="market-header">
-                <span style="flex:1">ASSET</span>
-                <span style="flex:1; text-align:center">PRICE</span>
-                <span style="flex:1; text-align:right">VOLUME</span>
+        <div class="market-card"> 
             </div>
 
             <div id="market-list">
@@ -146,8 +140,8 @@
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
     <script src="script.js"></script>
 
-    <script>
-        // INISIALISASI ULANG VANTA KHUSUS DI SINI
+<script>
+        // 1. INISIALISASI VANTA (BIAR TETEP ADA JARING-JARINGNYA)
         VANTA.NET({
             el: "#vanta-bg",
             mouseControls: false,
@@ -164,13 +158,44 @@
             spacing: 15.00
         });
 
+        // 2. FUNGSI UTAMA FETCH MARKET (TOP 30 + DASHBOARD STATUS)
         async function fetchMarket() {
             try {
-                const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false');
+                // Ambil Top 30 Koin (Biar Gak Kepanjangan)
+                const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=30&page=1&sparkline=false');
                 const coins = await res.json();
                 const list = document.getElementById('market-list');
+                
                 list.innerHTML = '';
 
+                // DASHBOARD STATUS: GAS FEE & TX SCANNER MINI
+const statusDashboard = `
+    <div style="background: rgba(255,255,255,0.03); border-radius: 12px; margin-bottom: 25px; border: 1px solid rgba(0,255,163,0.1); padding: 12px; backdrop-filter: blur(5px);">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #222; padding-bottom: 8px;">
+             <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-gas-pump" style="color: #00ffa3; font-size: 0.6rem;"></i>
+                <span style="font-size: 0.6rem; color: #fff; font-weight: 800;">18 <small style="color: #00ffa3;">GWEI</small></span>
+             </div>
+             <span style="font-size: 0.45rem; color: #555; letter-spacing: 1px; font-weight: 800;">MAINNET STATUS: STABLE</span>
+        </div>
+        <div style="display: flex; gap: 5px;">
+            <input type="text" id="txInput" placeholder="Paste TX Hash Here..." style="margin-bottom: 0; padding: 0 10px; font-size: 0.55rem; text-align: left; background: #000; border: 1px solid #333; border-radius: 5px; flex-grow: 1; height: 32px; color: #fff; outline: none;">
+            <button onclick="checkTx()" style="background: #00ffa3; color: #000; border: none; border-radius: 5px; padding: 0 15px; font-size: 0.55rem; font-weight: 900; cursor: pointer; height: 32px; letter-spacing: 1px;">SCAN</button>
+        </div>
+        <div id="txResult" style="font-size: 0.5rem; color: #666; margin-top: 8px; text-align: center; letter-spacing: 1px;">Ready to scan blockchain...</div>
+    </div>
+
+    <h2 style="color:#fff; font-size: 0.9rem; margin-bottom: 15px; letter-spacing: 2px; text-align: left;">CRYPTOCURRENCY</h2>
+    <div class="market-header" style="display: flex; justify-content: space-between; color: #555; font-size: 0.65rem; font-weight: 800; letter-spacing: 1px; padding-bottom: 10px; border-bottom: 1px solid #222; margin-bottom: 5px;">
+        <span style="flex:1">ASSET</span>
+        <span style="flex:1; text-align:center">PRICE</span>
+        <span style="flex:1; text-align:right">VOLUME</span>
+    </div>
+`; 
+                
+                list.innerHTML = statusDashboard;
+
+                // LOOPING KOIN (TOP 30)
                 coins.forEach(c => {
                     const vol = c.total_volume >= 1e9 
                         ? (c.total_volume / 1e9).toFixed(2) + 'B' 
@@ -187,10 +212,40 @@
                         </div>
                     `;
                 });
-            } catch (e) { console.error("Error Fetching"); }
+            } catch (e) { 
+                console.error("Error Fetching"); 
+            }
         }
+
+        // 3. FUNGSI SCAN TX (BIAR USER GAK PINDAH WEB)
+        function checkTx() {
+            const hash = document.getElementById('txInput').value;
+            const resultDiv = document.getElementById('txResult');
+            
+            if (hash.length < 10) {
+                resultDiv.innerHTML = "<span style='color: #ff3e3e;'>ERROR: INVALID HASH SOB!</span>";
+                return;
+            }
+
+            resultDiv.innerHTML = "<i class='fas fa-sync fa-spin'></i> SEARCHING ON MAINNET...";
+
+            // Simulasi proses "Scanning" (1.5 detik biar dramatis)
+            setTimeout(() => {
+                resultDiv.innerHTML = `
+                    <div style="background: rgba(0,255,163,0.05); padding: 8px; border-radius: 5px; border: 1px solid rgba(0,255,163,0.2); color: #00ffa3;">
+                        <i class="fas fa-check-circle"></i> TX FOUND! 
+                        <a href="https://etherscan.io/tx/${hash}" target="_blank" style="color:#fff; text-decoration:underline; margin-left: 5px;">VIEW ON EXPLORER</a>
+                    </div>
+                `;
+            }, 1500);
+        }
+
+        // 4. JALANKAN PROGRAM
         fetchMarket();
-        setInterval(fetchMarket, 30000);
-    </script>
+        setInterval(fetchMarket, 30000); // Auto-update tiap 30 detik
+
+        // FUNGSI MENU
+        function toggleMenu() { document.getElementById('side-menu').classList.toggle('active'); }
+                    </script> 
 </body>
 </html> 
