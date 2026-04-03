@@ -286,10 +286,11 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 
 .container {
     width: 90%;
-    max-width: 400px; /* Batasi lebar di desktop */
+    max-width: 400px; /* TETEP BATASI LEBAR DESKTOP */
+    background: transparent !important;
 }
 
-/* Ouji Service Fix */
+/* Ouji Service Fix (STRUKTUR TETAP ASLI) */
 .service-table {
     display: flex;
     flex-direction: column;
@@ -298,14 +299,22 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 
 .service-row-v2 {
     display: flex;
-    justify-content: space-between; /* Misahin kiri dan kanan pol */
+    justify-content: space-between; /* TETEP MISAHIN KIRI KANAN POL */
     align-items: center;
     padding: 15px;
-    border: 1px solid #1f2328;
     border-radius: 10px;
-    background: rgba(255,255,255,0.02);
     width: 100%;
-}
+    
+    /* --- EFEK GLASSY (GANTI DARI 0.02 JADI INI) --- */
+    background: rgba(255, 255, 255, 0.05) !important; 
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    
+    /* Kasih shadow tipis biar baris harganya 'ngambang' */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease;
+} 
 
 .service-name-v2 {
     font-size: 0.85rem;
