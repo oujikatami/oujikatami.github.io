@@ -422,23 +422,32 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .pay-item img {
     display: block;
     object-fit: contain;
-    background: rgba(255,255,255,0.05); /* Background tipis biar kelihatan ada isinya */
     border-radius: 4px;
+    
+    /* GANTI background 0.05 JADI INI (Biar icon makin nyatu sama kaca) */
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .pay-item {
     transition: transform 0.2s;
+    /* Background & blur udah kita setel di .pay-item sebelumnya ya sob */
 }
 
 .pay-item:active {
-    transform: scale(0.95); /* Efek pencet di HP */
+    transform: scale(0.95); /* TETEP EFEK PENCET ASLI LO */
 } 
+
+/* --- SEARCH WRAPPER VANTA (HANYA CEK TRANSPARANSI) --- */
 .search-wrapper-vanta {
     display: flex;
     align-items: center;
     width: 100%;
     padding: 10px 0;
-}
+    
+    /* PASTIIN TRANSPARAN BIAR GAK BLOKIR VANTA DI BAWAH */
+    background: transparent !important;
+} 
 
 .cex-link-grid {
     display: grid;
