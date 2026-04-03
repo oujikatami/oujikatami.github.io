@@ -480,20 +480,38 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     backdrop-filter: none !important;
 }
 
-/* GRID UNTUK TOMBOL CEX */
+/* GRID UNTUK TOMBOL CEX (STRUKTUR TETAP ASLI) */
 .cex-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* TETEP BAGI TIGA RATA */
     gap: 8px;
+    background: transparent !important;
 }
 
 .cex-btn {
-    display: block; padding: 10px 2px; background: rgba(255,255,255,0.02);
-    border: 1px solid #222; border-radius: 4px; color: #666;
-    font-size: 0.5rem; text-decoration: none; text-align: center;
-    transition: 0.3s; font-weight: 800;
+    display: block; 
+    padding: 10px 2px; 
+    border-radius: 4px; 
+    color: #666; /* TETEP WARNA ASLI LO */
+    font-size: 0.5rem; 
+    text-decoration: none; 
+    text-align: center;
+    transition: 0.3s; 
+    font-weight: 800;
+
+    /* --- EFEK GLASSY (GANTI DARI 0.02 JADI INI) --- */
+    background: rgba(255, 255, 255, 0.05) !important; 
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
 }
-.cex-btn:hover { border-color: #00ffa3; color: #fff; }
+
+/* EFEK HOVER (TETEP PAKE LOGIKA NEON ASLI LO) */
+.cex-btn:hover { 
+    border-color: #00ffa3 !important; /* TETEP HIJAU NEON ASLI LO */
+    color: #fff !important; 
+    background: rgba(0, 255, 163, 0.1) !important; /* Kasih sedikit aura neon pas di-hover */
+}
 
 /* MODAL / POP-UP SETTINGS */
 .modal-vanta {
