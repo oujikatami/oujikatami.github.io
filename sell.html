@@ -121,11 +121,17 @@
         function toStep2() {
             const amt = document.getElementById('amountCrypto').value;
             if (amt <= 0) return alert("Masukan jumlah koin sob!");
+            
+            // TAMBAHKAN LOGIKA INI SOB
+            if (totalIDR < 100000) {
+                return alert("Minimal penjualan Rp 100.000 bos!");
+            }
+
             document.getElementById('step1').style.display = "none";
             document.getElementById('step2').style.display = "block";
             const asset = document.getElementById('assetSelect').options[document.getElementById('assetSelect').selectedIndex].text;
             document.getElementById('sellDetail').innerHTML = `YOU SELL: ${amt} ${asset}<br>YOU RECEIVE: Rp ${totalIDR.toLocaleString('id-ID')}`;
-        }
+        } 
 
         function sendWA() {
             const amt = document.getElementById('amountCrypto').value;
@@ -136,7 +142,7 @@
 
             if(!bank || !norek || !name) return alert("Lengkapi data pembayaran lo sob!");
 
-            const msg = encodeURIComponent(`Halo Ouji!\nSAYA MAU JUAL ${asset}.\n\nDetail:\n- Jumlah: ${amt} ${asset}\n- Terima IDR: Rp ${totalIDR.toLocaleString('id-ID')}\n\nData Pembayaran Saya:\n- Bank: ${bank}\n- Norek: ${norek}\n- A.N: ${name}\n\nMohon alamat wallet tujuan buat saya kirim koinnya sob!`);
+            const msg = encodeURIComponent(`Halo Ouji!\nSAYA MAU JUAL ${asset}.\n\nDetail:\n- Jumlah: ${amt} ${asset}\n- Terima IDR: Rp ${totalIDR.toLocaleString('id-ID')}\n\nData Pembayaran Saya:\n- Bank: ${bank}\n- Norek: ${norek}\n- A.N: ${name}\n\nMohon alamat wallet tujuan buat saya kirim koinnya!`);
             window.open(`https://wa.me/6281556694081?text=${msg}`);
         }
     </script>
