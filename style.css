@@ -407,3 +407,27 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     margin-right: 5px;
     color: #00ffa3;
 } 
+/* Taruh ini di bagian <style> tiap halaman */
+.cyber-card, .market-card {
+    /* Transparan total tapi tetep ada kesan 'kaca' */
+    background: rgba(255, 255, 255, 0.01) !important;
+    
+    /* Garis pinggir biar bentuk kotaknya tegas */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    
+    /* Blur tipis banget biar teks gak 'tabrakan' sama jaring vanta */
+    backdrop-filter: blur(2px) !important;
+    -webkit-backdrop-filter: blur(2px) !important;
+
+    /* Ukuran standar biar rapi di HP */
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    padding: 25px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+    
+    /* Efek bayangan gelap tipis biar gak 'flat' banget */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+} 
