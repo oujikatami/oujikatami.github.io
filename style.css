@@ -233,24 +233,32 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     background: transparent !important; /* WAJIB: Biar gak ada kotak item di dalem sidebar */
 } 
 
-/* Tombol Back biar lebih rapi */
+/* Tombol Back biar lebih rapi (STRUKTUR & POSISI TETAP) */
 .close-menu {
-    position: static !important; /* Biar dia ikut alur flexbox, gak melayang */
+    position: static !important; /* TETEP IKUT ALUR FLEXBOX */
     margin-bottom: 10px;
     width: fit-content;
+    
+    /* BIAR KACA TETEP SINKRON */
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
 }
 
-/* Judul MENU biar sejajar garis mata */
+/* Judul MENU biar sejajar garis mata (STRUKTUR TETAP) */
 .menu-title {
     margin-top: 0;
     font-size: 1rem;
-    color: #444; /* Bikin agak redup biar elegan */
+    color: #444; /* TETEP REDUP ELEGAN */
+    background: transparent !important; /* Pastiin gak ada background yang nutupin */
 }
 
-/* Link menu biar lebih rapet dikit gap-nya */
+/* Link menu biar lebih rapet dikit gap-nya (STRUKTUR TETAP) */
 .menu-links {
     gap: 20px !important;
-} 
+    background: transparent !important;
+}  
 /* Warna khusus icon social community */
 .fa-discord { color: #5865F2; }
 .fa-telegram { color: #0088cc; }
