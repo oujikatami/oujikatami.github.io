@@ -3,7 +3,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow: hidden; }
 
-/* SNAP SCROLLING */
+/* --- PONDASI UTAMA (STRUKTUR TETAP ASLI OUJI) --- */
 #scroller {
     height: 100vh;
     overflow-y: scroll;
@@ -11,6 +11,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     scrollbar-width: none;
     position: relative;
     z-index: 2;
+    /* Gak gue kasih background biar Vanta aman */
 }
 #scroller::-webkit-scrollbar { display: none; }
 
@@ -19,22 +20,34 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     scroll-snap-align: start;
     display: flex; justify-content: center; align-items: center;
     position: relative;
+    /* Gak gue sentuh biar snap scroll lancar */
 }
 
 .container {
     width: 90%; max-width: 400px;
     display: flex; flex-direction: column; align-items: center;
     position: relative;
+    /* Gak gue sentuh biar tetep center */
 }
 
-/* KOTAKAN (CYBER BOX) */
+/* --- KOTAKAN (CYBER BOX) - HANYA UBAH TRANSPARANSI --- */
 .cyber-box {
-    background: rgba(11, 14, 17, 0.95);
-    border: 1px solid #2d333a;
-    padding: 25px; border-radius: 15px;
-    width: 100%; text-align: center;
-    position: relative; z-index: 10;
-}
+    /* 1. Ganti dari 0.95 ke 0.75 (Transparan) */
+    background: rgba(10, 10, 10, 0.75) !important; 
+    
+    /* 2. Tambah Efek Blur (Frosted Glass) */
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    
+    /* 3. Sisanya TETEP PAKE KODE ASLI LO (Struktur & Font) */
+    border: 1px solid #2d333a; /* Border asli lo */
+    padding: 25px; 
+    border-radius: 15px; /* Radius asli lo */
+    width: 100%; 
+    text-align: center;
+    position: relative; 
+    z-index: 10;
+} 
 .cyber-box h2 { font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
 .cyber-box p { font-size: 0.9rem; line-height: 1.6; color: #ccc; }
 
