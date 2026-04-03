@@ -23,17 +23,17 @@
             height: 100%;
             z-index: -1; /* Jaring-jaring di paling belakang */
         }
-
-        .main-wrapper {
-            position: relative;
-            z-index: 10;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 0 15px;
-        }
+.main-wrapper {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px; /* Kurangin padding samping biar konten bisa melebar */
+    width: 100%;
+    box-sizing: border-box;
+} 
 
         .market-card {
             background: rgba(10, 10, 10, 0.9);
@@ -64,7 +64,15 @@
             flex-grow: 1;
             overflow-y: auto; /* INI BIAR BISA DI-SCROLL */
             padding-right: 5px;
-        }
+        } 
+        #market-list {
+    width: 100%;
+    max-width: 500px; /* Kita naikin dari 400px biar lebih gagah */
+    padding: 20px 10px;
+    margin-top: 20px;
+    /* Efek bayangan halus biar tulisan tetep kebaca di atas jaring-jaring */
+    text-shadow: 0 0 10px rgba(0,0,0,0.5); 
+        } 
 
         /* Styling Baris Aset (Berjejer) */
         .coin-row {
