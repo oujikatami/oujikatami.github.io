@@ -195,13 +195,21 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .menu-btn {
     position: absolute;
     top: 20px;
-    right: 20px; /* INI YANG MAKSA DIA KE KANAN POL */
-    background: rgba(255, 255, 255, 0.1);
+    right: 20px; /* TETEP MAKSA KE KANAN POL */
     padding: 10px;
     border-radius: 8px;
     cursor: pointer;
-    margin: 0 !important; /* Hapus margin yang bikin geser */
-}
+    margin: 0 !important; /* TETEP HAPUS MARGIN */
+    
+    /* --- EFEK GLASSY (HANYA INI YANG BERUBAH) --- */
+    background: rgba(255, 255, 255, 0.05) !important; 
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    
+    /* Tambahan Shadow biar tombolnya 'muncul' dari Vanta */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+} 
 
 /* Biar gak tabrakan di layar super kecil */
 @media (max-width: 320px) {
