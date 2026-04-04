@@ -31,11 +31,45 @@
                 <a href="drophunting.html">DROP HUNTING</a>
                 <a href="market.html">CRYPTO MARKET</a>
                 <a href="retail.html">RETAIL CRYPTO</a> 
-            </div>
+                </div>
+        <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 15px; padding-right: 25px;">
+                <div style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(0,255,163,0.1); padding: 12px; backdrop-filter: blur(5px);">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; border-bottom: 1px solid #222; padding-bottom: 5px;">
+                        <i class="fab fa-ethereum" style="color: #00ffa3; font-size: 0.6rem;"></i>
+                        <span style="font-size: 0.55rem; color: #fff; font-weight: 800; letter-spacing: 1px;">EVM EXPLORER</span>
+                    </div>
+                    <div style="display: flex; gap: 5px;">
+                        <input type="text" id="evmInput" placeholder="Paste 0x Hash..." style="background: #000; border: 1px solid #333; border-radius: 5px; flex-grow: 1; height: 28px; color: #fff; font-size: 0.5rem; padding: 0 8px; outline: none;">
+                        <button onclick="scanEVM()" style="background: #00ffa3; color: #000; border: none; border-radius: 5px; padding: 0 10px; font-size: 0.5rem; font-weight: 900; cursor: pointer;">SCAN</button>
+                    </div>
+                </div>
+
+<div style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(153, 69, 255, 0.2); padding: 12px; backdrop-filter: blur(5px);">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; border-bottom: 1px solid #222; padding-bottom: 5px;">
+            
+            <svg class="solana-logo" viewBox="0 0 24 24" style="width: 12px; height: 12px; fill: none; xmlns:http://www.w3.org/2000/svg">
+                <path d="M19 19.34L17.5 20.84L5 11.66L6.5 10.16L19 19.34Z" fill="url(#solana_grad)" />
+                <path d="M19 10.84L17.5 12.34L5 3.16L6.5 1.66L19 10.84Z" fill="url(#solana_grad)" />
+                <defs>
+                    <linearGradient id="solana_grad" x1="5" y1="1" x2="19" y2="20.84" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#9945FF" />
+                        <stop offset="1" stop-color="#14F195" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            <span style="font-size: 0.55rem; color: #fff; font-weight: 800; letter-spacing: 1px;">SOLANA SCAN</span>
+        </div>
+        <div style="display: flex; gap: 5px;">
+            <input type="text" id="solInput" placeholder="Paste Signature..." style="background: #000; border: 1px solid #333; border-radius: 5px; flex-grow: 1; height: 28px; color: #fff; font-size: 0.5rem; padding: 0 8px; outline: none;">
+            <button onclick="scanSOL()" style="background: #9945FF; color: #fff; border: none; border-radius: 5px; padding: 0 10px; font-size: 0.5rem; font-weight: 900; cursor: pointer;">SCAN</button>
         </div>
     </div>
 
-    <main id="scroller">
+<div style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(243, 186, 47, 0.2); padding: 12px; backdrop-filter: blur(5px);"> <div style="display: flex; justify-content: space-between; align-items: center;"> <div style="display: flex; align-items: center; gap: 8px;"> <i class="fas fa-faucet" style="color: #f3ba2f; font-size: 0.6rem;"></i> <span style="font-size: 0.55rem; color: #fff; font-weight: 800; letter-spacing: 1px;">SEPOLIA FAUCET</span> </div> <a href="https://www.infura.io/faucet/sepolia" target="_blank" style="background: #f3ba2f; color: #000; text-decoration: none; border-radius: 5px; padding: 4px 10px; font-size: 0.5rem; font-weight: 900;">CLAIM</a> </div> </div> </div> </div> </div>
+    </div>
+  </div>
+ </div>
+</div> </div> <div <main id="scroller">
         <section class="snap-panel">
             <div class="container">
                 <div class="cyber-box service-box-final">
