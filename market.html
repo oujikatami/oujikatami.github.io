@@ -99,16 +99,51 @@
         <div class="close-menu" onclick="toggleMenu()"></div> 
 
     <div class="drawer-content" style="padding-left: 25px !important; padding-top: 15px !important;">
-            <h3 class="menu-title">MENU</h3>
-            <div class="menu-links">
-                <a href="index.html">ŌUJI KATAMI PORTFOLIO</a>
-                <a href="community.html">AIRDROP SCOUT COMMUNITY</a>
-                <a href="services.html">ŌUJI SERVICE</a>
-                <a href="drophunting.html">DROP HUNTING</a>
-                <a href="retail.html">RETAIL CRYPTO</a>
-            </div>
+        <h3 class="menu-title">MENU</h3>
+        <div class="menu-links">
+            <a href="index.html">ŌUJI KATAMI PORTFOLIO</a>
+            <a href="community.html">AIRDROP SCOUT COMMUNITY</a>
+            <a href="services.html">ŌUJI SERVICE</a>
+            <a href="drophunting.html">DROP HUNTING</a>
+            <a href="retail.html">RETAIL CRYPTO</a>
         </div>
-    </div>
+
+        <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 15px; padding-right: 25px;">
+            
+            <div style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(0,255,163,0.1); padding: 12px; backdrop-filter: blur(5px);">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; border-bottom: 1px solid #222; padding-bottom: 5px;">
+                    <i class="fab fa-ethereum" style="color: #00ffa3; font-size: 0.6rem;"></i>
+                    <span style="font-size: 0.55rem; color: #fff; font-weight: 800; letter-spacing: 1px;">EVM EXPLORER</span>
+                </div>
+                <div style="display: flex; gap: 5px;">
+                    <input type="text" id="evmInput" placeholder="Paste 0x Hash..." style="background: #000; border: 1px solid #333; border-radius: 5px; flex-grow: 1; height: 28px; color: #fff; font-size: 0.5rem; padding: 0 8px; outline: none;">
+                    <button onclick="scanEVM()" style="background: #00ffa3; color: #000; border: none; border-radius: 5px; padding: 0 10px; font-size: 0.5rem; font-weight: 900; cursor: pointer;">SCAN</button>
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(153, 69, 255, 0.2); padding: 12px; backdrop-filter: blur(5px);">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; border-bottom: 1px solid #222; padding-bottom: 5px;">
+                    <i class="fas fa-bolt" style="color: #9945FF; font-size: 0.6rem;"></i>
+                    <span style="font-size: 0.55rem; color: #fff; font-weight: 800; letter-spacing: 1px;">SOLANA SCAN</span>
+                </div>
+                <div style="display: flex; gap: 5px;">
+                    <input type="text" id="solInput" placeholder="Paste Signature..." style="background: #000; border: 1px solid #333; border-radius: 5px; flex-grow: 1; height: 28px; color: #fff; font-size: 0.5rem; padding: 0 8px; outline: none;">
+                    <button onclick="scanSOL()" style="background: #9945FF; color: #fff; border: none; border-radius: 5px; padding: 0 10px; font-size: 0.5rem; font-weight: 900; cursor: pointer;">SCAN</button>
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(243, 186, 47, 0.2); padding: 12px; backdrop-filter: blur(5px);">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-faucet" style="color: #f3ba2f; font-size: 0.6rem;"></i>
+                        <span style="font-size: 0.55rem; color: #fff; font-weight: 800; letter-spacing: 1px;">SEPOLIA FAUCET</span>
+                    </div>
+                    <a href="https://www.infura.io/faucet/sepolia" target="_blank" style="background: #f3ba2f; color: #000; text-decoration: none; border-radius: 5px; padding: 4px 10px; font-size: 0.5rem; font-weight: 900;">CLAIM</a>
+                </div>
+            </div>
+
+        </div>
+    </div> 
 
     <div class="main-wrapper">
         <div style="text-align: center; margin-bottom: 20px;">
@@ -236,6 +271,20 @@
 
         // FUNGSI MENU
         function toggleMenu() { document.getElementById('side-menu').classList.toggle('active'); }
+        function scanEVM() {
+        const hash = document.getElementById('evmInput').value.trim();
+        if (hash) {
+            // Blockscan itu agregator sakti buat semua 0x hash
+            window.open(`https://blockscan.com/tx/${hash}`, '_blank');
+        }
+    }
+
+    function scanSOL() {
+        const sig = document.getElementById('solInput').value.trim();
+        if (sig) {
+            window.open(`https://solscan.io/tx/${sig}`, '_blank');
+        }
+    } 
 </script> 
 </body>
 </html> 
