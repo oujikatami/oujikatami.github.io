@@ -31,28 +31,5 @@ function scanEVM() {
         const sig = document.getElementById('solInput').value.trim();
         if (sig) {
             window.open(`https://solscan.io/tx/${sig}`, '_blank');
-        }
-    } 
-function genReff() {
-    const wallet = document.getElementById('reffInput').value.trim();
-    const status = document.getElementById('reffStatus');
-
-    if (wallet.length < 10) {
-        status.innerHTML = "<span style='color: #ff3e3e;'>ERROR: INVALID WALLET SOB!</span>";
-        return;
-    }
-
-    // Ambil URL dasar web lo (biar dinamis mau di index/market tetep jalan)
-    const baseLink = window.location.origin + window.location.pathname;
-    const finalLink = `${baseLink}?ref=${wallet}`;
-
-    // JURUS COPY KE CLIPBOARD
-    navigator.clipboard.writeText(finalLink).then(() => {
-        status.innerHTML = "<span style='color: #00ffa3;'>LINK COPIED TO CLIPBOARD!</span>";
-        // Balikin status normal setelah 3 detik
-        setTimeout(() => { status.innerText = "Ready to share again!"; }, 3000);
-    }).catch(err => {
-        // Fallback kalau browser jadul gak dukung clipboard api
-        alert("Copy link ini sob: " + finalLink);
-    });
-} 
+        } 
+    }  
