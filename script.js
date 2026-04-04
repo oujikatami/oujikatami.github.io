@@ -33,33 +33,47 @@ function scanEVM() {
             window.open(`https://solscan.io/tx/${sig}`, '_blank');
         } 
     }  
-/* --- FUNGSI GENERATE REFFERAL (COPY SAKTI) --- */
-function genReff() {
-    // 1. Ambil apa yang diketik user (Nama atau Wallet)
-    const wallet = document.getElementById('reffInput').value.trim();
-    const status = document.getElementById('reffStatus');
-
-    // 2. Cek kalo kosong jangan dikasih copy
-    if (!wallet) {
-        status.innerHTML = "<span style='color: #ff3e3e;'>KETIK NAMA/WALLET DULU SOB!</span>";
+async function liveSearch() {
+    const query = document.getElementById('menuSearchInput').value.toLowerCase();
+    const resultBox = document.getElementById('searchResultBox');
+    
+    if (query.length < 2) {
+        resultBox.style.display = "none";
         return;
     }
 
-    // 3. Bikin Link-nya (Otomatis nembak ke retail.html biar pasti jualan)
-    // window.location.origin bakal otomatis jadi oujikatami.xyz pas online
-    const finalLink = window.location.origin + "/retail.html?ref=" + wallet;
-
-    // 4. JURUS COPY KE CLIPBOARD HP
-    navigator.clipboard.writeText(finalLink).then(() => {
-        // Kalo sukses, kasih tanda centang ijo "Pecah Telor"
-        status.innerHTML = "<span style='color: #00ffa3;'>PECAH TELOR! LINK COPIED!</span>";
+    try {
+        const response = await fetch('airdrops.json');
+        const data = await response.json();
         
-        // Balikin tulisan normal setelah 3 detik
-        setTimeout(() => { 
-            status.innerText = "Ready to share again!"; 
-        }, 3000);
-    }).catch(err => {
-        // Kalo browser jadul gak support, kasih alert aja
-        alert("Copy link ini manual sob: " + finalLink);
-    });
-} 
+        // Filter data berdasarkan nama airdrop
+        const results = data.filter(item => item.name.toLowerCase().includes(query));
+
+        if (results.length > 0) {
+            resultBox.style.display = "block";
+            resultBox.innerHTML = results.map(item => `
+                <div style="padding: 10px; border-bottom: 1px solid #222; cursor: pointer;" onclick="viewDrop('${item.link}')">
+                    <div style="font-size: 0.6rem; color: #00ffa3; font-weight: 800;">${item.name.toUpperCase()}</div>
+                    <div style="font-size: 0.45rem; color: #888;">Status: ${item.status || 'Active'}</div>
+                </div>
+            `).join('');
+        } else {
+            resultBox.innerHTML = "<div style='padding:10px; font-size:0.5rem; color:#444;'>No Alpha Found...</div>";
+            resultBox.style.display = "block";
+        }
+    } catch (e) {
+        console.log("JSON Error:", e);
+    }
+}
+
+// Fungsi buat ngebuka detail (bisa ke link luar atau modal)
+function viewDrop(link) {
+    window.location.href = link;
+}
+
+// Klik di luar buat nutup hasil
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('#menuSearchInput')) {
+        document.getElementById('searchResultBox').style.display = "none";
+    }
+});
