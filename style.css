@@ -638,34 +638,35 @@ canvas.vanta-canvas {
     color: #00ffa3;    /* TETEP WARNA HIJAU NEON ASLI LO */
     background: transparent !important;
 } 
-/* --- THE ULTIMATE OVERRIDE (TARUH PALING BAWAH) --- */
+/* --- THE FINAL PREMAN OVERRIDE (MAKSIMAL TURUN) --- */
 
-/* 1. Paksa Sidebar Turun Jauh */
-.side-drawer .drawer-content {
-    padding-top: 140px !important; /* Rules: Kasih jarak aman dari header */
-    padding-left: 30px !important; 
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 35px !important; /* Jarak antar link menu */
+/* 1. Paksa Judul MENU Geser ke Bawah secara Fisik */
+.menu-title {
+    display: block !important;
+    position: relative !important;
+    
+    /* Rules: Tarik turun 120px dari posisi aslinya */
+    top: 120px !important; 
+    
+    font-size: 0.7rem !important;
+    color: #444 !important;
+    letter-spacing: 4px !important;
+    margin-bottom: 20px !important;
     background: transparent !important;
 }
 
-/* 2. Paksa Judul MENU Muncul */
-.side-drawer .menu-title {
-    font-size: 0.75rem !important;
-    color: #444 !important;
-    letter-spacing: 4px !important;
-    margin-bottom: 5px !important;
-    text-transform: uppercase !important;
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-
-/* 3. Link Menu Tetap Gagah */
-.side-drawer .menu-links {
+/* 2. Paksa Kontainer Link Juga Ikut Turun Biar Gak Tabrakan sama Judul */
+.menu-links {
+    position: relative !important;
+    top: 120px !important; /* Samain angkanya sama menu-title */
     display: flex !important;
     flex-direction: column !important;
     gap: 25px !important;
+    background: transparent !important;
+}
+
+/* 3. Bersihin Drawer Content biar gak nahan */
+.drawer-content {
+    padding-top: 0 !important;
     background: transparent !important;
 } 
