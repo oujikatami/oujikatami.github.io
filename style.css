@@ -670,3 +670,64 @@ canvas.vanta-canvas {
     padding-top: 0 !important;
     background: transparent !important;
 } 
+/* --- SIDEBAR TOOLS STYLING --- */
+.sidebar-tools {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 50px; /* Biar gak mentok jempol bawah */
+}
+
+.tool-box {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 15px;
+    transition: 0.3s;
+}
+
+.tool-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.tool-header i { color: #00ffa3; }
+
+.tool-input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 10px;
+    color: #fff;
+    font-size: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 10px;
+}
+
+.tool-btn {
+    width: 100%;
+    padding: 8px;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.6rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tool-btn:active { transform: scale(0.95); }
+
+/* Special SOLANA Gradient Border */
+.sol-border { border: 1px solid rgba(153, 69, 255, 0.3); }
+.sol-btn { background: #9945FF; color: #fff; } /* Warna Solana */
