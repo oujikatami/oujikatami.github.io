@@ -153,20 +153,20 @@
     <script src="script.js"></script>
 
     <script>
-        // 1. INISIALISASI VANTA (BIAR TETEP ADA JARING-JARINGNYA)
+        // 1. INISIALISASI VANTA (BALIKIN JARING PUTIH TERANG)
         VANTA.NET({
             el: "#vanta-bg",
-            mouseControls: false,
-            touchControls: false,
-            gyroControls: false,
+            mouseControls: true,    /* Rules: Aktifin lagi biar interaktif */
+            touchControls: true,    /* Rules: Aktifin buat user HP */
+            gyroControls: true,     /* Rules: Kasih efek goyang biar mewah */
             minHeight: 200.00,
             minWidth: 200.00,
             scale: 1.00,
             scaleMobile: 1.00,
-            color: 0x3f3f3f,
-            backgroundColor: 0x0,
-            points: 10.00,
-            maxDistance: 20.00,
+            color: 0xffffff,        /* GANTI DARI 0x3f3f3f KE PUTIH TERANG */
+            backgroundColor: 0x0,   /* Tetep dasar item */
+            points: 12.00,          /* Naikin titik dikit biar rame jaringnya */
+            maxDistance: 25.00,     /* Jaring lebih panjang biar estetik */
             spacing: 15.00
         });
 
