@@ -31,8 +31,25 @@
                 <a href="services.html">ŌUJI SERVICE</a>
                 <a href="drophunting.html">DROP HUNTING</a>
                 <a href="market.html">CRYPTO MARKET</a>
-                <a href="retail.html">RETAIL CRYPTO</a> 
-            </div>
+                <a href="retail.html">RETAIL CRYPTO</a>
+                <div class="sidebar-tools">
+    
+    <div class="tool-box">
+        <div class="tool-header">
+            <i class="fa-brands fa-ethereum"></i>
+            <span>EVM TRACKER</span>
+        </div>
+        <input type="text" placeholder="Paste 0x Hash..." class="tool-input" id="evm-input">
+        <button class="tool-btn" onclick="checkEVM()">CHECK HASH</button>
+    </div>
+
+    <div class="tool-box sol-border">
+        <div class="tool-header">
+            <i class="fa-solid fa-sun"></i> <span>SOLANA SCAN</span>
+        </div>
+        <input type="text" placeholder="Paste Signature..." class="tool-input" id="sol-input">
+        <button class="tool-btn sol-btn" onclick="checkSOL()">CHECK SIG</button>
+    </div>      
         </div>
     </div>
 
