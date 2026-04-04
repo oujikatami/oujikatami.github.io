@@ -132,6 +132,19 @@
                 <a href="drophunting.html">DROP HUNTING</a>
                 <a href="market.html">CRYPTO MARKET</a> 
                 </div>
+            <div style="background: rgba(0,255,163,0.05); border-radius: 12px; border: 1px dashed rgba(0,255,163,0.3); padding: 12px; backdrop-filter: blur(5px);">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                    <i class="fas fa-bullhorn" style="color: #00ffa3; font-size: 0.6rem;"></i>
+                    <span style="font-size: 0.55rem; color: #fff; font-weight: 800; letter-spacing: 1px;">GENERATE REFFERAL</span>
+                </div>
+                <div style="display: flex; gap: 5px;">
+                    <input type="text" id="reffInput" placeholder="Enter Name/Wallet..." style="background: #000 !important; border: 1px solid #333 !important; border-radius: 5px !important; flex-grow: 1 !important; height: 30px !important; color: #fff !important; font-size: 0.5rem !important; padding: 0 10px !important; margin-bottom: 0 !important; width: auto !important; text-align: left !important;">
+                    <button onclick="genReff()" style="background: #00ffa3 !important; color: #000 !important; border: none !important; border-radius: 5px !important; padding: 0 10px !important; font-size: 0.5rem !important; font-weight: 900 !important; cursor: pointer !important; height: 30px !important; width: auto !important;">COPY</button>
+                </div>
+                <p id="reffStatus" style="font-size: 0.4rem; color: #666; margin-top: 8px; text-align: center; letter-spacing: 1px;">Input wallet to get your unique link!</p>
+            </div>
+        </div>
+        
         <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 15px; padding-right: 25px;">
                 <div style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(0,255,163,0.1); padding: 12px; backdrop-filter: blur(5px);">
                     <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; border-bottom: 1px solid #222; padding-bottom: 5px;">
@@ -168,19 +181,7 @@
 <div style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(243, 186, 47, 0.2); padding: 12px; backdrop-filter: blur(5px);"> <div style="display: flex; justify-content: space-between; align-items: center;"> <div style="display: flex; align-items: center; gap: 8px;"> <i class="fas fa-faucet" style="color: #f3ba2f; font-size: 0.6rem;"></i> <span style="font-size: 0.55rem; color: #fff; font-weight: 800; letter-spacing: 1px;">SEPOLIA FAUCET</span> </div> <a href="https://www.infura.io/faucet/sepolia" target="_blank" style="background: #f3ba2f; color: #000; text-decoration: none; border-radius: 5px; padding: 4px 10px; font-size: 0.5rem; font-weight: 900;">CLAIM</a> </div> </div> </div> </div> </div>
    </div> 
  </div>
-
-    <div style="background: rgba(0,255,163,0.05); border-radius: 12px; border: 1px dashed rgba(0,255,163,0.3); padding: 12px; backdrop-filter: blur(5px);">
-                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                    <i class="fas fa-bullhorn" style="color: #00ffa3; font-size: 0.6rem;"></i>
-                    <span style="font-size: 0.55rem; color: #fff; font-weight: 800; letter-spacing: 1px;">GENERATE REFFERAL</span>
-                </div>
-                <div style="display: flex; gap: 5px;">
-                    <input type="text" id="reffInput" placeholder="Enter Name/Wallet..." style="background: #000 !important; border: 1px solid #333 !important; border-radius: 5px !important; flex-grow: 1 !important; height: 30px !important; color: #fff !important; font-size: 0.5rem !important; padding: 0 10px !important; margin-bottom: 0 !important; width: auto !important; text-align: left !important;">
-                    <button onclick="genReff()" style="background: #00ffa3 !important; color: #000 !important; border: none !important; border-radius: 5px !important; padding: 0 10px !important; font-size: 0.5rem !important; font-weight: 900 !important; cursor: pointer !important; height: 30px !important; width: auto !important;">COPY</button>
-                </div>
-                <p id="reffStatus" style="font-size: 0.4rem; color: #666; margin-top: 8px; text-align: center; letter-spacing: 1px;">Input wallet to get your unique link!</p>
-            </div>
-</div> </div> </div>
+</div> 
      
     <main style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 120px;">
         
