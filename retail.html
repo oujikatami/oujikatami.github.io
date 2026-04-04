@@ -71,6 +71,35 @@
             transition: 0.3s;
         }
         .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
+        /* --- THE ULTIMATE SLIMMER (FIX TRACKER DI SIDEBAR) --- */
+
+#side-menu input.tool-input, 
+#side-menu .drawer-content input {
+    width: auto !important;
+    flex-grow: 1 !important;
+    height: 30px !important;
+    padding: 0 10px !important;
+    margin-bottom: 0 !important;
+    font-size: 0.5rem !important;
+    background: #000 !important;
+    border: 1px solid #333 !important;
+    display: inline-block !important;
+}
+
+#side-menu button {
+    width: auto !important;
+    height: 30px !important;
+    padding: 0 12px !important;
+    font-size: 0.5rem !important;
+    margin: 0 !important;
+    display: inline-block !important;
+}
+
+#side-menu .drawer-content div[style*="display: flex; gap: 5px;"] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+} 
     </style> 
     
 </head>
