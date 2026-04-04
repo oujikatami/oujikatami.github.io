@@ -6,27 +6,30 @@
     <title>Ōuji Katami | Market</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-    /* CSS DARURAT BIAR GAK NYASAR KE MENU */
+    
+       <style>
+    /* 1. BODY HARUS BENING TOTAL */
     body, html {
         margin: 0;
         padding: 0;
         height: 100%;
-        background: #000; /* Dasar hitam */
+        background-color: transparent !important; /* Rules: Jangan dikasih warna solid! */
         overflow: hidden; 
         font-family: 'Inter', sans-serif;
     }
 
+    /* 2. KUNCI CANVAS DI BALIK LAYAR */
     #vanta-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: -1 !important; 
+        background-color: #000; /* Dasar hitamnya pindah ke sini */
     }
 
-    /* TARIK WRAPPER KE ATAS DIKIT */
+    /* 3. WRAPPER DIPAKSA TEMBUS PANDANG */
     .main-wrapper {
         position: relative;
         z-index: 10;
@@ -34,21 +37,22 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start; /* Ganti dari center ke flex-start biar bisa diatur marginnya */
-        padding: 100px 15px 0 15px; /* Kasih ruang buat nav di atas */
+        justify-content: flex-start;
+        padding: 100px 15px 0 15px;
+        background: transparent !important; /* WAJIB TEMBUS */
     }
 
-    /* 2. PENDEKIN KARTU & SINKRONIN 0.65 (SESUAI RULES) */
+    /* 4. MARKET CARD (0.65 & LEBAR 400PX) */
     .market-card {
         background: rgba(10, 10, 10, 0.65) !important; 
         border: 1px solid rgba(255, 255, 255, 0.1) !important; 
         backdrop-filter: blur(15px) !important; 
         -webkit-backdrop-filter: blur(15px) !important;
 
-        border-radius: 20px; /* Samain sama retail/sell */
+        border-radius: 20px;
         width: 100%;
-        max-width: 400px; /* RULES: BIAR GAK KEPANJANGAN */
-        height: 65vh; /* Sedikit dipendekin biar proporsional */
+        max-width: 400px; /* Rules: Pendekin biar sinkron */
+        height: 65vh; 
         display: flex;
         flex-direction: column;
         padding: 20px 15px;
@@ -58,45 +62,19 @@
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     } 
 
-    /* 1. TARIK TOMBOL KE ATAS (BRAND LEFT) */
-    .brand-left {
-        margin-top: -10px !important; /* Rules: Tarik ke atas dikit sesuai request lo */
-    }
-
-    .market-header {
-        display: flex;
-        justify-content: space-between;
-        color: #555;
-        font-size: 0.65rem;
-        font-weight: 800;
-        letter-spacing: 1px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #222;
-    }
-
-    #market-list {
-        flex-grow: 1;
-        overflow-y: auto; 
-        padding-right: 5px;
-    }
-
-    .coin-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
+    /* SISA STYLING TOMBOL & LIST TETEP SAMA */
+    .brand-left { margin-top: -10px !important; }
+    .market-header { display: flex; justify-content: space-between; color: #555; font-size: 0.65rem; font-weight: 800; letter-spacing: 1px; padding-bottom: 10px; border-bottom: 1px solid #222; }
+    #market-list { flex-grow: 1; overflow-y: auto; padding-right: 5px; }
+    .coin-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
     .c-info { display: flex; align-items: center; gap: 10px; flex: 1; }
     .c-info img { border-radius: 50%; }
     .c-info span { color: #fff; font-weight: bold; font-size: 0.8rem; }
-
     .c-price { color: #fff !important; font-weight: bold; font-size: 0.85rem; flex: 1; text-align: center; }
     .c-vol { color: #fff !important; opacity: 0.5; font-size: 0.65rem; flex: 1; text-align: right; }
-
     #market-list::-webkit-scrollbar { display: none; }
-        </style> 
+       </style> 
+ 
 </head>
 <body>
 
