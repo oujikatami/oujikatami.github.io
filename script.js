@@ -18,3 +18,18 @@ if (intro) {
 function toggleMenu() {
     document.getElementById('side-menu').classList.toggle('active');
 }
+
+function scanEVM() {
+        const hash = document.getElementById('evmInput').value.trim();
+        if (hash) {
+            // Blockscan itu agregator sakti buat semua 0x hash
+            window.open(`https://blockscan.com/tx/${hash}`, '_blank');
+        }
+    }
+
+    function scanSOL() {
+        const sig = document.getElementById('solInput').value.trim();
+        if (sig) {
+            window.open(`https://solscan.io/tx/${sig}`, '_blank');
+        }
+    } 
