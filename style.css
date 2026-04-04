@@ -646,7 +646,7 @@ canvas.vanta-canvas {
     position: relative !important;
     
     /* Rules: Tarik turun 120px dari posisi aslinya */
-    top: 120px !important; 
+    top: 60px !important; 
     
     font-size: 0.7rem !important;
     color: #444 !important;
@@ -658,7 +658,7 @@ canvas.vanta-canvas {
 /* 2. Paksa Kontainer Link Juga Ikut Turun Biar Gak Tabrakan sama Judul */
 .menu-links {
     position: relative !important;
-    top: 120px !important; /* Samain angkanya sama menu-title */
+    top: 60px !important; /* Samain angkanya sama menu-title */
     display: flex !important;
     flex-direction: column !important;
     gap: 25px !important;
