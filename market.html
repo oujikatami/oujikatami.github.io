@@ -7,95 +7,96 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* CSS DARURAT BIAR GAK NYASAR KE MENU */
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden; /* Biar scroll cuma di kotak market */
-        }
+    /* CSS DARURAT BIAR GAK NYASAR KE MENU */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: #000; /* Dasar hitam */
+        overflow: hidden; 
+        font-family: 'Inter', sans-serif;
+    }
 
-        #vanta-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Jaring-jaring di paling belakang */
-        }
+    #vanta-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
 
-        .main-wrapper {
-            position: relative;
-            z-index: 10;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 0 15px;
-        }
+    /* TARIK WRAPPER KE ATAS DIKIT */
+    .main-wrapper {
+        position: relative;
+        z-index: 10;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; /* Ganti dari center ke flex-start biar bisa diatur marginnya */
+        padding: 100px 15px 0 15px; /* Kasih ruang buat nav di atas */
+    }
 
-        .market-card {
-    /* 1. Background dibikin tipis banget (0.01) biar bener-bener bening */
-    background: rgba(10, 10, 10, 0.65) !important; 
-    
-    /* 2. Border dibikin putih tegas tapi tipis buat ngebentuk siluet kotak */
-    border: 1px solid rgba(255, 255, 255, 0.1) !important; 
-    
-    /* 3. Blur diturunin drastis atau hapus kalau mau jernih banget */
-    backdrop-filter: blur(12px) !important; 
-    -webkit-backdrop-filter: blur(12px) !important;
+    /* 2. PENDEKIN KARTU & SINKRONIN 0.65 (SESUAI RULES) */
+    .market-card {
+        background: rgba(10, 10, 10, 0.65) !important; 
+        border: 1px solid rgba(255, 255, 255, 0.1) !important; 
+        backdrop-filter: blur(15px) !important; 
+        -webkit-backdrop-filter: blur(15px) !important;
 
-    /* Styling sisanya tetep */
-    border-radius: 25px;
-    width: 100%;
-    max-width: 400px;
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    padding: 20px 15px;
-    margin-top: 60px;
-    box-sizing: border-box;
-    position: relative;
-    z-index: 10;
-        } 
+        border-radius: 20px; /* Samain sama retail/sell */
+        width: 100%;
+        max-width: 400px; /* RULES: BIAR GAK KEPANJANGAN */
+        height: 65vh; /* Sedikit dipendekin biar proporsional */
+        display: flex;
+        flex-direction: column;
+        padding: 20px 15px;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 10;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    } 
 
-        .market-header {
-            display: flex;
-            justify-content: space-between;
-            color: #555;
-            font-size: 0.65rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #222;
-        }
+    /* 1. TARIK TOMBOL KE ATAS (BRAND LEFT) */
+    .brand-left {
+        margin-top: -10px !important; /* Rules: Tarik ke atas dikit sesuai request lo */
+    }
 
-        #market-list {
-            flex-grow: 1;
-            overflow-y: auto; /* INI BIAR BISA DI-SCROLL */
-            padding-right: 5px;
-        }
+    .market-header {
+        display: flex;
+        justify-content: space-between;
+        color: #555;
+        font-size: 0.65rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #222;
+    }
 
-        /* Styling Baris Aset (Berjejer) */
-        .coin-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #111;
-        }
+    #market-list {
+        flex-grow: 1;
+        overflow-y: auto; 
+        padding-right: 5px;
+    }
 
-        .c-info { display: flex; align-items: center; gap: 10px; flex: 1; }
-        .c-info img { border-radius: 50%; }
-        .c-info span { color: #fff; font-weight: bold; font-size: 0.8rem; }
+    .coin-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
 
-        .c-price { color: #fff !important; font-weight: bold; font-size: 0.85rem; flex: 1; text-align: center; }
-        .c-vol { color: #fff !important; opacity: 0.5; font-size: 0.65rem; flex: 1; text-align: right; }
+    .c-info { display: flex; align-items: center; gap: 10px; flex: 1; }
+    .c-info img { border-radius: 50%; }
+    .c-info span { color: #fff; font-weight: bold; font-size: 0.8rem; }
 
-        /* Hilangkan scrollbar tapi tetep bisa scroll */
-        #market-list::-webkit-scrollbar { display: none; }
-    </style>
+    .c-price { color: #fff !important; font-weight: bold; font-size: 0.85rem; flex: 1; text-align: center; }
+    .c-vol { color: #fff !important; opacity: 0.5; font-size: 0.65rem; flex: 1; text-align: right; }
+
+    #market-list::-webkit-scrollbar { display: none; }
+        </style> 
 </head>
 <body>
 
