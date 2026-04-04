@@ -133,13 +133,13 @@ canvas.vanta-canvas {
 
 .bar { width: 22px; height: 2px; background: #fff; margin: 4px 0; }
 
-/* SIDEBAR MENU (REVISI TRANSPARAN) */
+/* --- SIDEBAR MENU (REVISI TRANSPARAN & POSISI) --- */
 .side-drawer {
     position: fixed; top: 0; right: -100%; width: 300px; height: 100%;
     transition: 0.4s; z-index: 1100;
     border-left: 1px solid rgba(255, 255, 255, 0.1);
 
-    /* GANTI background #000 JADI INI: */
+    /* TETEP PAKE 0.7 BIAR KACA MEWAH */
     background: rgba(10, 10, 10, 0.7) !important; 
     backdrop-filter: blur(15px) !important;
     -webkit-backdrop-filter: blur(15px) !important;
@@ -147,10 +147,31 @@ canvas.vanta-canvas {
 
 .side-drawer.active { right: 0; }
 
-.drawer-content { padding: 40px 30px; display: flex; flex-direction: column; gap: 40px; }
-.menu-title { font-size: 1.2rem; color: #666; letter-spacing: 3px; }
-.menu-links { display: flex; flex-direction: column; gap: 25px; }
-.menu-links a { color: #fff; text-decoration: none; font-weight: 800; font-size: 0.95rem; }
+/* FIX TULISAN MENU KETUTUP - UPDATE DI SINI SOB! */
+.drawer-content { 
+    /* 1. Tarik ke bawah biar gak ketutup bar atas (80px - 100px) */
+    padding-top: 100px !important; 
+    
+    /* 2. Jaga jarak kiri asli lo (Rules: Gak gue ubah) */
+    padding-left: 30px !important; 
+    
+    display: flex; 
+    flex-direction: column; 
+    gap: 40px; 
+    background: transparent !important;
+}
+
+/* Judul MENU (Biar lebih lega) */
+.menu-title { 
+    font-size: 0.8rem; 
+    color: #444; 
+    letter-spacing: 4px; 
+    margin-bottom: 10px !important; /* Kasih jarak ke link di bawahnya */
+    background: transparent !important;
+}
+
+.menu-links { display: flex; flex-direction: column; gap: 25px; background: transparent !important; }
+.menu-links a { color: #fff; text-decoration: none; font-weight: 800; font-size: 0.95rem; } 
 
 /* INTRO (STRUKTUR TETAP) */
 #intro-overlay { 
