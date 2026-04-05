@@ -10,16 +10,24 @@
         body {
             margin: 0;
             padding: 0;
-            background: #0a0a0a;
+            background: #000; /* Hitam pekat sesuai tema */
             color: white;
             font-family: inherit;
             min-height: 100vh;
-            overflow-x: hidden;
+            overflow: hidden; /* Biar Vanta gak double scroll */
+        }
+
+        /* Background Jaring-Jaring Vanta */
+        #vanta-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: -1;
         }
 
         .header {
-            background: rgba(17, 17, 17, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.5); /* Lebih transparan */
+            backdrop-filter: blur(15px);
             padding: 15px 20px;
             display: flex;
             justify-content: space-between;
@@ -27,70 +35,83 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .header h2 {
             margin: 0;
             font-size: 1.1rem;
             letter-spacing: 1px;
+            font-weight: 900;
         }
 
         .header a {
             color: #aaa;
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
         .content {
-            padding: 60px 20px 40px;
+            padding: 40px 20px;
             text-align: center;
             max-width: 700px;
             margin: 0 auto;
+            height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .cyber-box {
-            background: rgba(30, 30, 30, 0.7);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px;
+            background: rgba(10, 10, 10, 0.7); /* Midnight Glass style */
+            border: 1px solid rgba(0, 255, 163, 0.2); /* Border ijo tipis */
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
             padding: 40px 30px;
-            margin: 30px auto;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
         }
 
         .btn {
-            display: inline-block;
-            background: linear-gradient(90deg, #00ff9d, #00cc7a);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #00ffa3; /* Ijo neon murni */
             color: #000;
-            padding: 16px 40px;
-            border-radius: 10px;
-            font-weight: 800;
-            font-size: 1.1rem;
+            padding: 18px 30px;
+            border-radius: 12px;
+            font-weight: 900;
+            font-size: 1rem;
             text-decoration: none;
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 255, 157, 0.3);
+            box-shadow: 0 5px 20px rgba(0, 255, 163, 0.3);
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .btn:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0, 255, 157, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 255, 163, 0.5);
+            background: #fff;
         }
 
         .icon {
             font-size: 3.5rem;
-            color: #00ff9d;
+            color: #00ffa3;
             margin-bottom: 20px;
-            opacity: 0.9;
+            filter: drop-shadow(0 0 10px rgba(0, 255, 163, 0.4));
         }
     </style>
 </head>
-<body class="intro-active">
+<body>
 
-    <!-- Header -->
+    <div id="vanta-canvas"></div>
+
     <div class="header">
         <h2 id="title">Satsume Airdrop</h2>
         <a href="drophunting.html">
@@ -102,12 +123,12 @@
         <div class="cyber-box">
             <i class="fas fa-book-open icon"></i>
             
-            <h1 style="font-size: 1.85rem; margin-bottom: 16px; letter-spacing: 1px;">
+            <h1 style="font-size: 1.85rem; margin-bottom: 16px; letter-spacing: 1px; font-weight: 900;">
                 TUTORIAL READY
             </h1>
             
-            <p style="color: #aaa; font-size: 1.05rem; line-height: 1.7; margin-bottom: 35px;">
-                Tutorial lengkap <strong id="tutorial-name">Satsume Airdrop</strong> sudah siap.<br>
+            <p style="color: #aaa; font-size: 1rem; line-height: 1.6; margin-bottom: 35px;">
+                Tutorial lengkap <strong id="tutorial-name" style="color: #fff;">Satsume Airdrop</strong> sudah siap.<br>
                 Klik tombol di bawah untuk membuka di Notion.
             </p>
 
@@ -117,7 +138,27 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    
     <script>
+        // Inisialisasi Vanta Net sesuai tema utama lo
+        VANTA.NET({
+          el: "#vanta-canvas",
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: true,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          color: 0x00ffa3,
+          backgroundColor: 0x0,
+          points: 10.00,
+          maxDistance: 20.00,
+          spacing: 16.00
+        });
+
         const urlParams = new URLSearchParams(window.location.search);
         const slug = urlParams.get('slug');
 
@@ -140,11 +181,5 @@
             document.getElementById('tutorial-name').textContent = "Tidak Ditemukan";
         }
     </script>
-
-    <!-- Script vanta & lainnya (opsional, kalau mau background sama seperti drophunting) -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-    <script src="script.js"></script> -->
-
 </body>
 </html>
