@@ -68,7 +68,7 @@ canvas.vanta-canvas {
 
 .exp-box { text-align: left; }
 .exp-item { 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Garis pembatas jadi tipis transparan */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
     padding: 12px 0; 
 } 
 .exp-item:last-child { border: none; }
