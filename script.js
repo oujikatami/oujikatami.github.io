@@ -73,7 +73,7 @@ document.addEventListener('click', function(e) {
             e.preventDefault();
             setTimeout(() => {
                 window.location.href = href;
-            }, 150); 
+            }, 50); 
         }
     }
 }, true);
