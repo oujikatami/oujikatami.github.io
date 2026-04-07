@@ -34,34 +34,46 @@ function scanEVM() {
         } 
     } 
 
-// 1. Inisialisasi Suara
-const clickSound = new Audio('click.mp3');
-clickSound.volume = 0.5; 
 
+const clickSound = new Audio('click.mp3');
+clickSound.volume = 0.6; 
 
 function playClick() {
     clickSound.currentTime = 0;
-    clickSound.play().catch(e => console.log("Audio blocked: Perlu satu klik awal dari user!"));
+    
+    clickSound.play().catch(() => {}); 
 }
 
 
-document.addEventListener('click', function(e) {
-    const targetLink = e.target.closest('a');
-    const targetBtn = e.target.closest('button');
+document.addEventListener('mousedown', function(e) {
+   
+    const target = e.target.closest(
+        'a, button, ' +                
+        '.menu-btn, .close-menu, ' +    
+        '.soc-row, .cex-btn, .cex-btn-vanta, ' + 
+        '.pay-item, .address-card-final button, ' +
+        '.switch-btn, .close-modal, ' +  
+        '.service-row-v2, .exp-item'  +   
+    );
 
-    if (targetLink || targetBtn) {
+    if (target) {
         playClick();
-        
-        
-        if (targetLink) {
-            const href = targetLink.getAttribute('href');
-            
-            if (href && href !== '#' && !href.startsWith('http') && targetLink.target !== "_blank") {
-                e.preventDefault();
-                setTimeout(() => {
-                    window.location.href = href;
-                }, 150); 
-            }
+    }
+}, true);
+
+
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    
+    if (link) {
+        const href = link.getAttribute('href');
+        const isExternal = link.target === "_blank" || href.startsWith('http') || href.startsWith('mailto:');
+
+        if (href && href !== '#' && !isExternal) {
+            e.preventDefault();
+            setTimeout(() => {
+                window.location.href = href;
+            }, 150); 
         }
     }
-});
+}, true);
