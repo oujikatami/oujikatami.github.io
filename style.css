@@ -2,9 +2,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* --- BODY SETTINGS (DNA UTAMA) --- */
 body { 
-    /* 1. Kasih dasar hitam pekat biar jaring putihnya kontras */
     background-color: #000 !important; 
     
     color: #fff; 
@@ -14,32 +12,27 @@ body {
     padding: 0;
 }
 
-/* --- CANVAS VANTA (PASTIKAN DI PALING BELAKANG) --- */
-/* Vanta biasanya otomatis bikin canvas, kita kunci posisinya di sini */
 canvas.vanta-canvas {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
-    z-index: -1 !important; /* WAJIB: Di belakang semua kartu transparan lo */
+    z-index: -1 !important; 
     width: 100% !important;
     height: 100% !important;
-    pointer-events: none; /* Biar gak ganggu klik tombol lo */
+    pointer-events: none; 
 }
 
-/* Fix tambahan biar Snap Panel lo gak nutupin Vanta */
 .snap-panel, .container {
     background: transparent !important;
 } 
 
-/* --- PONDASI UTAMA (STRUKTUR TETAP ASLI OUJI) --- */
 #scroller {
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     scrollbar-width: none;
     position: relative;
-    z-index: 2;
-    /* Gak gue kasih background biar Vanta aman */
+    z-index: 2; 
 }
 #scroller::-webkit-scrollbar { display: none; }
 
@@ -47,30 +40,24 @@ canvas.vanta-canvas {
     height: 100vh; width: 100%;
     scroll-snap-align: start;
     display: flex; justify-content: center; align-items: center;
-    position: relative;
-    /* Gak gue sentuh biar snap scroll lancar */
+    position: relative; 
 }
 
 .container {
     width: 90%; max-width: 400px;
     display: flex; flex-direction: column; align-items: center;
-    position: relative;
-    /* Gak gue sentuh biar tetep center */
+    position: relative; 
 }
 
-/* --- KOTAKAN (CYBER BOX) - HANYA UBAH TRANSPARANSI --- */
-.cyber-box {
-    /* 1. Ganti dari 0.95 ke 0.75 (Transparan) */
+.cyber-box { 
     background: rgba(10, 10, 10, 0.75) !important; 
     
-    /* 2. Tambah Efek Blur (Frosted Glass) */
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
     
-    /* 3. Sisanya TETEP PAKE KODE ASLI LO (Struktur & Font) */
-    border: 1px solid #2d333a; /* Border asli lo */
+    border: 1px solid #2d333a; 
     padding: 25px; 
-    border-radius: 15px; /* Radius asli lo */
+    border-radius: 15px; 
     width: 100%; 
     text-align: center;
     position: relative; 
@@ -79,7 +66,6 @@ canvas.vanta-canvas {
 .cyber-box h2 { font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
 .cyber-box p { font-size: 0.9rem; line-height: 1.6; color: #ccc; }
 
-/* EXPERIENCE LIST (STRUKTUR TETAP) */
 .exp-box { text-align: left; }
 .exp-item { 
     border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Garis pembatas jadi tipis transparan */
@@ -89,7 +75,6 @@ canvas.vanta-canvas {
 .exp-item h4 { font-size: 1rem; margin-top: 3px; }
 .exp-item small { color: #666; font-size: 0.75rem; }
 
-/* SOCIAL MEDIA LIST (HANYA UBAH BACKGROUND) */
 .social-links-list { display: flex; flex-direction: column; gap: 10px; }
 
 .soc-row {
@@ -97,7 +82,6 @@ canvas.vanta-canvas {
     text-decoration: none; color: #fff;
     padding: 15px; 
     
-    /* GANTI BACKGROUND JADI TRANSPARAN BLUR */
     background: rgba(255, 255, 255, 0.03) !important; 
     backdrop-filter: blur(5px) !important;
     -webkit-backdrop-filter: blur(5px) !important;
@@ -108,7 +92,6 @@ canvas.vanta-canvas {
     transition: 0.3s;
 }
 
-/* EFEK HOVER (Pas Disentuh Balik ke Putih Solid biar Jelas) */
 .soc-row:hover { 
     background: #fff; 
     color: #000; 
@@ -116,7 +99,6 @@ canvas.vanta-canvas {
     backdrop-filter: none;
 }
 
-/* NAVBAR (STRUKTUR TETAP) */
 .top-nav { position: fixed; top: 25px; right: 25px; z-index: 1000; }
 
 .menu-btn { 
@@ -124,7 +106,6 @@ canvas.vanta-canvas {
     padding: 12px; 
     border-radius: 10px; 
     
-    /* HANYA UBAH BACKGROUND & BLUR */
     background: rgba(255, 255, 255, 0.05) !important; 
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
@@ -133,26 +114,21 @@ canvas.vanta-canvas {
 
 .bar { width: 22px; height: 2px; background: #fff; margin: 4px 0; }
 
-/* --- SIDEBAR MENU (REVISI TRANSPARAN & POSISI) --- */
 .side-drawer {
     position: fixed; top: 0; right: -100%; width: 300px; height: 100%;
     transition: 0.4s; z-index: 1100;
     border-left: 1px solid rgba(255, 255, 255, 0.1);
 
-    /* TETEP PAKE 0.7 BIAR KACA MEWAH */
-    background: rgba(10, 10, 10, 0.7) !important; 
+    background: rgba(10, 10, 10, 0.65) !important; 
     backdrop-filter: blur(15px) !important;
     -webkit-backdrop-filter: blur(15px) !important;
 }
 
 .side-drawer.active { right: 0; }
 
-/* FIX TULISAN MENU KETUTUP - UPDATE DI SINI SOB! */
 .drawer-content { 
-    /* 1. Tarik ke bawah biar gak ketutup bar atas (80px - 100px) */
     padding-top: 100px !important; 
     
-    /* 2. Jaga jarak kiri asli lo (Rules: Gak gue ubah) */
     padding-left: 30px !important; 
     
     display: flex; 
@@ -161,7 +137,6 @@ canvas.vanta-canvas {
     background: transparent !important;
 }
 
-/* Judul MENU (Biar lebih lega) */
 .menu-title { 
     font-size: 0.8rem; 
     color: #444; 
@@ -173,17 +148,14 @@ canvas.vanta-canvas {
 .menu-links { display: flex; flex-direction: column; gap: 25px; background: transparent !important; }
 .menu-links a { color: #fff; text-decoration: none; font-weight: 800; font-size: 0.95rem; } 
 
-/* INTRO (STRUKTUR TETAP) */
 #intro-overlay { 
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; 
     transition: 1s; 
 
-    /* HANYA UBAH BACKGROUND & TAMBAH BLUR */
     background: rgba(0, 0, 0, 0.85) !important; 
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
 } 
-/* TOMBOL KEMBALI (STRUKTUR & POSISI TETAP) */
 .close-menu {
     position: absolute;
     top: 25px;
@@ -199,7 +171,6 @@ canvas.vanta-canvas {
     border-radius: 8px;
     z-index: 1200;
 
-    /* HANYA UBAH BACKGROUND, BORDER, & BLUR */
     background: rgba(255, 255, 255, 0.05) !important; 
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(8px) !important;
@@ -210,19 +181,17 @@ canvas.vanta-canvas {
     font-size: 1.2rem;
 } 
 
-/* Biar konten menu nggak ketutupan tombol kembali */
 .drawer-content {
     padding-top: 100px !important;
     background: transparent ! important;
 } 
-/* --- FIX TOTAL LAYOUT HEADER (ANTI NUMPUK) --- */
 .top-nav {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw; /* Paksa lebar satu layar penuh */
-    height: 80px; /* Tinggi header */
-    z-index: 2000; /* Paling depan */
+    width: 100vw; 
+    height: 80px; 
+    z-index: 2000; 
     
     background: transparent;
     backdrop-filter: blur(5px) !important; 
@@ -232,87 +201,82 @@ canvas.vanta-canvas {
 .brand-left {
     position: absolute;
     top: 30px; 
-    left: 20px; /* INI YANG MAKSA DIA KE KIRI POL */
+    left: 20px; 
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 1px;
     color: #fff;
-    white-space: nowrap; /* Biar gak turun ke bawah tulisannya */
+    white-space: nowrap; 
 }
 
 .menu-btn {
     position: absolute;
     top: 20px;
-    right: 20px; /* TETEP MAKSA KE KANAN POL */
+    right: 20px; 
     padding: 10px;
     border-radius: 8px;
     cursor: pointer;
-    margin: 0 !important; /* TETEP HAPUS MARGIN */
+    margin: 0 !important; 
     
-    /* --- EFEK GLASSY (HANYA INI YANG BERUBAH) --- */
+    
     background: rgba(255, 255, 255, 0.05) !important; 
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
     
-    /* Tambahan Shadow biar tombolnya 'muncul' dari Vanta */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 } 
 
-/* Biar gak tabrakan di layar super kecil (STRUKTUR TETAP ASLI) */
+
 @media (max-width: 320px) {
     .brand-left { font-size: 0.6rem; left: 10px; }
     .menu-btn { right: 10px; }
 } 
 
-/* --- FIX SIMETRIS MENU (STRUKTUR TETAP ASLI) --- */
+
 .side-drawer {
-    padding-top: 25px !important; /* TETEP NAIKIN KONTEN */
-    background: rgba(10, 10, 10, 0.7) !important; /* Biar sinkron sama yang tadi */
+    padding-top: 25px !important; 
+    background: rgba(10, 10, 10, 0.7) !important; 
     backdrop-filter: blur(15px) !important;
 }
 
 .drawer-content {
-    padding-top: 0 !important; /* TETEP HAPUS PADDING TAMBAHAN */
-    display: flex;
+    padding-top: 0 !important; 
     flex-direction: column;
     gap: 30px; 
     padding-left: 30px; 
-    background: transparent !important; /* WAJIB: Biar gak ada kotak item di dalem sidebar */
+    background: transparent !important; 
 } 
 
-/* Tombol Back biar lebih rapi (STRUKTUR & POSISI TETAP) */
 .close-menu {
-    position: static !important; /* TETEP IKUT ALUR FLEXBOX */
+    position: static !important; 
     margin-bottom: 10px;
     width: fit-content;
     
-    /* BIAR KACA TETEP SINKRON */
+    
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
 }
 
-/* Judul MENU biar sejajar garis mata (STRUKTUR TETAP) */
+
 .menu-title {
     margin-top: 0;
     font-size: 1rem;
-    color: #444; /* TETEP REDUP ELEGAN */
-    background: transparent !important; /* Pastiin gak ada background yang nutupin */
+    color: #444; 
+    background: transparent !important; 
 }
 
-/* Link menu biar lebih rapet dikit gap-nya (STRUKTUR TETAP) */
 .menu-links {
     gap: 20px !important;
     background: transparent !important;
 }  
-/* Warna khusus icon social community (WARNA ASLI TETAP) */
+
 .fa-discord { color: #5865F2; }
 .fa-telegram { color: #0088cc; }
 
-/* Pastikan transisi antar section tetep smooth (STRUKTUR TETAP ASLI) */
 .snap-panel {
     scroll-snap-align: start;
     height: 100vh;
@@ -320,26 +284,23 @@ canvas.vanta-canvas {
     align-items: center;
     justify-content: center;
     
-    /* PENTING: Pastiin panel ini bening biar Vanta gak ketutup tembok warna */
     background: transparent !important; 
 } 
 
-/* --- FIX LAYOUT SERVICE & PAYMENT (ANTI CACAT - STRUKTUR TETAP) --- */
 .snap-panel {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: transparent !important; /* Tambahan: Mastiin double check transparan */
+    background: transparent !important; 
 } 
 
 .container {
     width: 90%;
-    max-width: 400px; /* TETEP BATASI LEBAR DESKTOP */
+    max-width: 400px; 
     background: transparent !important;
 }
 
-/* Ouji Service Fix (STRUKTUR TETAP ASLI) */
 .service-table {
     display: flex;
     flex-direction: column;
@@ -348,19 +309,18 @@ canvas.vanta-canvas {
 
 .service-row-v2 {
     display: flex;
-    justify-content: space-between; /* TETEP MISAHIN KIRI KANAN POL */
+    justify-content: space-between; 
     align-items: center;
     padding: 15px;
     border-radius: 10px;
     width: 100%;
     
-    /* --- EFEK GLASSY (GANTI DARI 0.02 JADI INI) --- */
+    
     background: rgba(255, 255, 255, 0.05) !important; 
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
     
-    /* Kasih shadow tipis biar baris harganya 'ngambang' */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: 0.3s ease;
 } 
@@ -368,21 +328,20 @@ canvas.vanta-canvas {
 .service-name-v2 {
     font-size: 0.85rem;
     font-weight: bold;
-    color: #fff; /* TETEP WARNA SERAGAM PUTIH */
+    color: #fff; 
     text-align: left;
-    background: transparent !important; /* Mastiin gak ada background yang nutupin kaca */
+    background: transparent !important; 
 }
 
 .service-price-v2 {
     font-size: 0.85rem;
     font-weight: bold;
-    color: #fff; /* TETEP WARNA SERAGAM PUTIH */
+    color: #fff; 
     text-align: right;
-    white-space: nowrap; /* TETEP BIAR HARGA GAK TURUN */
+    white-space: nowrap; 
     background: transparent !important;
 }
 
-/* Payment Fix (STRUKTUR TETAP ASLI) */
 .pay-section {
     text-align: left;
     width: 100%;
@@ -392,7 +351,7 @@ canvas.vanta-canvas {
 .pay-label-final {
     font-size: 0.7rem;
     font-weight: bold;
-    color: #666; /* TETEP REDUP ELEGAN */
+    color: #666; 
     letter-spacing: 2px;
     margin-bottom: 10px;
     display: block;
@@ -401,7 +360,7 @@ canvas.vanta-canvas {
 
 .pay-grid {
     display: flex;
-    flex-wrap: wrap; /* TETEP BIAR LOGONYA TURUN OTOMATIS */
+    flex-wrap: wrap; 
     gap: 10px;
     background: transparent !important;
 }
@@ -411,12 +370,11 @@ canvas.vanta-canvas {
     align-items: center;
     gap: 8px;
     padding: 8px 12px;
-    border-radius: 20px; /* TETEP RADIUS ASLI LO */
+    border-radius: 20px; 
     font-size: 0.8rem;
     font-weight: bold;
     color: #fff;
     
-    /* --- EFEK GLASSY (GANTI DARI #161B22 JADI INI) --- */
     background: rgba(255, 255, 255, 0.05) !important; 
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(5px) !important;
@@ -433,20 +391,18 @@ canvas.vanta-canvas {
     align-items: center;
     width: 100%;
     
-    /* --- EFEK GLASSY (GANTI DARI #000 JADI INI) --- */
     background: rgba(10, 10, 10, 0.6) !important; 
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
     
-    /* TETEP PAKE DASHED BORDER ASLI LO (Bikin vibe makin 'Technical') */
     border: 1px dashed rgba(255, 255, 255, 0.15) !important;
 }
 
 .address-card-final code {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
-    color: #848e9c; /* TETEP WARNA ASLI LO */
-    word-break: break-all; /* TETEP BIAR GAK MELEYOT */
+    color: #848e9c; 
+    word-break: break-all; 
     text-align: left;
     max-width: 85%;
     background: transparent !important;
@@ -462,7 +418,6 @@ canvas.vanta-canvas {
     transition: 0.3s;
 }
 
-/* Tambahan dikit biar pas diklik copy ada feedback visual */
 .address-card-final button:active {
     transform: scale(0.9);
     opacity: 0.7;
@@ -473,34 +428,31 @@ canvas.vanta-canvas {
     object-fit: contain;
     border-radius: 4px;
     
-    /* GANTI background 0.05 JADI INI (Biar icon makin nyatu sama kaca) */
     background: rgba(255, 255, 255, 0.03) !important;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .pay-item {
     transition: transform 0.2s;
-    /* Background & blur udah kita setel di .pay-item sebelumnya ya sob */
+    
 }
 
 .pay-item:active {
-    transform: scale(0.95); /* TETEP EFEK PENCET ASLI LO */
+    transform: scale(0.95); 
 } 
 
-/* --- SEARCH WRAPPER VANTA (HANYA CEK TRANSPARANSI) --- */
 .search-wrapper-vanta {
     display: flex;
     align-items: center;
     width: 100%;
     padding: 10px 0;
     
-    /* PASTIIN TRANSPARAN BIAR GAK BLOKIR VANTA DI BAWAH */
     background: transparent !important;
 } 
 
 .cex-link-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* TETEP BAGI DUA SIMETRIS */
+    grid-template-columns: 1fr 1fr; 
     gap: 10px;
     background: transparent !important;
 }
@@ -510,29 +462,27 @@ canvas.vanta-canvas {
     text-align: center;
     color: #fff;
     text-decoration: none;
-    font-size: 0.7rem; /* TETEP UKURAN ASLI LO */
-    font-weight: 800; /* TETEP TEBEL ASLI LO */
+    font-size: 0.7rem; 
+    font-weight: 800; 
     transition: 0.3s;
-    border-radius: 8px; /* Tambahan biar gak kaku banget ujungnya */
+    border-radius: 8px; 
 
-    /* --- EFEK GLASSY (GANTI BIAR GAK POLOSAN) --- */
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
 }
 
-/* EFEK HOVER (TETEP PAKE LOGIKA ASLI LO: BALIK KE PUTIH SOLID) */
+
 .cex-btn-vanta:hover {
     background: #fff !important;
     color: #000 !important;
     backdrop-filter: none !important;
 }
 
-/* GRID UNTUK TOMBOL CEX (STRUKTUR TETAP ASLI) */
 .cex-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* TETEP BAGI TIGA RATA */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 8px;
     background: transparent !important;
 }
@@ -541,32 +491,32 @@ canvas.vanta-canvas {
     display: block; 
     padding: 10px 2px; 
     border-radius: 4px; 
-    color: #666; /* TETEP WARNA ASLI LO */
+    color: #666; 
     font-size: 0.5rem; 
     text-decoration: none; 
     text-align: center;
     transition: 0.3s; 
     font-weight: 800;
 
-    /* --- EFEK GLASSY (GANTI DARI 0.02 JADI INI) --- */
+    
     background: rgba(255, 255, 255, 0.05) !important; 
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
     backdrop-filter: blur(5px) !important;
     -webkit-backdrop-filter: blur(5px) !important;
 }
 
-/* EFEK HOVER (TETEP PAKE LOGIKA NEON ASLI LO) */
+
 .cex-btn:hover { 
-    border-color: #00ffa3 !important; /* TETEP HIJAU NEON ASLI LO */
+    border-color: #00ffa3 !important; 
     color: #fff !important; 
-    background: rgba(0, 255, 163, 0.1) !important; /* Kasih sedikit aura neon pas di-hover */
+    background: rgba(0, 255, 163, 0.1) !important; 
 }
 
-/* MODAL / POP-UP SETTINGS (STRUKTUR TETAP ASLI) */
+
 .modal-vanta {
     display: none; position: fixed; z-index: 99999;
     left: 0; top: 0; width: 100%; height: 100%;
-    /* GANTI background 0.9 JADI INI (Biar transisi masuk makin smooth) */
+
     background: rgba(0, 0, 0, 0.7) !important; 
     backdrop-filter: blur(15px) !important;
     -webkit-backdrop-filter: blur(15px) !important;
@@ -577,7 +527,6 @@ canvas.vanta-canvas {
     width: 85%; max-width: 500px;
     height: 75vh; overflow-y: auto; border-radius: 15px;
     
-    /* --- EFEK GLASSY (GANTI DARI #0D0D0D JADI INI) --- */
     background: rgba(15, 15, 15, 0.75) !important; 
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(20px) !important;
@@ -590,7 +539,7 @@ canvas.vanta-canvas {
 .modal-body-text { color: #ccc; line-height: 1.6; font-size: 0.85rem; background: transparent !important; }
 .modal-body-text img { width: 100%; border-radius: 10px; margin: 15px 0; }
 
-/* SWITCHER BUTTON (TETEP DI POSISI ASLI LO) */
+
 .switch-btn {
     position: fixed;
     top: 20px;
@@ -605,7 +554,7 @@ canvas.vanta-canvas {
     letter-spacing: 1px;
     transition: 0.3s;
 
-    /* --- BIAR KACA TETEP KONSISTEN --- */
+    
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(10px) !important;
@@ -618,34 +567,28 @@ canvas.vanta-canvas {
     backdrop-filter: none !important;
 }
 
-/* EFEK HOVER SWITCHER (STRUKTUR & WARNA TETAP ASLI) */
+
 .switch-btn:hover {
-    /* TETEP PAKE WARNA & BORDER PILIHAN LO */
+    
     background: rgba(255, 255, 255, 0.1) !important;
     border-color: #00ffa3 !important;
     
-    /* TETEP JAGA EFEK KACA PAS HOVER */
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
     
-    /* Kasih sedikit glow biar neonnya 'nyala' di atas Vanta */
     box-shadow: 0 0 15px rgba(0, 255, 163, 0.3);
 }
 
-/* ICON DI DALAM TOMBOL (STRUKTUR TETAP ASLI) */
 .switch-btn i {
-    margin-right: 5px; /* TETEP JARAK ASLI LO */
-    color: #00ffa3;    /* TETEP WARNA HIJAU NEON ASLI LO */
+    margin-right: 5px; 
+    color: #00ffa3;    
     background: transparent !important;
 } 
-/* --- THE FINAL PREMAN OVERRIDE (MAKSIMAL TURUN) --- */
 
-/* 1. Paksa Judul MENU Geser ke Bawah secara Fisik */
 .menu-title {
     display: block !important;
     position: relative !important;
     
-    /* Rules: Tarik turun 120px dari posisi aslinya */
     top: 20px !important; 
     
     font-size: 0.7rem !important;
@@ -655,17 +598,15 @@ canvas.vanta-canvas {
     background: transparent !important;
 }
 
-/* 2. Paksa Kontainer Link Juga Ikut Turun Biar Gak Tabrakan sama Judul */
 .menu-links {
     position: relative !important;
-    top: 10px !important; /* Samain angkanya sama menu-title */
+    top: 10px !important; 
     display: flex !important;
     flex-direction: column !important;
     gap: 25px !important;
     background: transparent !important;
 }
 
-/* 3. Bersihin Drawer Content biar gak nahan */
 .drawer-content {
     padding-top: 0 !important;
     background: transparent !important;
