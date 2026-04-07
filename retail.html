@@ -9,7 +9,6 @@
     <style>
         body { background: #000; margin: 0; overflow-x: hidden; }
         
-        /* Pastiin Canvas Vanta nutupin seluruh layar */
         #vanta-canvas { 
             position: fixed; 
             top: 0; 
@@ -30,7 +29,6 @@
             box-sizing: border-box;
         }
 
-        /* TINGKAT TRANSPARANSI 0.65 - RULES COMPLIANT */
         .cyber-card {
             width: 100%; max-width: 400px; padding: 30px;
             background: rgba(10, 10, 10, 0.65) !important; /* DARI 0.9 KE 0.65 */
@@ -41,7 +39,6 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
-        /* Input dibikin lebih nyambung sama tema Midnight Glass */
         input, select {
             width: 100%; padding: 15px; 
             background: rgba(255, 255, 255, 0.05) !important;
@@ -71,7 +68,7 @@
             transition: 0.3s;
         }
         .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
-        /* --- THE ULTIMATE SLIMMER (FIX TRACKER DI SIDEBAR) --- */
+        
 
 #side-menu input.tool-input, 
 #side-menu .drawer-content input {
@@ -139,7 +136,7 @@
                         <span style="font-size: 0.55rem; color: #fff; font-weight: 800; letter-spacing: 1px;">EVM EXPLORER</span>
                     </div>
                     <div style="display: flex; gap: 5px;">
-                        <input type="text" id="evmInput" placeholder="Paste 0x Hash..." style="background: #000; border: 1px solid #333; border-radius: 5px; flex-grow: 1; height: 28px; color: #fff; font-size: 0.5rem; padding: 0 8px; outline: none;">
+                        <input type="text" id="evmInput" placeholder="" style="background: #000; border: 1px solid #333; border-radius: 5px; flex-grow: 1; height: 28px; color: #fff; font-size: 0.5rem; padding: 0 8px; outline: none;">
                         <button onclick="scanEVM()" style="background: #00ffa3; color: #000; border: none; border-radius: 5px; padding: 0 10px; font-size: 0.5rem; font-weight: 900; cursor: pointer;">SCAN</button>
                     </div>
                 </div>
@@ -160,7 +157,7 @@
             <span style="font-size: 0.55rem; color: #fff; font-weight: 800; letter-spacing: 1px;">SOLANA SCAN</span>
         </div>
         <div style="display: flex; gap: 5px;">
-            <input type="text" id="solInput" placeholder="Paste Signature..." style="background: #000; border: 1px solid #333; border-radius: 5px; flex-grow: 1; height: 28px; color: #fff; font-size: 0.5rem; padding: 0 8px; outline: none;">
+            <input type="text" id="solInput" placeholder="" style="background: #000; border: 1px solid #333; border-radius: 5px; flex-grow: 1; height: 28px; color: #fff; font-size: 0.5rem; padding: 0 8px; outline: none;">
             <button onclick="scanSOL()" style="background: #9945FF; color: #fff; border: none; border-radius: 5px; padding: 0 10px; font-size: 0.5rem; font-weight: 900; cursor: pointer;">SCAN</button>
         </div>
     </div>
@@ -235,15 +232,15 @@
             el: "#vanta-canvas", 
             mouseControls: true, 
             touchControls: true, 
-            gyroControls: true,     /* RULES: AKTIFIN GYRO BIAR MEWAH */
+            gyroControls: true,     
             minHeight: 200.00, 
             minWidth: 200.00, 
             scale: 1.00, 
             scaleMobile: 1.00,
-            color: 0xffffff,        /* JARING PUTIH TERANG */
-            backgroundColor: 0x0,   /* DASAR HITAM */
-            points: 12.00,          /* NAIKIN DIKIT BIAR RAME */
-            maxDistance: 25.00,     /* JARING LEBIH PANJANG */
+            color: 0xffffff,        
+            backgroundColor: 0x0,   
+            points: 12.00,          
+            maxDistance: 25.00,     
             spacing: 15.00
         }); 
 
@@ -261,7 +258,7 @@
             const crypto = document.getElementById('assetSelect').value;
             if (idr < 1000) return;
             try {
-                // PAKE CRYPTOCOMPARE - LEBIH REALTIME & KENCENG
+                
                 const res = await fetch(`https://min-api.cryptocompare.com/data/price?fsym=${crypto}&tsyms=IDR`);
                 const data = await res.json();
                 const netIdr = idr * 0.92; 
