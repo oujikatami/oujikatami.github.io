@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-       <style>
-    /* 1. BODY HARUS BENING TOTAL */
+       <style> 
     body, html {
         margin: 0;
         padding: 0;
@@ -18,7 +17,6 @@
         font-family: 'Inter', sans-serif;
     }
 
-    /* 2. KUNCI CANVAS DI BALIK LAYAR */
     #vanta-bg {
         position: fixed !important;
         top: 0 !important;
@@ -26,10 +24,10 @@
         width: 100vw !important;
         height: 100vh !important;
         z-index: -1 !important; 
-        background-color: #000; /* Dasar hitamnya pindah ke sini */
+        background-color: #000; 
     }
 
-    /* 3. WRAPPER DIPAKSA TEMBUS PANDANG */
+
     .main-wrapper {
         position: relative;
         z-index: 10;
@@ -39,10 +37,10 @@
         align-items: center;
         justify-content: flex-start;
         padding: 100px 15px 0 15px;
-        background: transparent !important; /* WAJIB TEMBUS */
+        background: transparent !important; 
     }
 
-    /* 4. MARKET CARD (0.65 & LEBAR 400PX) */
+    
     .market-card {
         background: rgba(10, 10, 10, 0.65) !important; 
         border: 1px solid rgba(255, 255, 255, 0.1) !important; 
@@ -51,7 +49,7 @@
 
         border-radius: 20px;
         width: 100%;
-        max-width: 400px; /* Rules: Pendekin biar sinkron */
+        max-width: 400px; 
         height: 65vh; 
         display: flex;
         flex-direction: column;
@@ -62,7 +60,7 @@
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     } 
 
-    /* SISA STYLING TOMBOL & LIST TETEP SAMA */
+    
     .brand-left { margin-top: -10px !important; }
     .market-header { display: flex; justify-content: space-between; color: #555; font-size: 0.65rem; font-weight: 800; letter-spacing: 1px; padding-bottom: 10px; border-bottom: 1px solid #222; }
     #market-list { flex-grow: 1; overflow-y: auto; padding-right: 5px; }
@@ -116,7 +114,7 @@
                     <span style="font-size: 0.55rem; color: #fff; font-weight: 800; letter-spacing: 1px;">EVM EXPLORER</span>
                 </div>
                 <div style="display: flex; gap: 5px;">
-                    <input type="text" id="evmInput" placeholder="Paste 0x Hash..." style="background: #000; border: 1px solid #333; border-radius: 5px; flex-grow: 1; height: 28px; color: #fff; font-size: 0.5rem; padding: 0 8px; outline: none;">
+                    <input type="text" id="evmInput" placeholder="" style="background: #000; border: 1px solid #333; border-radius: 5px; flex-grow: 1; height: 28px; color: #fff; font-size: 0.5rem; padding: 0 8px; outline: none;">
                     <button onclick="scanEVM()" style="background: #00ffa3; color: #000; border: none; border-radius: 5px; padding: 0 10px; font-size: 0.5rem; font-weight: 900; cursor: pointer;">SCAN</button>
                 </div>
             </div>
@@ -137,7 +135,7 @@
             <span style="font-size: 0.55rem; color: #fff; font-weight: 800; letter-spacing: 1px;">SOLANA SCAN</span>
         </div>
         <div style="display: flex; gap: 5px;">
-            <input type="text" id="solInput" placeholder="Paste Signature..." style="background: #000; border: 1px solid #333; border-radius: 5px; flex-grow: 1; height: 28px; color: #fff; font-size: 0.5rem; padding: 0 8px; outline: none;">
+            <input type="text" id="solInput" placeholder="" style="background: #000; border: 1px solid #333; border-radius: 5px; flex-grow: 1; height: 28px; color: #fff; font-size: 0.5rem; padding: 0 8px; outline: none;">
             <button onclick="scanSOL()" style="background: #9945FF; color: #fff; border: none; border-radius: 5px; padding: 0 10px; font-size: 0.5rem; font-weight: 900; cursor: pointer;">SCAN</button>
         </div>
             </div> 
@@ -172,35 +170,31 @@
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
     <script src="script.js"></script>
 
-    <script>
-        // 1. INISIALISASI VANTA (BALIKIN JARING PUTIH TERANG)
+    <script> 
         VANTA.NET({
             el: "#vanta-bg",
-            mouseControls: true,    /* Rules: Aktifin lagi biar interaktif */
-            touchControls: true,    /* Rules: Aktifin buat user HP */
-            gyroControls: true,     /* Rules: Kasih efek goyang biar mewah */
+            mouseControls: true,     
+            touchControls: true,    
+            gyroControls: true,     
             minHeight: 200.00,
             minWidth: 200.00,
             scale: 1.00,
             scaleMobile: 1.00,
-            color: 0xffffff,        /* GANTI DARI 0x3f3f3f KE PUTIH TERANG */
-            backgroundColor: 0x0,   /* Tetep dasar item */
-            points: 12.00,          /* Naikin titik dikit biar rame jaringnya */
-            maxDistance: 25.00,     /* Jaring lebih panjang biar estetik */
+            color: 0xffffff,        
+            backgroundColor: 0x0,   
+            points: 12.00,          
+            maxDistance: 25.00,     
             spacing: 15.00
         });
 
-        // 2. FUNGSI UTAMA FETCH MARKET (TOP 30 + DASHBOARD STATUS)
         async function fetchMarket() {
-            try {
-                // Ambil Top 30 Koin (Biar Gak Kepanjangan)
+            try { 
                 const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=30&page=1&sparkline=false');
                 const coins = await res.json();
                 const list = document.getElementById('market-list');
                 
                 list.innerHTML = '';
 
-                // DASHBOARD STATUS: GAS FEE & TX SCANNER MINI
                 const statusDashboard = `
     <div style="background: rgba(255,255,255,0.03); border-radius: 12px; margin-bottom: 25px; border: 1px solid rgba(0,255,163,0.1); padding: 12px; backdrop-filter: blur(5px);">
         <div style="display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #222; padding-bottom: 8px;">
@@ -227,7 +221,6 @@
                 
                 list.innerHTML = statusDashboard;
 
-                // LOOPING KOIN (TOP 30)
                 coins.forEach(c => {
                     const vol = c.total_volume >= 1e9 
                         ? (c.total_volume / 1e9).toFixed(2) + 'B' 
@@ -249,7 +242,6 @@
             }
         }
 
-        // 3. FUNGSI SCAN TX (BIAR USER GAK PINDAH WEB)
         function checkTx() {
             const hash = document.getElementById('txInput').value;
             const resultDiv = document.getElementById('txResult');
@@ -261,7 +253,6 @@
 
             resultDiv.innerHTML = "<i class='fas fa-sync fa-spin'></i> SEARCHING ON MAINNET...";
 
-            // Simulasi proses "Scanning" (1.5 detik biar dramatis)
             setTimeout(() => {
                 resultDiv.innerHTML = `
                     <div style="background: rgba(0,255,163,0.05); padding: 8px; border-radius: 5px; border: 1px solid rgba(0,255,163,0.2); color: #00ffa3;">
@@ -272,16 +263,13 @@
             }, 1500);
         }
 
-        // 4. JALANKAN PROGRAM
         fetchMarket();
         setInterval(fetchMarket, 30000); // Auto-update tiap 30 detik
 
-        // FUNGSI MENU
         function toggleMenu() { document.getElementById('side-menu').classList.toggle('active'); }
         function scanEVM() {
         const hash = document.getElementById('evmInput').value.trim();
-        if (hash) {
-            // Blockscan itu agregator sakti buat semua 0x hash
+        if (hash) { 
             window.open(`https://blockscan.com/tx/${hash}`, '_blank');
         }
     }
