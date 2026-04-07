@@ -12,7 +12,7 @@
         margin: 0;
         padding: 0;
         height: 100%;
-        background-color: transparent !important; /* Rules: Jangan dikasih warna solid! */
+        background-color: transparent !important; 
         overflow: hidden; 
         font-family: 'Inter', sans-serif;
     }
@@ -247,11 +247,11 @@
             const resultDiv = document.getElementById('txResult');
             
             if (hash.length < 10) {
-                resultDiv.innerHTML = "<span style='color: #ff3e3e;'>ERROR: INVALID HASH SOB!</span>";
+                resultDiv.innerHTML = "<span style='color: #ff3e3e;'>ERROR: INVALID HASH!</span>";
                 return;
             }
 
-            resultDiv.innerHTML = "<i class='fas fa-sync fa-spin'></i> SEARCHING ON MAINNET...";
+            resultDiv.innerHTML = "<i class='fas fa-sync fa-spin'></i> ETHERSCAN ";
 
             setTimeout(() => {
                 resultDiv.innerHTML = `
@@ -264,7 +264,7 @@
         }
 
         fetchMarket();
-        setInterval(fetchMarket, 30000); // Auto-update tiap 30 detik
+        setInterval(fetchMarket, 30000); 
 
         function toggleMenu() { document.getElementById('side-menu').classList.toggle('active'); }
         function scanEVM() {
