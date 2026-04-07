@@ -22,7 +22,7 @@ function toggleMenu() {
 function scanEVM() {
         const hash = document.getElementById('evmInput').value.trim();
         if (hash) {
-            // Blockscan itu agregator sakti buat semua 0x hash
+            
             window.open(`https://blockscan.com/tx/${hash}`, '_blank');
         }
     }
@@ -33,3 +33,35 @@ function scanEVM() {
             window.open(`https://solscan.io/tx/${sig}`, '_blank');
         } 
     } 
+
+// 1. Inisialisasi Suara
+const clickSound = new Audio('click.mp3');
+clickSound.volume = 0.5; 
+
+
+function playClick() {
+    clickSound.currentTime = 0;
+    clickSound.play().catch(e => console.log("Audio blocked: Perlu satu klik awal dari user!"));
+}
+
+
+document.addEventListener('click', function(e) {
+    const targetLink = e.target.closest('a');
+    const targetBtn = e.target.closest('button');
+
+    if (targetLink || targetBtn) {
+        playClick();
+        
+        
+        if (targetLink) {
+            const href = targetLink.getAttribute('href');
+            
+            if (href && href !== '#' && !href.startsWith('http') && targetLink.target !== "_blank") {
+                e.preventDefault();
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 150); 
+            }
+        }
+    }
+});
