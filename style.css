@@ -15,25 +15,18 @@ body {
     margin: 0;
     padding: 0;
 
-    /* ==================== DOTTED HALFTONE CLEAN (tanpa neon hijau kuat) ==================== */
+    /* Dotted halftone + gradient biru-ungu (mirip foto contoh) */
     background-image: 
-        /* Serat / Dotted halus utama - sangat transparan */
-        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.055) 0.9px, transparent 2.8px),
-        
-        /* Gradient biru-cyan kiri atas (seperti foto contoh) */
-        radial-gradient(ellipse at 25% 35%, rgba(100, 220, 255, 0.23) 0%, transparent 50%),
-        
-        /* Gradient ungu-pink kanan bawah */
-        radial-gradient(ellipse at 78% 68%, rgba(195, 40, 255, 0.26) 0%, transparent 55%),
-        
-        /* Soft glow tengah biar wavy */
-        radial-gradient(circle at 50% 55%, rgba(140, 80, 255, 0.09) 0%, transparent 70%);
+        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 0.85px, transparent 2.6px),   /* serat putih tipis */
+        radial-gradient(ellipse at 25% 35%, rgba(90, 215, 255, 0.20) 0%, transparent 52%),        /* biru kiri */
+        radial-gradient(ellipse at 78% 70%, rgba(190, 45, 255, 0.24) 0%, transparent 58%),       /* ungu-pink kanan */
+        radial-gradient(circle at 50% 58%, rgba(130, 70, 255, 0.085) 0%, transparent 68%);       /* soft glow */
 
     background-size: 
-        19px 19px,     /* ukuran serat */
-        160% 160%,     /* gradient biru */
-        180% 180%,     /* gradient ungu */
-        100% 100%;     /* glow */
+        19px 19px,
+        165% 165%,
+        185% 185%,
+        100% 100%;
 
     background-position: 
         0 0,
@@ -42,56 +35,28 @@ body {
         center center;
 
     background-attachment: fixed !important;
-} 
+}
 
-/* Sembunyikan vanta canvas karena kita sudah pakai CSS grid */
+/* Sembunyikan vanta */
 canvas.vanta-canvas {
     display: none !important;
 }
 
-/* Pastikan semua panel transparan supaya background grid keliatan */
+/* Pastikan panel transparan */
 .snap-panel, 
 .container,
 .snap-panel > * {
     background: transparent !important;
 }
 
-/* Sisanya kode lo tetap sama, gw hanya perbaiki sedikit yang perlu */
-
-#scroller {
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    scrollbar-width: none;
-    position: relative;
-    z-index: 2; 
-}
-#scroller::-webkit-scrollbar { display: none; }
-
-.snap-panel {
-    height: 100vh; 
-    width: 100%;
-    scroll-snap-align: start;
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-    position: relative; 
-}
-
-.container {
-    width: 90%; 
-    max-width: 400px;
-    display: flex; 
-    flex-direction: column; 
-    align-items: center;
-    position: relative; 
-}
-
+/* KOTAK KONTEN - INI YANG BIKIN TEBAL (kita transparanin) */
 .cyber-box { 
-    background: rgba(10, 10, 10, 0.78) !important; 
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border: 1px solid rgba(0, 255, 163, 0.15); 
+    background: rgba(12, 8, 40, 0.40) !important;   /* 0.40 = cukup transparan, dotted keliatan */
+    
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    
+    border: 1px solid rgba(255, 255, 255, 0.08) !important; 
     padding: 25px; 
     border-radius: 15px; 
     width: 100%; 
@@ -100,10 +65,10 @@ canvas.vanta-canvas {
     z-index: 10;
 } 
 
-/* Tambahan kecil biar border cyber-box match dengan tema neon */
 .cyber-box:hover {
-    border-color: rgba(0, 255, 163, 0.3);
-    transition: border-color 0.3s;
+    background: rgba(12, 8, 40, 0.50) !important;   /* sedikit lebih gelap pas di-hover */
+    border-color: rgba(100, 200, 255, 0.25) !important;
+    transition: all 0.3s ease;
 } 
 .cyber-box h2 { font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
 .cyber-box p { font-size: 0.9rem; line-height: 1.6; color: #ccc; }
