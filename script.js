@@ -1,15 +1,18 @@
-VANTA.NET({ 
+VANTA.WAVES({ 
     el: "body", 
     mouseControls: true,
     touchControls: true,
-    color: 0xffffff,       
-    backgroundColor: 0x0,  
-    points: 12.00,         
-    maxDistance: 25.00,    
-    spacing: 15.00,
-    gyroControls: true     
+    gyroControls: true,
+    minHeight: 200.00,
+    minWidth: 200.00,
+    scale: 1.00,
+    scaleMobile: 1.00,
+    color: 0x160a2b,       
+    shininess: 35.00,      
+    waveHeight: 18.00,     
+    waveSpeed: 0.70,       
+    zoom: 0.90
 });
-
 const intro = document.getElementById('intro-overlay');
 if (intro) {
     intro.style.display = 'none';
