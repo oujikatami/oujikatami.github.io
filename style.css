@@ -611,3 +611,38 @@ canvas.vanta-canvas {
     padding-top: 0 !important;
     background: transparent !important;
 } 
+/* --- NEW CYBER GRID BACKGROUND (NEON GREEN) --- */
+body {
+    background-color: #000; /* Warna dasar hitam */
+    
+    /* Efek Gradasi Radar Neon di Tengah (Radial) */
+    background-image: 
+        radial-gradient(circle at center, rgba(0, 255, 163, 0.15) 0%, transparent 70%),
+        
+        /* Pola Jaring Garis Halus (Grid) */
+        linear-gradient(rgba(0, 255, 163, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 163, 0.05) 1px, transparent 1px);
+    
+    /* Atur Ukuran Grid-nya */
+    background-size: 100% 100%, 30px 30px, 30px 30px;
+    
+    /* Posisi Grid Halus di Detik Awal */
+    background-position: center, 15px 15px, 15px 15px;
+    
+    overflow-y: auto !important; /* WAJIB AMAN BISA SCROLL */
+}
+
+/* Biar Jaring-jaring gak goyang pas scroll (Opsional) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -2; /* Paling belakang */
+    
+    /* Pindahin Jaring ke sini kalo mau fixed */
+    background-image: 
+        linear-gradient(rgba(0, 255, 163, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 163, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+} 
