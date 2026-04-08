@@ -5,43 +5,50 @@
     padding: 0; 
     box-sizing: border-box; 
 }
-
 body { 
-    background-color: #000000 !important; 
+    background-color: #0a001f !important;   /* dasar hitam keunguan gelap biar gradient keliatan */
     color: #fff; 
     font-family: 'Inter', sans-serif; 
     
-    overflow-y: auto !important;   /* diubah dari hidden biar bisa scroll */
+    overflow-y: auto !important; 
     overflow-x: hidden;
     margin: 0;
     padding: 0;
 
-    /* ==================== BACKGROUND GRID + NEON HIJAU ==================== */
+    /* ==================== DOTTED GRID + GRADIENT WARNA SEPERTI FOTO ==================== */
     background-image: 
-        /* Grid putih tipis (garis horizontal & vertikal) */
-        linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        /* Dotted grid putih tipis (titik-titik halus) */
+        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.09) 1px, transparent 0),
         
-        /* Neon hijau tipis yang mengikuti grid + glow */
-        linear-gradient(rgba(0, 255, 163, 0.10) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 163, 0.10) 1px, transparent 1px),
+        /* Neon hijau tipis (dots neon yang lo minta) */
+        radial-gradient(circle at 2px 2px, rgba(0, 255, 163, 0.11) 1.2px, transparent 0),
         
-        /* Soft radial glow neon di tengah (biar tidak terlalu flat) */
-        radial-gradient(circle at 50% 50%, rgba(0, 255, 163, 0.07) 0%, transparent 60%);
+        /* Gradient biru-cyan seperti di kiri foto */
+        radial-gradient(ellipse at 20% 30%, rgba(0, 220, 255, 0.22) 0%, transparent 55%),
+        
+        /* Gradient ungu-pink seperti di kanan foto */
+        radial-gradient(ellipse at 80% 70%, rgba(200, 0, 255, 0.25) 0%, transparent 60%),
+        
+        /* Soft glow tambahan biar wavy & dalam */
+        radial-gradient(circle at 50% 50%, rgba(120, 0, 255, 0.08) 0%, transparent 70%);
 
     background-size: 
-        38px 38px,    /* ukuran grid putih */
-        38px 38px,    /* ukuran grid neon */
-        100% 100%;    /* radial glow */
+        26px 26px,     /* ukuran dotted grid utama */
+        26px 26px,     /* ukuran neon dots */
+        140% 140%,     /* gradient biru */
+        160% 160%,     /* gradient ungu */
+        100% 100%;     /* soft glow */
 
     background-position: 
+        0 0,
+        3px 4px,       /* offset kecil biar neon dots agak beda layer (efek depth) */
         0 0,
         0 0,
         center center;
 
     background-attachment: fixed !important;
     /* ================================================================ */
-}
+} 
 
 /* Sembunyikan vanta canvas karena kita sudah pakai CSS grid */
 canvas.vanta-canvas {
