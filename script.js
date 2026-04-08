@@ -1,18 +1,18 @@
-VANTA.WAVES({ 
-    el: "body", 
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: true,
-    minHeight: 200.00,
-    minWidth: 200.00,
-    scale: 1.00,
-    scaleMobile: 1.00,
-    color: 0x160a2b,       
-    shininess: 35.00,      
-    waveHeight: 18.00,     
-    waveSpeed: 0.70,       
-    zoom: 0.90
-});
+VANTA.WAVES({
+  el: "#vanta-canvas", 
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: true,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x110726,  
+  shininess: 30.00,
+  waveHeight: 15.00,
+  waveSpeed: 0.80,
+  zoom: 0.90
+}) 
 const intro = document.getElementById('intro-overlay');
 if (intro) {
     intro.style.display = 'none';
