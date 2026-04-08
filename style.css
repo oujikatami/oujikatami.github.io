@@ -1,74 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=swap');
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body { 
-    background-color: #0c0828 !important; 
+    background-color: #000 !important; 
+    
     color: #fff; 
     font-family: 'Inter', sans-serif; 
-    
-    overflow-y: auto !important; 
-    overflow-x: hidden;
+    overflow: hidden; 
     margin: 0;
     padding: 0;
-
-    /* Dotted halftone + gradient biru-ungu (mirip foto contoh) */
-    background-image: 
-        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 0.85px, transparent 2.6px),   /* serat putih tipis */
-        radial-gradient(ellipse at 25% 35%, rgba(90, 215, 255, 0.20) 0%, transparent 52%),        /* biru kiri */
-        radial-gradient(ellipse at 78% 70%, rgba(190, 45, 255, 0.24) 0%, transparent 58%),       /* ungu-pink kanan */
-        radial-gradient(circle at 50% 58%, rgba(130, 70, 255, 0.085) 0%, transparent 68%);       /* soft glow */
-
-    background-size: 
-        19px 19px,
-        165% 165%,
-        185% 185%,
-        100% 100%;
-
-    background-position: 
-        0 0,
-        0 0,
-        0 0,
-        center center;
-
-    background-attachment: fixed !important;
 }
 
-/* Sembunyikan vanta */
 canvas.vanta-canvas {
-    display: none !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: -1 !important; 
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none; 
 }
 
-/* Pastikan panel transparan */
-.snap-panel, 
-.container,
-.snap-panel > * {
+.snap-panel, .container {
     background: transparent !important;
+} 
+
+#scroller {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+    position: relative;
+    z-index: 2; 
+}
+#scroller::-webkit-scrollbar { display: none; }
+
+.snap-panel {
+    height: 100vh; width: 100%;
+    scroll-snap-align: start;
+    display: flex; justify-content: center; align-items: center;
+    position: relative; 
 }
 
-/* KOTAK KONTEN - INI YANG BIKIN TEBAL (kita transparanin) */
+.container {
+    width: 90%; max-width: 400px;
+    display: flex; flex-direction: column; align-items: center;
+    position: relative; 
+}
+
 .cyber-box { 
-    background: rgba(12, 8, 40, 0.40) !important;   /* 0.40 = cukup transparan, dotted keliatan */
+    background: rgba(10, 10, 10, 0.75) !important; 
     
-    backdrop-filter: blur(14px) !important;
-    -webkit-backdrop-filter: blur(14px) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     
-    border: 1px solid rgba(255, 255, 255, 0.08) !important; 
+    border: 1px solid #2d333a; 
     padding: 25px; 
     border-radius: 15px; 
     width: 100%; 
     text-align: center;
     position: relative; 
     z-index: 10;
-} 
-
-.cyber-box:hover {
-    background: rgba(12, 8, 40, 0.50) !important;   /* sedikit lebih gelap pas di-hover */
-    border-color: rgba(100, 200, 255, 0.25) !important;
-    transition: all 0.3s ease;
 } 
 .cyber-box h2 { font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
 .cyber-box p { font-size: 0.9rem; line-height: 1.6; color: #ccc; }
