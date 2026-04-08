@@ -1,30 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=swap');
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
 body { 
-    background-color: #000 !important; 
-    
+    background-color: #000000 !important; 
     color: #fff; 
     font-family: 'Inter', sans-serif; 
-    overflow: hidden; 
+    
+    overflow-y: auto !important;   /* diubah dari hidden biar bisa scroll */
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
+
+    /* ==================== BACKGROUND GRID + NEON HIJAU ==================== */
+    background-image: 
+        /* Grid putih tipis (garis horizontal & vertikal) */
+        linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        
+        /* Neon hijau tipis yang mengikuti grid + glow */
+        linear-gradient(rgba(0, 255, 163, 0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 163, 0.10) 1px, transparent 1px),
+        
+        /* Soft radial glow neon di tengah (biar tidak terlalu flat) */
+        radial-gradient(circle at 50% 50%, rgba(0, 255, 163, 0.07) 0%, transparent 60%);
+
+    background-size: 
+        38px 38px,    /* ukuran grid putih */
+        38px 38px,    /* ukuran grid neon */
+        100% 100%;    /* radial glow */
+
+    background-position: 
+        0 0,
+        0 0,
+        center center;
+
+    background-attachment: fixed !important;
+    /* ================================================================ */
 }
 
+/* Sembunyikan vanta canvas karena kita sudah pakai CSS grid */
 canvas.vanta-canvas {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    z-index: -1 !important; 
-    width: 100% !important;
-    height: 100% !important;
-    pointer-events: none; 
+    display: none !important;
 }
 
-.snap-panel, .container {
+/* Pastikan semua panel transparan supaya background grid keliatan */
+.snap-panel, 
+.container,
+.snap-panel > * {
     background: transparent !important;
-} 
+}
+
+/* Sisanya kode lo tetap sama, gw hanya perbaiki sedikit yang perlu */
 
 #scroller {
     height: 100vh;
@@ -37,31 +68,41 @@ canvas.vanta-canvas {
 #scroller::-webkit-scrollbar { display: none; }
 
 .snap-panel {
-    height: 100vh; width: 100%;
+    height: 100vh; 
+    width: 100%;
     scroll-snap-align: start;
-    display: flex; justify-content: center; align-items: center;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
     position: relative; 
 }
 
 .container {
-    width: 90%; max-width: 400px;
-    display: flex; flex-direction: column; align-items: center;
+    width: 90%; 
+    max-width: 400px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
     position: relative; 
 }
 
 .cyber-box { 
-    background: rgba(10, 10, 10, 0.75) !important; 
-    
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    
-    border: 1px solid #2d333a; 
+    background: rgba(10, 10, 10, 0.78) !important; 
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(0, 255, 163, 0.15); 
     padding: 25px; 
     border-radius: 15px; 
     width: 100%; 
     text-align: center;
     position: relative; 
     z-index: 10;
+} 
+
+/* Tambahan kecil biar border cyber-box match dengan tema neon */
+.cyber-box:hover {
+    border-color: rgba(0, 255, 163, 0.3);
+    transition: border-color 0.3s;
 } 
 .cyber-box h2 { font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
 .cyber-box p { font-size: 0.9rem; line-height: 1.6; color: #ccc; }
